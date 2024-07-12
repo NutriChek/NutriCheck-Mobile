@@ -1,5 +1,5 @@
-import { Text } from 'react-native';
+import { Redirect } from 'expo-router';
 
 export default function Index() {
-  return <Text>text</Text>
+  return <Redirect href='/signin' />;
 }
