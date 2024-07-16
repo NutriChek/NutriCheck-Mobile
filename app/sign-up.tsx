@@ -3,7 +3,6 @@ import {
   ImageBackground,
   KeyboardAvoidingView,
   SafeAreaView,
-  ScrollView,
   Text,
   View
 } from 'react-native';
@@ -30,10 +29,17 @@ export default function SignIn() {
         .required('Username is required')
         .min(3, 'Username must have at least 3 characters')
         .max(50, 'Username must have at most 50 characters'),
+      email: yup
+        .string()
+        .required('Email is required')
+        .email('You must enter a valid email'),
       password: yup
         .string()
         .required('Password is required')
-        .min(8, 'Password must have at least 8 characters')
+        .min(8, 'Password must have at least 8 characters'),
+      passwordRep: yup
+        .string()
+        .oneOf([yup.ref('password')], 'Passwords must mtch')
     })
     .required();
 
@@ -55,7 +61,7 @@ export default function SignIn() {
 
   return (
     <KeyboardAvoidingView behavior='height' style={tw`grow`}>
-      <ScrollView style={tw`grow`}>
+      <SafeAreaView style={tw`grow`}>
         <ImageBackground
           resizeMode='cover'
           source={image}
@@ -63,7 +69,7 @@ export default function SignIn() {
         >
           <Image
             source={require('@/assets/images/logopng.png')}
-            style={tw`h-18 w-18 mb-6`}
+            style={tw`h-18 w-18 absolute top-10`}
           />
           <Text style={tw`pb-10 text-5xl font-bold text-[#5D5D5D]`}>
             NutriCheck
@@ -74,11 +80,21 @@ export default function SignIn() {
               control={control}
               name='username'
             />
+            <FormInput placeholder='Email' control={control} name='email' />
             <View>
               <FormInput
                 placeholder='Password'
                 control={control}
                 name='password'
+                password={true}
+              />
+            </View>
+            {/* / */}
+            <View>
+              <FormInput
+                placeholder='Repeat Password'
+                control={control}
+                name='passwordRep'
                 password={true}
               />
             </View>
@@ -88,17 +104,16 @@ export default function SignIn() {
               signIn();
               router.replace('/');
             }}
-            title='Sign In'
+            title='Sign Up'
           />
           <Oauth />
-          <View style={tw`h-30`} />
           <NavigationCard
-            text1='No account?'
-            text2='Create one now'
-            goto='/sign-up'
+            text1='Already have an account?'
+            text2='Sign in'
+            goto='/sign-in'
           />
         </ImageBackground>
-      </ScrollView>
+      </SafeAreaView>
     </KeyboardAvoidingView>
   );
 }
