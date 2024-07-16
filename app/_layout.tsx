@@ -1,10 +1,12 @@
 import { Slot } from 'expo-router';
-import tw, { useDeviceContext } from 'twrnc';
+import { SessionProvider } from '@/context/auth-context';
 
-export default function RootLayout() {
-  useDeviceContext(tw);
-
+export default function Root() {
+  // Set up the auth context and render our layout inside of it.
   return (
-    <Slot />
+    <SessionProvider>
+      <Slot />
+    </SessionProvider>
   );
 }
+
