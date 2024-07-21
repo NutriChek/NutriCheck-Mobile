@@ -3,7 +3,6 @@ import { Controller } from 'react-hook-form';
 import tw from 'twrnc';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useState } from 'react';
-import { black } from 'colorette';
 
 export default function FormInput({
   placeholder,
@@ -29,10 +28,14 @@ export default function FormInput({
       }) => (
         <View>
           <View
-            style={tw`h-16 w-full flex-row items-center justify-between rounded-full bg-white/60 px-6`}
+            style={tw.style(
+              `h-16 w-full flex-row items-center justify-between rounded-full bg-white/60 px-6`,
+              error && 'border border-red-500'
+            )}
           >
             <TextInput
-              style={tw`text-base`}
+              style={tw`text-base font-semibold text-black`}
+              placeholderTextColor={tw.color('text-black/40')}
               placeholder={placeholder}
               onBlur={onBlur}
               onChangeText={onChange}
@@ -48,7 +51,7 @@ export default function FormInput({
                 <Ionicons
                   name={showPassword ? 'eye-off' : 'eye'}
                   size={24}
-                  color={tw.color("black/50")}
+                  color={tw.color('black/50')}
                   password={password}
                 />
               </Pressable>

@@ -1,15 +1,21 @@
-import { Pressable, Text } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 import tw from 'twrnc';
+import { ReactNode } from 'react';
 
-interface FormButtonProps {
+export default function FormButton({
+  onPress,
+  children
+}: {
   onPress: () => void;
-  title: string;
-}
-
-export default function FormButton({ onPress, title }: FormButtonProps) {
+  children: ReactNode;
+}) {
   return (
-    <Pressable onPress={onPress} style={tw`h-16 w-full flex-row items-center justify-center rounded-full bg-[#000000]/60 mt-7`}>
-      <Text style={tw`text-white/85 font-semibold text-base`}>{title}</Text>
+    <Pressable onPress={onPress} style={tw`mt-7 rounded-full bg-[#000000]/60`}>
+      <View style={tw`h-16 w-full flex-row items-center justify-center`}>
+        <Text style={tw`text-white/85 text-base font-semibold`}>
+          {children}
+        </Text>
+      </View>
     </Pressable>
   );
 }
