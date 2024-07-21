@@ -80,7 +80,7 @@ export default function SignIn() {
           <View
             style={{
               minHeight: height + StatusBar.currentHeight! / 2 + 1,
-              paddingTop: 20
+              paddingTop: 40
             }}
           >
             <View style={tw`flex-grow items-center justify-center`}>
@@ -117,15 +117,15 @@ export default function SignIn() {
                   router.replace('/');
                 }}
               >
-                Sign In
+                Sign Up
               </FormButton>
             </View>
-            <View style={tw`flex-grow items-center justify-between pb-11`}>
+            <View style={tw`flex-grow items-center justify-between pb-11 gap-12`}>
               <Oauth />
               <NavigationCard
                 text1='No account?'
                 text2='Create one now'
-                goto='/sign-up'
+                goto='/sign-in'
               />
             </View>
           </View>
