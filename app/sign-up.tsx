@@ -71,6 +71,7 @@ export default function SignIn() {
 
   return (
     <KeyboardAvoidingView behavior='height'>
+      <StatusBar barStyle='dark-content' />
       <ScrollView>
         <ImageBackground
           resizeMode='cover'
@@ -120,7 +121,9 @@ export default function SignIn() {
                 Sign Up
               </FormButton>
             </View>
-            <View style={tw`flex-grow items-center justify-between pb-11 gap-12`}>
+            <View
+              style={tw`flex-grow items-center justify-between gap-12 pb-11`}
+            >
               <Oauth />
               <NavigationCard
                 text1='No account?'

@@ -63,6 +63,7 @@ export default function SignIn() {
 
   return (
     <KeyboardAvoidingView behavior='height'>
+      <StatusBar barStyle='dark-content' />
       <ScrollView>
         <ImageBackground
           resizeMode='cover'
