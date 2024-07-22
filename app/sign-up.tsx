@@ -126,8 +126,8 @@ export default function SignIn() {
             >
               <Oauth />
               <NavigationCard
-                text1='No account?'
-                text2='Create one now'
+                text1='Have an account already?'
+                text2='Sign in now'
                 goto='/sign-in'
               />
             </View>
