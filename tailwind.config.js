@@ -6,4 +6,11 @@ module.exports = {
         './components/**/*.{js,jsx,ts,tsx}',
         './theme/**/*.{js,jsx,ts,tsx}'
     ],
+    theme: {
+        extend: {
+            fontFamily: {
+                brand: ['brand']
+            }
+        }
+    }
 }

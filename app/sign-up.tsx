@@ -4,21 +4,19 @@ import {
   KeyboardAvoidingView,
   ScrollView,
   StatusBar,
-  Text,
   useWindowDimensions,
   View
 } from 'react-native';
-import tw from 'twrnc';
+import tw from '@/lib/tailwind';
 import FormInput from '@/components/form-input';
 import FormButton from '@/components/form-button';
-import Oauth from '@/components/oauth-button';
+import OauthButtons from '@/components/oauth-buttons';
 import NavigationCard from '@/components/navigation-card';
 import * as yup from 'yup';
 import { useSession } from '@/context/auth-context';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Image } from 'expo-image';
-import { useRef } from 'react';
+import LogoView from '@/components/logo-view';
 
 const image = require('../assets/images/Frame_47.png');
 
@@ -41,14 +39,11 @@ export default function SignIn() {
       passwordRep: yup
         .string()
         .oneOf([yup.ref('password')], 'Passwords must match')
+        .required('Passwords must match')
     })
     .required();
 
-  const {
-    control,
-    handleSubmit,
-    formState: { errors }
-  } = useForm({
+  const { control, handleSubmit } = useForm({
     defaultValues: {
       username: '',
       password: '',
@@ -59,15 +54,15 @@ export default function SignIn() {
     mode: 'onChange'
   });
 
-  function onSubmit(data: typeof schema.fields) {
-    console.log(data);
-  }
-
   const { signIn } = useSession();
 
-  const { height } = useWindowDimensions();
+  const onSubmit: any = (data: typeof schema.fields) => {
+    console.log(data);
+    signIn();
+    router.replace('/');
+  };
 
-  const middleRef = useRef(null);
+  const { height } = useWindowDimensions();
 
   return (
     <KeyboardAvoidingView behavior='height'>
@@ -81,19 +76,13 @@ export default function SignIn() {
           <View
             style={{
               minHeight: height + StatusBar.currentHeight! / 2 + 1,
-              paddingTop: 40
+              paddingTop: 60
             }}
           >
             <View style={tw`flex-grow items-center justify-center`}>
-              <Image
-                source={require('@/assets/images/logopng.png')}
-                style={tw`h-18 w-18 mb-6`}
-              />
-              <Text style={tw`text-5xl font-bold text-[#5D5D5D]`}>
-                NutriCheck
-              </Text>
+              <LogoView />
             </View>
-            <View ref={middleRef} style={tw`w-full gap-3`}>
+            <View style={tw`w-full gap-3 pt-10`}>
               <FormInput placeholder='Email' control={control} name='email' />
               <FormInput
                 placeholder='Username'
@@ -112,23 +101,18 @@ export default function SignIn() {
                 name='passwordRep'
                 password={true}
               />
-              <FormButton
-                onPress={() => {
-                  signIn();
-                  router.replace('/');
-                }}
-              >
-                Sign Up
-              </FormButton>
+              <FormButton style='mt-7' onPress={handleSubmit(onSubmit)}>Sign up</FormButton>
             </View>
             <View
               style={tw`flex-grow items-center justify-between gap-12 pb-11`}
             >
-              <Oauth />
+              <OauthButtons style='pt-8' />
               <NavigationCard
                 text1='Have an account already?'
                 text2='Sign in now'
-                goto='/sign-in'
+                onPress={() => {
+                  router.replace('/sign-in');
+                }}
               />
             </View>
           </View>

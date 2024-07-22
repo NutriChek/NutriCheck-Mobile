@@ -34,7 +34,7 @@ export default function FormInput({
             )}
           >
             <TextInput
-              style={tw`text-base font-semibold text-black`}
+              style={tw`text-base leading-tight flex-1 font-semibold text-black`}
               placeholderTextColor={tw.color('text-black/40')}
               placeholder={placeholder}
               onBlur={onBlur}
