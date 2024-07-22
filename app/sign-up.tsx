@@ -18,7 +18,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import LogoView from '@/components/logo-view';
 
-const image = require('../assets/images/Frame_47.png');
+const image = require('../assets/images/background-blur.png');
 
 export default function SignIn() {
   const schema = yup

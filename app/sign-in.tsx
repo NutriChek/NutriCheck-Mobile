@@ -18,7 +18,7 @@ import FormButton from '@/components/form-button';
 import { router } from 'expo-router';
 import LogoView from '@/components/logo-view';
 
-const image = require('../assets/images/Frame_47.png');
+const image = require('../assets/images/background-blur.png');
 
 const schema = yup
   .object({
