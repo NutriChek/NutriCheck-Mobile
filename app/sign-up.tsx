@@ -101,7 +101,9 @@ export default function SignIn() {
                 name='passwordRep'
                 password={true}
               />
-              <FormButton style='mt-7' onPress={handleSubmit(onSubmit)}>Sign up</FormButton>
+              <FormButton style='mt-7' onPress={handleSubmit(onSubmit)}>
+                Sign up
+              </FormButton>
             </View>
             <View
               style={tw`flex-grow items-center justify-between gap-12 pb-11`}
