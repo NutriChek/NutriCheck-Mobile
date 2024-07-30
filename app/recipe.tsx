@@ -1,6 +1,7 @@
 import tw from 'twrnc';
 import { Text, View, ScrollView, ImageBackground } from 'react-native';
 import React from 'react';
+import CookAI from '@/components/cook-ai';
 
 type RecipeProps = {
     name: string;
@@ -11,26 +12,32 @@ export default function RecipePage({ name = 'Sarmale romanesti', author = 'Jamil
 
   return (
     <>
-      <ScrollView style={tw`bg-cyan-50`}>
-        <View style={tw`bg-red-200`}>
-          <ImageBackground source={require('../assets/images/sarmale.png')} style={tw`w-full h-full px-4`} resizeMode="cover">
-            <Text style={tw`pt-19 text-3xl text-white font-black`}>{name}</Text>
-            <Text style={tw`pb-12 text-lg text-white font-black`}>By {author}</Text>
-          </ImageBackground>
-        </View>
-        <View style={tw`flex gap-1.5 px-4`}>
-          <Text style={tw`pt-12 text-xl font-black`}>Ingredients</Text>
-
-          <View style={tw`block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow bg-gray-200`}>
-            <View style={tw`mb-2 text-lg text-gray-500`}>Ingredient 1</View>
+      <ScrollView style={tw`bg-white`}>
+        <ImageBackground source={require('../assets/images/sarmale.png')} style={tw`w-full h-[657px] justify-end tailwind('flex-1')`} resizeMode="cover">
+          <View style={tw`styles.overlay px-4 backdrop-blur`}>
+            <Text style={tw`pt-19 text-3xl font-semibold text-white`}>{name}</Text>
+            <Text style={tw`pb-12 text-lg text-white`}>By {author}</Text>
           </View>
+        </ImageBackground>
+       
+        <View style={tw`flex px-4 pt-4 pb-12 gap-5`}>
 
-          <View style={tw`block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow bg-gray-200`}>
-            <View style={tw`mb-2 text-lg text-gray-500`}>Ingredient 2</View>
-          </View>
+          <CookAI/>
 
-          <View style={tw`block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow bg-gray-200`}>
-            <View style={tw`mb-2 text-lg text-gray-500`}>Ingredient 3</View>
+          <Text style={tw`pt-3 text-xl font-bold`}>Ingredients</Text>
+
+          <View style={tw`gap-3`}>
+            <View style={tw`block h-18 p-6 rounded-[20px] bg-[#F4F4F4]`}>
+              <View style={tw`mb-2 text-lg text-gray-500`}></View>
+            </View>
+
+            <View style={tw`block h-18 p-6 rounded-[20px] bg-[#F4F4F4]`}>
+              <View style={tw`mb-2 text-lg text-gray-500`}></View>
+            </View>
+
+            <View style={tw`block h-18 p-6 rounded-[20px] bg-[#F4F4F4]`}>
+              <View style={tw`mb-2 text-lg text-gray-500`}></View>
+            </View>
           </View>
         </View>
       </ScrollView>
