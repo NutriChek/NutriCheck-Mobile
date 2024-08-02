@@ -13,7 +13,7 @@ export default function WelcomeCard() {
         <Text style={tw`text-lg text-white `}>Lorem ipsum dolor sit</Text>
         <Ionicons
           onPress={() => {
-            router.replace('/ask-ai');
+            router.push('/ask-ai');
           }}
           name={'arrow-forward'}
           size={25}

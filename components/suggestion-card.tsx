@@ -28,13 +28,11 @@ export default function SuggestionCard({
         <ImageBackground
           resizeMode='stretch'
           source={image}
-          style={tw`grow flex-row justify-between py-4 pl-6 pr-4 align-baseline`}
+          style={tw`grow flex-row justify-between py-4 pl-6 pr-4 items-center`}
         >
-          <View style={tw`grow justify-center w-8 h-5`}>
-            <Text style={tw`flex-wrap font-bold text-sm leading-tight text-black/60`}>
+            <Text style={tw`flex-wrap font-bold text-sm leading-tight text-black/60 flex-1`}>
               {text}
             </Text>
-          </View>
           <View style={tw`justify-center rounded-full bg-black/60 px-4 py-0.5 h-7.5`}>
             <Ionicons
               name={'arrow-forward'}
