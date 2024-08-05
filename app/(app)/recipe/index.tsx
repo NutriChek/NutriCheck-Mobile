@@ -13,7 +13,7 @@ export default function RecipePage({ name = 'Sarmale romanesti', author = 'Jamil
   return (
     <>
       <ScrollView style={tw`bg-white`}>
-        <ImageBackground source={require('../../assets/images/sarmale.png')} style={tw`w-full h-[657px] justify-end tailwind('flex-1')`} resizeMode="cover">
+        <ImageBackground source={require('../../../assets/images/sarmale.png')} style={tw`w-full h-[657px] justify-end tailwind('flex-1')`} resizeMode="cover">
           <View style={tw`styles.overlay px-4 backdrop-blur`}>
             <Text style={tw`pt-19 text-3xl font-semibold text-white`}>{name}</Text>
             <Text style={tw`pb-12 text-lg text-white`}>By {author}</Text>

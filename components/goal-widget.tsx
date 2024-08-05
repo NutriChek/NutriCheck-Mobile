@@ -22,17 +22,15 @@ function ImageTextContainer() {
 
 export default function GoalWidget() {
   return (
-    <View>
-      <View style={tw`rounded-3xl bg-white/80 p-3`}>
-        <View style={tw`flex-row items-center`}>
-          <Ionicons name='pie-chart' size={24} color={tw.color('black/50')} />
-          <Text style={tw`pl-2 text-lg font-bold text-black/60`}>
-            Your goals for today
-          </Text>
-        </View>
-        <ImageTextContainer />
-        <ImageTextContainer />
+    <View style={tw`rounded-3xl bg-white/80 p-3`}>
+      <View style={tw`flex-row items-center`}>
+        <Ionicons name='pie-chart' size={24} color={tw.color('black/50')} />
+        <Text style={tw`pl-2 text-lg font-bold text-black/60`}>
+          Your goals for today
+        </Text>
       </View>
+      <ImageTextContainer />
+      <ImageTextContainer />
     </View>
   );
 }
