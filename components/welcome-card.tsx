@@ -6,18 +6,19 @@ import { router } from 'expo-router';
 export default function WelcomeCard() {
   return (
     <View style={tw`pt-16`}>
-      <Text style={tw`text-4xl font-semibold text-white`}>
+      <Text style={tw`text-3xl font-semibold text-white`}>
         Good morning, Alex
       </Text>
       <View style={tw`flex-row`}>
-        <Text style={tw`text-lg text-white `}>Lorem ipsum dolor sit</Text>
+        <Text style={tw`text-base text-white `}>Lorem ipsum dolor sit</Text>
         <Ionicons
           onPress={() => {
             router.push('/ask-ai');
           }}
           name={'arrow-forward'}
-          size={25}
+          size={20}
           color={tw.color('white')}
+          style={tw`self-center pl-2`}
         />
       </View>
     </View>

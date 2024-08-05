@@ -30,7 +30,7 @@ export default function HomeScreen() {
                 <AskAISmallWidget
                   text='Suggest a low calorie dinner for today'
                   onPress={() => {
-                    router.replace('/page');
+                    router.replace('/recipe');
                   }}
                 />
                 <AskAISmallWidget

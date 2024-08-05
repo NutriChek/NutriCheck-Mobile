@@ -33,15 +33,15 @@ export default function AskAISmallWidget({
             <View style={tw`flex-row items-center `}>
               <Ionicons
                 name='sparkles'
-                size={24}
+                size={20}
                 color={tw.color('black/50')}
               />
-              <Text style={tw`pl-2 text-lg font-bold text-black/60`}>
+              <Text style={tw`pl-2 text-sm font-bold text-black/55`}>
                 Ask Cook AI
               </Text>
             </View>
-            <View style={tw`w-8 h-30 flex-wrap justify-end`}>
-              <Text style={tw`flex-wrap font-bold text-black/60 text-xl align-bottom w-30`}>{text}</Text>
+            <View style={tw`grow h-30 flex-wrap justify-end`}>
+              <Text style={tw`flex-wrap font-bold text-[#2C2C2C]/74 text-base align-bottom w-35`}>{text}</Text>
             </View>
           </View>
         </ImageBackground>

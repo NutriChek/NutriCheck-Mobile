@@ -10,8 +10,8 @@ export default function AskAIWidget() {
     <View>
       <View style={tw`rounded-3xl bg-white/80 p-3`}>
         <View style={tw`flex-row items-center`}>
-          <Ionicons name='sparkles' size={24} color={tw.color('black/50')} />
-          <Text style={tw`pl-2 text-lg font-bold text-black/60`}>
+          <Ionicons name='sparkles' size={20} color={tw.color('black/55')} />
+          <Text style={tw`pl-2 text-sm font-bold text-black/55`}>
             Ask Cook AI
           </Text>
         </View>
