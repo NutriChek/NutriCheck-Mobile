@@ -1,4 +1,4 @@
-import { ImageBackground, ScrollView, StatusBar, View } from 'react-native';
+import { Dimensions, ImageBackground, ScrollView, StatusBar, View } from 'react-native';
 import tw from '@/lib/tailwind';
 import WelcomeCard from '@/components/welcome-card';
 import AskAIWidget from '@/components/ask-ai-widget';
@@ -8,6 +8,11 @@ import { router } from 'expo-router';
 const image = require('../../assets/images/home-background.png');
 
 export default function HomeScreen() {
+  const screenHeight = Dimensions.get('screen').height;
+  const windowHeight = Dimensions.get('window').height;
+
+  const navHeight = screenHeight - windowHeight;
+
   return (
     <>
       <StatusBar barStyle='dark-content' />
@@ -44,6 +49,7 @@ export default function HomeScreen() {
                 />
               </View>
             </View>
+            <View style={tw`h-[${navHeight}px]`} />
           </ScrollView>
         </ImageBackground>
       </View>
