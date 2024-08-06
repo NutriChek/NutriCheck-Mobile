@@ -5,7 +5,7 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 const image = require('../assets/images/sarmale.png');
 
-export default function MediumFeaturedRecipeWidget() {
+export default function SmallFeaturedRecipeWidget() {
   return (
     <View style={tw`flex-1 overflow-hidden rounded-3xl`}>
       <ImageBackground resizeMode='cover' source={image} style={tw`aspect-square`}>

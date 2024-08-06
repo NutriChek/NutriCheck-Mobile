@@ -10,6 +10,9 @@ import WelcomeCard from '@/components/welcome-card';
 import LargeGoalWidget from '@/components/large-goal-widget';
 import MediumGoalWidget from '@/components/medium-goal-widget';
 import SmallGoalWidget from '@/components/small-goal-widget';
+// import LargeFeaturedRecipeWidget from '@/components/large-featured-recipe-widget';
+// import MediumFeaturedRecipeWidget from '@/components/medium-featured-recipe-widget';
+// import SmallFeaturedRecipeWidget from '@/components/small-featured-recipe-widget';
 
 const image = require('@/assets/images/home-background.png');
 
@@ -28,11 +31,22 @@ export default function HomeScreen() {
             <View style={tw`gap-4`}>
               <WelcomeCard />
               <LargeGoalWidget />
+
+              {/*<LargeFeaturedRecipeWidget />*/}
+              
               <MediumGoalWidget />
+
+              {/*<MediumFeaturedRecipeWidget />*/}
+
               <View style={tw`flex-row justify-between gap-4`}>
                 <SmallGoalWidget />
                 <SmallGoalWidget />
               </View>
+
+              {/*<View style={tw`flex-row justify-between gap-4`}>*/}
+              {/*  <SmallFeaturedRecipeWidget />*/}
+              {/*  <SmallFeaturedRecipeWidget />*/}
+              {/*</View>*/}
             </View>
             <View style={tw`h-[${navHeight}px]`} />
           </ScrollView>
