@@ -5,7 +5,7 @@ import { Image } from 'expo-image';
 import SuggestionCard from './suggestion-card';
 import { router } from 'expo-router';
 
-export default function AskAIWidget() {
+export default function AskAIWidget({ image }: {image: any }) {
   return (
     <View>
       <View style={tw`rounded-3xl bg-white/80 p-3`}>
@@ -17,18 +17,21 @@ export default function AskAIWidget() {
         </View>
         <SuggestionCard
             text='Suggest a low calorie dinner for today'
+            image={require('../assets/images/color-blur.png')}
             onPress={() => {
             router.replace('/page');
             }}
         />
         <SuggestionCard
             text='What ingredients do I need for this recipe?'
+            image={require('../assets/images/color-blur2.png')}
             onPress={() => {
             router.replace('/page');
             }}
         />
         <SuggestionCard
             text='Start a recipe on Jarvis with the latest featured recipe'
+            image={require('../assets/images/color-blur3.png')}
             onPress={() => {
             router.replace('/page');
             }}

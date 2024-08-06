@@ -25,7 +25,7 @@ export default function AskAISmallWidget({
         }
       >
         <ImageBackground
-          resizeMode='stretch'
+          resizeMode='cover'
           source={image}
           style={tw`grow flex-row justify-between py-4 pl-6 pr-4 align-baseline`}
         >
