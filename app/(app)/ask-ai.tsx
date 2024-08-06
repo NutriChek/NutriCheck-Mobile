@@ -8,8 +8,7 @@ import {
 } from 'react-native';
 import tw from '@/lib/tailwind';
 import WelcomeCard from '@/components/welcome-card';
-import AskAIMiddle from '@/components/ask-ai-middle';
-import AskAIWidget from '@/components/ask-ai-top';
+import AskAIWidget from '@/components/ask-ai-widget';
 import AskAISmallWidget from '@/components/ask-ai-small';
 import { router } from 'expo-router';
 
@@ -24,13 +23,24 @@ export default function HomeScreen() {
           <ScrollView style={tw`p-4`}>
             <View style={tw`gap-4`}>
               <WelcomeCard />
-              <AskAIWidget image={image} />
-              <AskAIMiddle />
-              <View style={tw`flex-row justify-between gap-4`}>
+              <AskAIWidget
+                cards={[
+                  'Suggest a low calorie dinner for today',
+                  'What ingredients do I need for this recipe?',
+                  'Start a recipe on Jarvis with the latest featured recipe'
+                ]}
+              />
+              <AskAIWidget
+                cards={[
+                  'Suggest a low calorie dinner for today',
+                  'What ingredients do I need for this recipe?'
+                ]}
+              />
+              <View style={tw`flex-1 flex-row justify-between gap-4`}>
                 <AskAISmallWidget
                   text='Suggest a low calorie dinner for today'
                   onPress={() => {
-                    router.replace('/recipe');
+                    router.replace('/shopping-list');
                   }}
                 />
                 <AskAISmallWidget

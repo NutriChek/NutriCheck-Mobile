@@ -6,8 +6,8 @@ import { router } from 'expo-router';
 export default function WelcomeCard() {
   return (
     <View style={tw`pt-16`}>
-      <View style={tw`flex-row items-center justify-between`}>
-        <Text style={tw`text-3xl font-semibold text-white`}>
+      <View style={tw`flex-row items-start justify-between`}>
+        <Text style={tw`text-3xl font-semibold text-white flex-1`}>
           Good morning, Alex
         </Text>
         <View style={tw`flex-row gap-3`}>

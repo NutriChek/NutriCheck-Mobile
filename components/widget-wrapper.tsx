@@ -16,9 +16,9 @@ export default function WidgetWrapper({
 }) {
   return (
     <View style={tw`rounded-3xl bg-white/80 p-3`}>
-      <View style={tw`flex-row items-center`}>
+      <View style={tw`flex-row items-center pb-3`}>
         {icon}
-        <Text style={tw`pb-3 pl-2 text-lg font-bold text-black/60`}>
+        <Text style={tw`pl-2 text-lg font-bold text-black/60`}>
           {title}
         </Text>
       </View>
