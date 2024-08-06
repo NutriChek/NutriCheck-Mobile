@@ -1,11 +1,4 @@
-import {
-  Button,
-  ImageBackground,
-  ScrollView,
-  StatusBar,
-  View,
-  Text
-} from 'react-native';
+import { ImageBackground, ScrollView, StatusBar, View } from 'react-native';
 import tw from '@/lib/tailwind';
 import WelcomeCard from '@/components/welcome-card';
 import AskAIMiddle from '@/components/ask-ai-middle';
