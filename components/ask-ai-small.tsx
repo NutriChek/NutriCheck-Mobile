@@ -27,7 +27,7 @@ export default function AskAISmallWidget({
         <ImageBackground
           resizeMode='cover'
           source={image}
-          style={tw`grow flex-row justify-between py-4 pl-6 pr-4 aspect-square`}
+          style={tw`grow flex-row justify-between py-4 px-6 aspect-square`}
         >
           <View style={tw`justify-between`}>
             <View style={tw`flex-row items-center`}>
@@ -40,7 +40,7 @@ export default function AskAISmallWidget({
                 Ask Cook AI
               </Text>
             </View>
-            <Text style={tw`flex-wrap font-bold text-[#2C2C2C]/74 text-base`}>{text}</Text>
+            <Text style={tw`flex-wrap font-bold text-[#2C2C2C]/74 text-[18px]`}>{text}</Text>
           </View>
         </ImageBackground>
       </Pressable>

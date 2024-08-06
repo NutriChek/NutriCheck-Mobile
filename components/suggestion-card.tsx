@@ -23,7 +23,7 @@ export default function SuggestionCard({
           style={tw`grow flex-row items-center justify-between py-3 pl-6 pr-4`}
         >
           <Text
-            style={tw`text-[#2C2C2C]/74 flex-1 flex-wrap text-xs font-bold leading-tight`}
+            style={tw`text-[#2C2C2C]/74 flex-1 flex-wrap text-[15px] font-bold leading-tight`}
           >
             {text}
           </Text>
