@@ -13,7 +13,7 @@ export default function AskAISmallWidget({
   onPress: () => void;
 }) {
   return (
-    <View style={tw`overflow-hidden rounded-[20px] pt-3`}>
+    <View style={tw`overflow-hidden rounded-[20px] flex-1`}>
       <Pressable
         onPress={onPress}
         android_ripple={androidRipple}
@@ -27,10 +27,10 @@ export default function AskAISmallWidget({
         <ImageBackground
           resizeMode='cover'
           source={image}
-          style={tw`grow flex-row justify-between py-4 pl-6 pr-4 align-baseline`}
+          style={tw`grow flex-row justify-between py-4 pl-6 pr-4 aspect-square`}
         >
-          <View>
-            <View style={tw`flex-row items-center `}>
+          <View style={tw`justify-between`}>
+            <View style={tw`flex-row items-center`}>
               <Ionicons
                 name='sparkles'
                 size={20}
@@ -40,9 +40,7 @@ export default function AskAISmallWidget({
                 Ask Cook AI
               </Text>
             </View>
-            <View style={tw`grow h-30 flex-wrap justify-end`}>
-              <Text style={tw`flex-wrap font-bold text-[#2C2C2C]/74 text-base align-bottom w-35`}>{text}</Text>
-            </View>
+            <Text style={tw`flex-wrap font-bold text-[#2C2C2C]/74 text-base`}>{text}</Text>
           </View>
         </ImageBackground>
       </Pressable>
