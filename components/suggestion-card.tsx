@@ -4,13 +4,14 @@ import tw from '@/lib/tailwind';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { androidRipple } from '@/lib/util';
 
-const image = require('../assets/images/color-blur.png');
 
 export default function SuggestionCard({
   text,
+  image,
   onPress
 }: {
   text: string;
+  image:any;
   onPress: () => void;
 }) {
   return (
@@ -28,7 +29,7 @@ export default function SuggestionCard({
         <ImageBackground
           resizeMode='stretch'
           source={image}
-          style={tw`grow flex-row items-center justify-between py-4 pl-6 pr-4`}
+          style={tw`grow flex-row items-center justify-between py-4 pl-6 pr-4 `}
         >
           <Text
             style={tw`text-[#2C2C2C]/74 flex-1 flex-wrap text-xs font-bold leading-tight`}

@@ -13,7 +13,7 @@ import AskAIWidget from '@/components/ask-ai-top';
 import AskAISmallWidget from '@/components/ask-ai-small';
 import { router } from 'expo-router';
 
-const image = require('@/assets/images/home-background.png');
+const image = require('../../assets/images/home-background.png');
 
 export default function HomeScreen() {
   return (
@@ -24,7 +24,7 @@ export default function HomeScreen() {
           <ScrollView style={tw`p-4`}>
             <View style={tw`gap-4`}>
               <WelcomeCard />
-              <AskAIWidget />
+              <AskAIWidget image={image} />
               <AskAIMiddle />
               <View style={tw`flex-row justify-between gap-4`}>
                 <AskAISmallWidget
