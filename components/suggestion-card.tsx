@@ -1,9 +1,9 @@
 import { ImageBackground, Pressable, Text, View } from 'react-native';
 import React from 'react';
 import tw from '@/lib/tailwind';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faArrowRightLong } from '@fortawesome/free-solid-svg-icons';
-import { androidRipple } from '@/lib/util';
+import { androidRipple, rgbaToHex } from '@/lib/util';
+import { SymbolView } from 'expo-symbols';
+import { MaterialIcons } from 'expo-vector-icons';
 
 export default function SuggestionCard({
   text,
@@ -30,9 +30,22 @@ export default function SuggestionCard({
           <Pressable
             onPress={onPress}
             android_ripple={androidRipple}
-            style={tw`h-24px w-45px items-center justify-center rounded-full bg-black/60 px-3`}
+            style={tw`items-center justify-center rounded-full bg-black/60 px-3 py-1`}
           >
-            <FontAwesomeIcon color='#F5F3F3' icon={faArrowRightLong} />
+            <SymbolView
+              name='arrow.forward'
+              resizeMode='scaleAspectFill'
+              weight='semibold'
+              size={20}
+              tintColor={rgbaToHex(tw.color('white/80') as string)}
+              fallback={
+                <MaterialIcons
+                  name='arrow-forward'
+                  size={20}
+                  color={tw.color('white/80')}
+                />
+              }
+            />
           </Pressable>
         </ImageBackground>
       </View>

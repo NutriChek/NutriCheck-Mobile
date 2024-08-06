@@ -1,8 +1,9 @@
 import { ImageBackground, Text, View } from 'react-native';
 import tw from '@/lib/tailwind';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
-
+import { SymbolView } from 'expo-symbols';
+import { rgbaToHex } from '@/lib/util';
+import { MaterialIcons } from 'expo-vector-icons';
+import React from 'react';
 const image = require('../assets/images/sarmale.png');
 
 export default function LargeFeaturedRecipeWidget() {
@@ -11,7 +12,20 @@ export default function LargeFeaturedRecipeWidget() {
       <ImageBackground resizeMode='cover' source={image} style={tw`h-60`}>
         <View style={tw`flex-1 justify-end p-6`}>
           <View style={tw`flex-row items-center`}>
-            <FontAwesomeIcon icon={faStar} color='white' size={20} />
+            <SymbolView
+              name='star.circle.fill'
+              resizeMode='scaleAspectFill'
+              weight='semibold'
+              size={20}
+              tintColor={rgbaToHex(tw.color('white/80') as string)}
+              fallback={
+                <MaterialIcons
+                  name='star'
+                  size={20}
+                  color={tw.color('white/80')}
+                />
+              }
+            />
             <Text style={tw`pl-2 text-lg font-bold text-white`}>
               Ask Cook AI
             </Text>

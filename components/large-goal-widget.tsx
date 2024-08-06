@@ -1,9 +1,9 @@
 import { Text, View } from 'react-native';
 import tw from '@/lib/tailwind';
-import { AbstractChartConfig } from '@/lib/react-native-chart-kit/dist/AbstractChart';
-import { BarChart, ProgressChart } from '@/lib/react-native-chart-kit';
 import HeaderWidgetWrapper from '@/components/header-widget-wrapper';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { AbstractChartConfig } from '@/components/react-native-chart-kit/dist/AbstractChart';
+import { BarChart, ProgressChart } from '@/components/react-native-chart-kit';
 
 const dataProgress = {
   data: [0.75]

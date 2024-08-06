@@ -1,10 +1,11 @@
 import { ImageBackground, ScrollView, StatusBar, View } from 'react-native';
 import tw from '@/lib/tailwind';
-import GoalWidget from '@/components/goal-widget';
-import GoalWidgetOneContent from '@/components/goal-widget-one-content';
-import SmallWidget from '@/components/small-widget';
-import { VariableBlurView } from '@candlefinance/blur-view';
-import AskAIWidget from '@/components/ask-ai-top';
+import AskAIWidget from '@/components/ask-ai-widget';
+import MediumGoalWidget from '@/components/medium-goal-widget';
+import LargeGoalWidget from '@/components/large-goal-widget';
+import ShoppingSmallWidget from '@/components/shopping-widget-small';
+import MediumFeaturedRecipeWidget from '@/components/small-featured-recipe-widget';
+import LargeFeaturedRecipeWidget from '@/components/large-featured-recipe-widget';
 
 const image = require('@/assets/images/home-background.png');
 
@@ -14,16 +15,14 @@ export default function HomeScreen() {
       <StatusBar barStyle='light-content' />
       <View style={tw`grow bg-[#2E2E2E]`}>
         <ImageBackground resizeMode='cover' source={image} style={tw`grow`}>
-          {/*<HomeHeader />*/}
-          <ScrollView style={tw`px-4`} contentContainerStyle={tw`pb-20 pt-32`}>
+          <ScrollView style={tw`px-4`} contentContainerStyle={tw`pb-30 pt-32`}>
             <View style={tw`gap-4`}>
-              <GoalWidget />
-              <GoalWidgetOneContent />
+              <MediumGoalWidget />
+              <LargeGoalWidget />
               <View style={tw`flex-row justify-between gap-4`}>
-                <SmallWidget />
-                <SmallWidget />
+                <LargeFeaturedRecipeWidget />
               </View>
-              <AskAIWidget />
+              <AskAIWidget cards={['ceva', 'altceva']} />
             </View>
           </ScrollView>
         </ImageBackground>

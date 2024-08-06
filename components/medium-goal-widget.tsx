@@ -1,8 +1,8 @@
 import { Text, View } from 'react-native';
 import tw from '@/lib/tailwind';
-import { ProgressChart } from '@/lib/react-native-chart-kit';
 import HeaderWidgetWrapper from '@/components/header-widget-wrapper';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { ProgressChart } from '@/components/react-native-chart-kit';
 
 const dataProgress = {
   data: [0.75, 0.75, 0.75],
