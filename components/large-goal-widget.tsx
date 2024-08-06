@@ -85,7 +85,6 @@ export default function LargeGoalWidget() {
           name='pie-chart'
           size={24}
           color={tw.color('black/50')}
-          style={tw`pb-3`}
         />
       }
     >

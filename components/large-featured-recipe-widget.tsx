@@ -8,7 +8,7 @@ const image = require('../assets/images/sarmale.png');
 export default function LargeFeaturedRecipeWidget() {
   return (
     <View style={tw`flex-1 overflow-hidden rounded-3xl`}>
-      <ImageBackground resizeMode='cover' source={image} style={tw`h-75`}>
+      <ImageBackground resizeMode='cover' source={image} style={tw`h-70`}>
         <View style={tw`flex-1 justify-end p-6`}>
           <View style={tw`flex-row items-center`}>
             <FontAwesomeIcon icon={faStar} color='white' size={20} />
