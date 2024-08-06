@@ -28,7 +28,7 @@ export default function HomeScreen() {
               <View style={tw`flex-row justify-between gap-4`}>
                 <View>
                   <ShoppingWidget
-                    cards={['Apa', 'Mar', 'Paine']}
+                    cards={['Olympus Milk', 'Coca Cola Zero', 'Lays Chips', 'MYlka Chocolate']}
                   ></ShoppingWidget>
                 </View>
               </View>
