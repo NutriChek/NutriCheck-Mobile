@@ -1,20 +1,98 @@
 import { Text, View } from 'react-native';
 import tw from '@/lib/tailwind';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { Image } from 'expo-image';
+import { AbstractChartConfig } from '@/lib/react-native-chart-kit/dist/AbstractChart';
+import { BarChart, ProgressChart } from '@/lib/react-native-chart-kit';
 
-function ImageTextContainer() {
+const dataProgress = {
+  data: [0.75]
+};
+
+const dataBar = {
+  labels: [
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '10',
+    '11',
+    '12',
+    '13',
+    '14',
+    '15',
+    '16',
+    '17',
+    '18',
+    '19',
+    '20'
+  ],
+  datasets: [
+    {
+      data: [
+        70, 90, 70, 80, 60, 10, 20, 30, 20, 70, 80, 60, 85, 70, 90, 60, 30, 50,
+        60, 20
+      ]
+    }
+  ]
+};
+
+const chartConfigBar: AbstractChartConfig = {
+  backgroundGradientFromOpacity: 0,
+  backgroundGradientToOpacity: 0,
+  color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+  barPercentage: 0.2,
+  barRadius: 3,
+  fillShadowGradientFrom: '#000000',
+  fillShadowGradientTo: '#000000',
+  fillShadowGradientOpacity: 0.2,
+  fillShadowGradientToOpacity: 0.2
+};
+
+const graphStyle = {
+  marginTop: -15,
+  marginLeft: -60,
+  marginBottom: 0
+};
+
+function ChartsContainer({ text, color }: { text: string; color: string }) {
   return (
-    <View style={tw`w-full flex-row items-center pt-3`}>
-      <Image
-        source='https://retete-thermomix.ro/wp-content/uploads/2021/12/Sarmale.webp'
-        style={tw`w-30 h-25 m-2 rounded-3xl`}
+    <View style={tw`w-full flex-row items-center`}>
+      <ProgressChart
+        data={dataProgress}
+        width={85}
+        height={85}
+        strokeWidth={14}
+        radius={27}
+        chartConfig={{
+          backgroundGradientFromOpacity: 0,
+          backgroundGradientToOpacity: 0,
+          color: (opacity: number) => color,
+        }}
+        hideLegend={true}
+        style={{ paddingTop: 10, paddingLeft: 5, marginRight: 8 }}
       />
       <View style={tw`flex-1`}>
-        <Text style={tw`text-lg font-bold text-black/70`}>Lorem ipsum</Text>
-        <Text style={tw`font-bold text-black/50`}>
-          Lorem ipsum dolor sit amet consectetur adiscipiet
-        </Text>
+        <Text style={tw`pl-2 text-lg font-bold text-black/70`}>{text}</Text>
+        <BarChart
+          style={graphStyle}
+          // @ts-ignore
+          data={dataBar}
+          width={250}
+          height={55}
+          withVerticalLabels={false}
+          chartConfig={chartConfigBar}
+          yAxisLabel=''
+          yAxisSuffix=''
+          withInnerLines={false}
+          withHorizontalLabels={false}
+          showBarTops={false}
+          fromZero={true}
+        />
       </View>
     </View>
   );
@@ -30,8 +108,18 @@ export default function GoalWidget() {
             Your goals for today
           </Text>
         </View>
-        <ImageTextContainer />
-        <ImageTextContainer />
+        <ChartsContainer
+          color='rgba(0, 133, 255, .49)'
+          text='270/350 kcal burned'
+        />
+        <ChartsContainer
+          color='rgba(255, 122, 65, .49)'
+          text='7546/10000 steps'
+        />
+        <ChartsContainer
+          color='rgba(123, 76, 255, .49)'
+          text='1550/2500 kcal consumed'
+        />
       </View>
     </View>
   );
