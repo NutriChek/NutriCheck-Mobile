@@ -8,10 +8,10 @@ import {
 } from 'react-native';
 import tw from '@/lib/tailwind';
 import WelcomeCard from '@/components/welcome-card';
-import AskAISmallWidget from '@/components/ask-ai-small';
-import { router } from 'expo-router';
 import WidgetWrapper from '@/components/widget-wrapper';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import ShoppingWidget from '@/components/shopping-list-widget';
+import ShoppingSmallWidget from '@/components/shopping-widget-small';
 
 const image = require('../../assets/images/home-background.png');
 
@@ -26,18 +26,11 @@ export default function HomeScreen() {
               <WelcomeCard />
 
               <View style={tw`flex-row justify-between gap-4`}>
-                <WidgetWrapper
-                  title='Ask Cook AI'
-                  icon={
-                    <Ionicons
-                      name='sparkles'
-                      size={20}
-                      color={tw.color('black/55')}
-                    />
-                  }
-                >
-                  <View></View>
-                </WidgetWrapper>
+                <View>
+                  <ShoppingWidget
+                    cards={['Apa', 'Mar', 'Paine']}
+                  ></ShoppingWidget>
+                </View>
               </View>
             </View>
           </ScrollView>
