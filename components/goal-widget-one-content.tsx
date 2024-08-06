@@ -2,10 +2,15 @@ import { Text, View } from 'react-native';
 import tw from '@/lib/tailwind';
 import { ProgressChart } from '@/lib/react-native-chart-kit';
 import WidgetWrapper from '@/components/widget-wrapper';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 const dataProgress = {
   data: [0.75, 0.75, 0.75],
-  colors: ['rgba(255, 122, 65, .49)', 'rgba(123, 76, 255, .49)', 'rgba(0, 133, 255, .49)']
+  colors: [
+    'rgba(255, 122, 65, .49)',
+    'rgba(123, 76, 255, .49)',
+    'rgba(0, 133, 255, .49)'
+  ]
 };
 
 function ChartContainer() {
@@ -20,7 +25,10 @@ function ChartContainer() {
         chartConfig={{
           backgroundGradientFromOpacity: 0,
           backgroundGradientToOpacity: 0,
-          color: (opacity: number, index?: number) => index !== undefined ? dataProgress.colors[index] : 'rgba(0, 0, 0, 1)',
+          color: (opacity: number, index?: number) =>
+            index !== undefined
+              ? dataProgress.colors[index]
+              : 'rgba(0, 0, 0, 1)',
           backgroundColor: 'rgba(255, 255, 255, 1)'
         }}
         hideLegend={true}
@@ -31,7 +39,18 @@ function ChartContainer() {
 
 export default function GoalWidgetOneContent() {
   return (
-    <WidgetWrapper style={tw`flex-row`}>
+    <WidgetWrapper
+      style={tw`flex-row`}
+      title='Your goals for today'
+      icon={
+        <Ionicons
+          name='pie-chart'
+          size={24}
+          color={tw.color('black/50')}
+          style={tw`pb-3`}
+        />
+      }
+    >
       <ChartContainer />
       <View style={tw`flex-1 justify-center`}>
         <Text style={tw`pl-2 text-lg font-bold text-black/70`}>
@@ -47,4 +66,3 @@ export default function GoalWidgetOneContent() {
     </WidgetWrapper>
   );
 }
-

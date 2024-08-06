@@ -3,6 +3,7 @@ import tw from '@/lib/tailwind';
 import { AbstractChartConfig } from '@/lib/react-native-chart-kit/dist/AbstractChart';
 import { BarChart, ProgressChart } from '@/lib/react-native-chart-kit';
 import WidgetWrapper from '@/components/widget-wrapper';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 const dataProgress = {
   data: [0.75]
@@ -38,8 +39,6 @@ const graphStyle = {
 };
 
 function ChartsContainer({ text, color }: { text: string; color: string }) {
-  dataBar.datasets[0].data = dataBar.datasets[0].data.map((value) => value / 200);
-
   return (
     <View style={tw`w-full flex-row items-center gap-2`}>
       <ProgressChart
@@ -51,7 +50,7 @@ function ChartsContainer({ text, color }: { text: string; color: string }) {
         chartConfig={{
           backgroundGradientFromOpacity: 0,
           backgroundGradientToOpacity: 0,
-          color: (_opacity: number) => color,
+          color: (_opacity: number) => color
         }}
         hideLegend={true}
       />
@@ -79,10 +78,29 @@ function ChartsContainer({ text, color }: { text: string; color: string }) {
 
 export default function GoalWidget() {
   return (
-    <WidgetWrapper>
-      <ChartsContainer text='7546/10000 steps' color='rgba(255, 122, 65, .49)' />
-      <ChartsContainer text='1550/2500 kcal consumed' color='rgba(123, 76, 255, .49)' />
-      <ChartsContainer text='270/350 kcal burned' color='rgba(0, 133, 255, .49)' />
+    <WidgetWrapper
+      title='Your goals for today'
+      icon={
+        <Ionicons
+          name='pie-chart'
+          size={24}
+          color={tw.color('black/50')}
+          style={tw`pb-3`}
+        />
+      }
+    >
+      <ChartsContainer
+        text='7546/10000 steps'
+        color='rgba(255, 122, 65, .49)'
+      />
+      <ChartsContainer
+        text='1550/2500 kcal consumed'
+        color='rgba(123, 76, 255, .49)'
+      />
+      <ChartsContainer
+        text='270/350 kcal burned'
+        color='rgba(0, 133, 255, .49)'
+      />
     </WidgetWrapper>
   );
 }
