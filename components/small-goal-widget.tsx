@@ -20,8 +20,8 @@ export default function SmallGoalWidget() {
           data={dataProgress}
           width={120}
           height={120}
-          strokeWidth={9}
-          radius={9}
+          strokeWidth={10}
+          radius={8}
           chartConfig={{
             backgroundGradientFromOpacity: 0,
             backgroundGradientToOpacity: 0,
@@ -36,13 +36,13 @@ export default function SmallGoalWidget() {
         />
       </View>
       <View style={tw`flex-1 justify-center`}>
-        <Text style={tw`pl-2 text-base font-bold text-black/70`}>
+        <Text style={tw`pl-2 text-base font-bold text-black/60`}>
           7546 <Text style={tw`text-sm`}>steps</Text>
         </Text>
-        <Text style={tw`pl-2 text-base font-bold text-black/70`}>
+        <Text style={tw`pl-2 text-base font-bold text-black/60`}>
           1550 <Text style={tw`text-sm`}>kcal eaten</Text>
         </Text>
-        <Text style={tw`pl-2 text-base font-bold text-black/70`}>
+        <Text style={tw`pl-2 text-base font-bold text-black/60`}>
           270 <Text style={tw`text-sm`}>kcal burned</Text>
         </Text>
       </View>

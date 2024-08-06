@@ -10,9 +10,12 @@ import WelcomeCard from '@/components/welcome-card';
 import LargeGoalWidget from '@/components/large-goal-widget';
 import MediumGoalWidget from '@/components/medium-goal-widget';
 import SmallGoalWidget from '@/components/small-goal-widget';
-// import LargeFeaturedRecipeWidget from '@/components/large-featured-recipe-widget';
-// import MediumFeaturedRecipeWidget from '@/components/medium-featured-recipe-widget';
-// import SmallFeaturedRecipeWidget from '@/components/small-featured-recipe-widget';
+
+import LargeFeaturedRecipeWidget from '@/components/large-featured-recipe-widget';
+import MediumFeaturedRecipeWidget from '@/components/medium-featured-recipe-widget';
+import SmallFeaturedRecipeWidget from '@/components/small-featured-recipe-widget';
+import LargeSuggestedRecipeWidget from '@/components/large-suggested-recipe-widget';
+import MediumSuggestedRecipeWidget from '@/components/medium-suggested-recipe-widget';
 
 const image = require('@/assets/images/home-background.png');
 
@@ -32,21 +35,23 @@ export default function HomeScreen() {
               <WelcomeCard />
               <LargeGoalWidget />
 
-              {/*<LargeFeaturedRecipeWidget />*/}
+              <LargeSuggestedRecipeWidget />
+              <LargeFeaturedRecipeWidget />
               
               <MediumGoalWidget />
 
-              {/*<MediumFeaturedRecipeWidget />*/}
+              <MediumSuggestedRecipeWidget />
+              <MediumFeaturedRecipeWidget />
 
               <View style={tw`flex-row justify-between gap-4`}>
                 <SmallGoalWidget />
                 <SmallGoalWidget />
               </View>
 
-              {/*<View style={tw`flex-row justify-between gap-4`}>*/}
-              {/*  <SmallFeaturedRecipeWidget />*/}
-              {/*  <SmallFeaturedRecipeWidget />*/}
-              {/*</View>*/}
+              <View style={tw`flex-row justify-between gap-4`}>
+                <SmallFeaturedRecipeWidget />
+                <SmallFeaturedRecipeWidget />
+              </View>
             </View>
             <View style={tw`h-[${navHeight}px]`} />
           </ScrollView>

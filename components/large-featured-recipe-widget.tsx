@@ -12,12 +12,12 @@ export default function LargeFeaturedRecipeWidget() {
         <View style={tw`flex-1 justify-end p-6`}>
           <View style={tw`flex-row items-center`}>
             <FontAwesomeIcon icon={faStar} color='white' size={20} />
-            <Text style={tw`pl-2 text-lg font-bold text-white`}>
+            <Text style={tw`pl-2 text-sm font-bold text-white`}>
               Ask Cook AI
             </Text>
           </View>
-          <Text style={tw`text-3xl font-bold text-white`}>Sarmale de post</Text>
-          <Text style={tw`text-lg font-bold text-white`}>by Jamila Cuisine</Text>
+          <Text style={tw`text-2xl font-bold text-white`}>Sarmale de post</Text>
+          <Text style={tw`text-sm font-bold text-white`}>by Jamila Cuisine</Text>
         </View>
       </ImageBackground>
     </View>
