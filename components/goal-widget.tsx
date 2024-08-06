@@ -9,33 +9,10 @@ const dataProgress = {
 };
 
 const dataBar = {
-  labels: [
-    '1',
-    '2',
-    '3',
-    '4',
-    '5',
-    '6',
-    '7',
-    '8',
-    '9',
-    '10',
-    '11',
-    '12',
-    '13',
-    '14',
-    '15',
-    '16',
-    '17',
-    '18',
-    '19',
-    '20'
-  ],
   datasets: [
     {
       data: [
-        70, 90, 70, 80, 60, 10, 20, 30, 20, 70, 80, 60, 85, 70, 90, 60, 30, 50,
-        60, 20
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2
       ]
     }
   ]
@@ -56,10 +33,11 @@ const chartConfigBar: AbstractChartConfig = {
 const graphStyle = {
   marginTop: -15,
   marginLeft: -60,
-  marginBottom: 0
 };
 
 function ChartsContainer({ text, color }: { text: string; color: string }) {
+  dataBar.datasets[0].data = dataBar.datasets[0].data.map((value) => value / 200);
+
   return (
     <View style={tw`w-full flex-row items-center`}>
       <ProgressChart
@@ -83,7 +61,7 @@ function ChartsContainer({ text, color }: { text: string; color: string }) {
           // @ts-ignore
           data={dataBar}
           width={250}
-          height={55}
+          height={70}
           withVerticalLabels={false}
           chartConfig={chartConfigBar}
           yAxisLabel=''
