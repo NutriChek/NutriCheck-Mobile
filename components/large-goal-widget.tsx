@@ -2,7 +2,7 @@ import { Text, View } from 'react-native';
 import tw from '@/lib/tailwind';
 import { AbstractChartConfig } from '@/lib/react-native-chart-kit/dist/AbstractChart';
 import { BarChart, ProgressChart } from '@/lib/react-native-chart-kit';
-import WidgetWrapper from '@/components/widget-wrapper';
+import HeaderWidgetWrapper from '@/components/header-widget-wrapper';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 const dataProgress = {
@@ -54,7 +54,7 @@ function ChartsContainer({ text, color }: { text: string; color: string }) {
         }}
         hideLegend={true}
       />
-      <View style={tw`justify-between`}>
+      <View style={tw`justify-between flex-1`}>
         <Text style={tw`pl-2 text-lg font-bold text-black/70`}>{text}</Text>
         <BarChart
           style={graphStyle}
@@ -76,9 +76,9 @@ function ChartsContainer({ text, color }: { text: string; color: string }) {
   );
 }
 
-export default function GoalWidget() {
+export default function LargeGoalWidget() {
   return (
-    <WidgetWrapper
+    <HeaderWidgetWrapper
       title='Your goals for today'
       icon={
         <Ionicons
@@ -101,6 +101,6 @@ export default function GoalWidget() {
         text='270/350 kcal burned'
         color='rgba(0, 133, 255, .49)'
       />
-    </WidgetWrapper>
+    </HeaderWidgetWrapper>
   );
 }

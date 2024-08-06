@@ -1,7 +1,7 @@
 import { Text, View } from 'react-native';
 import tw from '@/lib/tailwind';
 import { ProgressChart } from '@/lib/react-native-chart-kit';
-import WidgetWrapper from '@/components/widget-wrapper';
+import HeaderWidgetWrapper from '@/components/header-widget-wrapper';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 const dataProgress = {
@@ -18,10 +18,10 @@ function ChartContainer() {
     <View>
       <ProgressChart
         data={dataProgress}
-        width={140}
-        height={140}
-        strokeWidth={13}
-        radius={16}
+        width={150}
+        height={150}
+        strokeWidth={14}
+        radius={12}
         chartConfig={{
           backgroundGradientFromOpacity: 0,
           backgroundGradientToOpacity: 0,
@@ -32,15 +32,16 @@ function ChartContainer() {
           backgroundColor: 'rgba(255, 255, 255, 1)'
         }}
         hideLegend={true}
+        style={{ marginTop: -20, marginLeft: -20, marginBottom: -20 }}
       />
     </View>
   );
 }
 
-export default function GoalWidgetOneContent() {
+export default function MediumGoalWidget() {
   return (
-    <WidgetWrapper
-      style={tw`flex-row`}
+    <HeaderWidgetWrapper
+      style={tw`flex-row items-center`}
       title='Your goals for today'
       icon={
         <Ionicons
@@ -63,6 +64,6 @@ export default function GoalWidgetOneContent() {
           270/350 kcal burned
         </Text>
       </View>
-    </WidgetWrapper>
+    </HeaderWidgetWrapper>
   );
 }
