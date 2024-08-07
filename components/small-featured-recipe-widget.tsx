@@ -6,7 +6,7 @@ import { rgbaToHex } from '@/lib/util';
 
 const image = require('../assets/images/sarmale.png');
 
-export default function MediumFeaturedRecipeWidget() {
+export default function SmallFeaturedRecipeWidget() {
   return (
     <View style={tw`flex-1 overflow-hidden rounded-3xl`}>
       <ImageBackground
@@ -34,12 +34,8 @@ export default function MediumFeaturedRecipeWidget() {
               Ask Cook AI
             </Text>
           </View>
-          <Text style={tw`text-base font-bold text-white`}>
-            Sarmale de post
-          </Text>
-          <Text style={tw`text-sm font-bold text-white`}>
-            by Jamila Cuisine
-          </Text>
+          <Text style={tw`text-base font-bold text-white`}>Sarmale de post</Text>
+          <Text style={tw`text-[12px] font-bold text-white`}>by Jamila Cuisine</Text>
         </View>
       </ImageBackground>
     </View>

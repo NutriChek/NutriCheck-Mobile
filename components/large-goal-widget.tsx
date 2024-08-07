@@ -45,17 +45,17 @@ function ChartsContainer({ text, color }: { text: string; color: string }) {
         data={dataProgress}
         width={80}
         height={80}
-        strokeWidth={14}
-        radius={26}
+        strokeWidth={12}
+        radius={24}
         chartConfig={{
           backgroundGradientFromOpacity: 0,
           backgroundGradientToOpacity: 0,
-          color: (_opacity: number) => color
+          color: (_opacity: number) => color,
         }}
         hideLegend={true}
       />
-      <View style={tw`justify-between flex-1`}>
-        <Text style={tw`pl-2 text-lg font-bold text-black/70`}>{text}</Text>
+      <View style={tw`flex-1 justify-between`}>
+        <Text style={tw`pl-2 pb-1 text-base font-bold text-black/70`}>{text}</Text>
         <BarChart
           style={graphStyle}
           // @ts-ignore
@@ -81,14 +81,13 @@ export default function LargeGoalWidget() {
     <HeaderWidgetWrapper
       title='Your goals for today'
       icon={
-        <Ionicons
-          name='pie-chart'
-          size={24}
-          color={tw.color('black/50')}
-          style={tw`pb-3`}
-        />
+        <Ionicons name='pie-chart' size={20} color={tw.color('black/56')} />
       }
     >
+      <ChartsContainer
+        text='270/350 kcal burned'
+        color='rgba(0, 133, 255, .49)'
+      />
       <ChartsContainer
         text='7546/10000 steps'
         color='rgba(255, 122, 65, .49)'
@@ -96,10 +95,6 @@ export default function LargeGoalWidget() {
       <ChartsContainer
         text='1550/2500 kcal consumed'
         color='rgba(123, 76, 255, .49)'
-      />
-      <ChartsContainer
-        text='270/350 kcal burned'
-        color='rgba(0, 133, 255, .49)'
       />
     </HeaderWidgetWrapper>
   );

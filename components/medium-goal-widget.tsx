@@ -18,10 +18,10 @@ function ChartContainer() {
     <View>
       <ProgressChart
         data={dataProgress}
-        width={150}
-        height={150}
-        strokeWidth={14}
-        radius={12}
+        width={140}
+        height={140}
+        strokeWidth={13}
+        radius={10}
         chartConfig={{
           backgroundGradientFromOpacity: 0,
           backgroundGradientToOpacity: 0,
@@ -32,7 +32,7 @@ function ChartContainer() {
           backgroundColor: 'rgba(255, 255, 255, 1)'
         }}
         hideLegend={true}
-        style={{ marginTop: -20, marginLeft: -20, marginBottom: -20 }}
+        style={{ marginTop: -20, marginLeft: -15, marginBottom: -20 }}
       />
     </View>
   );
@@ -46,21 +46,20 @@ export default function MediumGoalWidget() {
       icon={
         <Ionicons
           name='pie-chart'
-          size={24}
-          color={tw.color('black/50')}
-          style={tw`pb-3`}
+          size={20}
+          color={tw.color('black/56')}
         />
       }
     >
       <ChartContainer />
       <View style={tw`flex-1 justify-center`}>
-        <Text style={tw`pl-2 text-lg font-bold text-black/70`}>
+        <Text style={tw`text-base font-bold text-black/60`}>
           7546/10000 steps
         </Text>
-        <Text style={tw`pl-2 text-lg font-bold text-black/70`}>
+        <Text style={tw`text-base font-bold text-black/60`}>
           1550/2500 kcal consumed
         </Text>
-        <Text style={tw`pl-2 text-lg font-bold text-black/70`}>
+        <Text style={tw`text-base font-bold text-black/60`}>
           270/350 kcal burned
         </Text>
       </View>

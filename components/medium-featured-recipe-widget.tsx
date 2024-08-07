@@ -26,12 +26,12 @@ export default function MediumFeaturedRecipeWidget() {
                 />
               }
             />
-            <Text style={tw`pl-1.5 text-base font-bold text-white`}>
+            <Text style={tw`pl-1.5 text-[12px] font-bold text-white`}>
               Ask Cook AI
             </Text>
           </View>
-          <Text style={tw`text-lg font-bold text-white`}>Sarmale de post</Text>
-          <Text style={tw`text-base font-bold text-white`}>by Jamila Cuisine</Text>
+          <Text style={tw`text-base font-bold text-white`}>Sarmale de post</Text>
+          <Text style={tw`text-[12px] font-bold text-white`}>by Jamila Cuisine</Text>
         </View>
       </ImageBackground>
     </View>
