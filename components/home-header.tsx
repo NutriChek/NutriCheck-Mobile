@@ -1,4 +1,4 @@
-import { SafeAreaView, Text, View } from 'react-native';
+import { Platform, SafeAreaView, Text, View } from 'react-native';
 import tw from '@/lib/tailwind';
 import { SymbolView } from 'expo-symbols';
 import { rgbaToHex } from '@/lib/util';
@@ -11,12 +11,14 @@ import { LinearGradient } from 'expo-linear-gradient';
 export default function HomeHeader({ text }: { text: string }) {
   return (
     <>
-      <VariableBlurView
-        style={{
-          ...tw`absolute left-0 right-0 top-0 h-32 w-full`
-        }}
-        maxBlurRadius={5}
-      />
+      {Platform.OS === 'ios' && (
+        <VariableBlurView
+          style={{
+            ...tw`absolute left-0 right-0 top-0 h-32 w-full`
+          }}
+          maxBlurRadius={5}
+        />
+      )}
       <LinearGradient
         colors={['#000000aa', 'transparent']}
         style={tw`w-full pb-8`}

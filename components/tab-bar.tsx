@@ -1,7 +1,7 @@
 import { SFSymbols5_0 } from 'sf-symbols-typescript';
 import { VariableBlurView } from '@/components/blur-view';
 import tw from 'twrnc';
-import { Pressable, View } from 'react-native';
+import { Platform, Pressable, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { BlurView } from 'expo-blur';
 import { SymbolView } from 'expo-symbols';
@@ -34,13 +34,15 @@ export default function TabBar(props: BottomTabBarProps) {
 
   return (
     <>
-      <VariableBlurView
-        style={{
-          ...tw`absolute bottom-0 left-0 right-0 h-28 w-full`,
-          transform: [{ rotate: '180deg' }]
-        }}
-        maxBlurRadius={5}
-      />
+      {Platform.OS === 'ios' && (
+        <VariableBlurView
+          style={{
+            ...tw`absolute bottom-0 left-0 right-0 h-28 w-full`,
+            transform: [{ rotate: '180deg' }]
+          }}
+          maxBlurRadius={5}
+        />
+      )}
       <View
         style={tw`absolute bottom-0 left-0 w-full items-center justify-center`}
       >
