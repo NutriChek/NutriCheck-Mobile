@@ -15,7 +15,8 @@ export default function Layout() {
                   ? 'rgba(0, 0, 0, 0.65)'
                   : 'rgba(0, 0, 0, 1)'
             },
-            headerShown: false
+            headerShown: false,
+            animation: 'ios'
           }}
         />
       </Stack>
