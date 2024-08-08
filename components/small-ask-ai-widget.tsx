@@ -5,7 +5,7 @@ import { androidRipple } from '@/lib/util';
 
 const image = require('../assets/images/color-blur.png');
 
-export default function AskAISmallWidget({
+export default function SmallAskAIWidget({
   text,
   onPress
 }: {

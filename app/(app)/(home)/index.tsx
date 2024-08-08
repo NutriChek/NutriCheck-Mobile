@@ -3,9 +3,14 @@ import tw from '@/lib/tailwind';
 import AskAIWidget from '@/components/ask-ai-widget';
 import MediumGoalWidget from '@/components/medium-goal-widget';
 import LargeGoalWidget from '@/components/large-goal-widget';
-import ShoppingSmallWidget from '@/components/shopping-widget-small';
 import MediumFeaturedRecipeWidget from '@/components/small-featured-recipe-widget';
 import LargeFeaturedRecipeWidget from '@/components/large-featured-recipe-widget';
+import LargeShoppingWidget from '@/components/large-shopping-list-widget';
+import MediumShoppingWidget from '@/components/medium-shopping-list-widget';
+import SmallFeaturedRecipeWidget from '@/components/small-featured-recipe-widget';
+import SmallShoppingWidget from '@/components/small-shopping-list-widget';
+import SmallGoalWidget from '@/components/small-goal-widget';
+import SmallAskAiWidget from '@/components/small-ask-ai-widget';
 
 const image = require('@/assets/images/home-background.png');
 
@@ -23,6 +28,13 @@ export default function HomeScreen() {
                 <LargeFeaturedRecipeWidget />
               </View>
               <AskAIWidget cards={['ceva', 'altceva']} />
+
+              <View style={tw`flex-row gap-4`}>
+                <SmallShoppingWidget
+                  items={['Coca Cola Zero', 'Lays Chips', 'MYlka Chocolate']}
+                />
+                <SmallShoppingWidget items={['Mar']}/>
+              </View>
             </View>
           </ScrollView>
         </ImageBackground>
