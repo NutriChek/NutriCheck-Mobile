@@ -1,6 +1,6 @@
-import tw from 'twrnc';
 import { Controller, Control } from 'react-hook-form';
 import { TextInput } from 'react-native';
+import tw from '@/lib/tailwind';
 
 export default function InputField({
   name,

@@ -7,6 +7,7 @@ import { Image } from 'expo-image';
 import BaseButton from '@/components/base-button';
 import { VariableBlurView } from '@/components/blur-view';
 import { LinearGradient } from 'expo-linear-gradient';
+import { router } from 'expo-router';
 
 export default function HomeHeader({ text }: { text: string }) {
   return (
@@ -25,14 +26,19 @@ export default function HomeHeader({ text }: { text: string }) {
       >
         <SafeAreaView>
           <View
-            style={tw`android:mt-12 flex-row items-center justify-between px-4 pt-3`}
+            style={tw`android:mt-12 flex-row items-start justify-between px-4 pt-3`}
           >
-            <Text style={tw`font-brand text-2xl font-semibold text-white`}>
+            <Text
+              style={tw`flex-1 font-brand text-2xl font-semibold text-white`}
+            >
               {text}
             </Text>
             <View style={tw`flex-row gap-3`}>
               <View style={tw`overflow-hidden rounded-full`}>
                 <BaseButton
+                  onPress={() => {
+                    router.push({pathname: '/recipe'});
+                  }}
                   style={tw`aspect-square items-center justify-center rounded-full bg-white/70 p-2`}
                 >
                   <SymbolView
@@ -53,6 +59,9 @@ export default function HomeHeader({ text }: { text: string }) {
               </View>
               <View style={tw`overflow-hidden rounded-full`}>
                 <BaseButton
+                  onPress={() => {
+                    router.push({pathname: '/modals/account'});
+                  }}
                   style={tw`aspect-square items-center justify-center rounded-full bg-white/70`}
                 >
                   <Image
