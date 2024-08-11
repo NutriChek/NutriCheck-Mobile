@@ -63,7 +63,11 @@ export default function Account() {
               router.push({ pathname: '/modals/body-profile' });
             }}
           />
-          <List.Item text={`Nutrition preferences`} onPress={() => {}} />
+          <List.Item
+            text={`Nutritional preferences`}
+            onPress={() => {
+            }}
+          />
         </List>
       </ScrollView>
     </Wrapper>

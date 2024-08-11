@@ -38,65 +38,136 @@ export default function BodyProfile() {
       />
       <ScrollView style={tw`px-4`}>
         <View style={tw`gap-3`}>
-          <View>
-            <Text style={tw`pb-1 pl-3 text-base text-white`}>Height</Text>
-            <TextInput
-              style={tw`rounded-2xl bg-white/25 p-3 text-base text-white`}
-              placeholder='Height'
-              placeholderTextColor={tw.color('text-white/40')}
-              keyboardType='numeric'
-            />
+          <View style={tw`gap-3`}>
+            <View>
+              <Text style={tw`pb-1 pl-3 text-base text-white`}>Height</Text>
+              <TextInput
+                style={tw`rounded-2xl bg-white/25 p-3 text-base text-white`}
+                placeholder='Height'
+                placeholderTextColor={tw.color('text-white/40')}
+                keyboardType='numeric'
+              />
+            </View>
+            <View>
+              <Text style={tw`pb-1 pl-3 text-base text-white`}>Weight</Text>
+              <TextInput
+                style={tw`rounded-2xl bg-white/25 p-3 text-base text-white`}
+                placeholder='Weight'
+                placeholderTextColor={tw.color('text-white/40')}
+                keyboardType='numeric'
+              />
+            </View>
+            <View>
+              <Text style={tw`pb-1 pl-3 text-base text-white`}>Age</Text>
+              <TextInput
+                style={tw`rounded-2xl bg-white/25 p-3 text-base text-white`}
+                placeholder='Age'
+                placeholderTextColor={tw.color('text-white/40')}
+                keyboardType='numeric'
+              />
+            </View>
           </View>
           <View>
-            <Text style={tw`pb-1 pl-3 text-base text-white`}>Weight</Text>
-            <TextInput
-              style={tw`rounded-2xl bg-white/25 p-3 text-base text-white`}
-              placeholder='Weight'
-              placeholderTextColor={tw.color('text-white/40')}
-              keyboardType='numeric'
-            />
-          </View>
-          <View>
-            <Text style={tw`pb-1 pl-3 text-base text-white`}>Age</Text>
-            <TextInput
-              style={tw`rounded-2xl bg-white/25 p-3 text-base text-white`}
-              placeholder='Age'
-              placeholderTextColor={tw.color('text-white/40')}
-              keyboardType='numeric'
-            />
-          </View>
-          <View
-            style={tw`flex-row justify-between border-b-[0.7px] border-b-black/10 py-3 pb-3 pr-4 dark:border-b-white/10`}
-          >
-            <Text style={tw`p-0 text-lg text-black dark:text-white`}>
-              Activity Level
-            </Text>
-            <Menu.Root>
-              <Menu.Trigger>
-                <View style={tw`flex-row gap-1`}>
-                  <Text
-                    style={tw`p-0 text-lg text-white`}
-                  >
-                    Activity Level
-                  </Text>
-                  <Ionicons
-                    name='chevron-expand-outline'
-                    size={24}
-                    color={'rgba(255 255 255 / 0.7)'}
-                  />
-                </View>
-              </Menu.Trigger>
-              {/*@ts-ignore*/}
-              <Menu.Content>
-                <Menu.Item key='extremely-inactive'>
-                  Extremely inactive
-                </Menu.Item>
-                <Menu.Item key='sedentary'>Sedentary</Menu.Item>
-                <Menu.Item key='moderately-active'>Moderately active</Menu.Item>
-                <Menu.Item key='vigotously-active'>Vigorously active</Menu.Item>
-                <Menu.Item key='extremely-active'>Extremely active</Menu.Item>
-              </Menu.Content>
-            </Menu.Root>
+            <View
+              style={tw`flex-row items-center justify-between border-b-[0.7px] border-b-white/30 py-3 pb-3 pr-4`}
+            >
+              <Text style={tw`self-center p-0 text-base text-white`}>
+                Activity Level
+              </Text>
+              <Menu.Root>
+                <Menu.Trigger>
+                  <View style={tw`flex-row gap-1`}>
+                    <Text style={tw`p-0 text-base text-white`}>Choose</Text>
+                    <Ionicons
+                      name='chevron-expand-outline'
+                      size={24}
+                      color={'rgba(255 255 255 / 0.7)'}
+                    />
+                  </View>
+                </Menu.Trigger>
+                {/*@ts-ignore*/}
+                <Menu.Content>
+                  <Menu.Item key='extremely-inactive'>
+                    Extremely inactive
+                  </Menu.Item>
+                  <Menu.Item key='sedentary'>Sedentary</Menu.Item>
+                  <Menu.Item key='moderately-active'>
+                    Moderately active
+                  </Menu.Item>
+                  <Menu.Item key='vigotously-active'>
+                    Vigorously active
+                  </Menu.Item>
+                  <Menu.Item key='extremely-active'>Extremely active</Menu.Item>
+                </Menu.Content>
+              </Menu.Root>
+            </View>
+            <View
+              style={tw`flex-row justify-between border-b-[0.7px] border-b-white/30 py-3 pb-3 pr-4`}
+            >
+              <Text style={tw`p-0 text-base text-white`}>Sex</Text>
+              <Menu.Root>
+                <Menu.Trigger>
+                  <View style={tw`flex-row gap-1`}>
+                    <Text style={tw`p-0 text-base text-white`}>Choose</Text>
+                    <Ionicons
+                      name='chevron-expand-outline'
+                      size={24}
+                      color={'rgba(255 255 255 / 0.7)'}
+                    />
+                  </View>
+                </Menu.Trigger>
+                {/*@ts-ignore*/}
+                <Menu.Content>
+                  <Menu.Item key='female'>Female</Menu.Item>
+                  <Menu.Item key='male'>Male</Menu.Item>
+                  <Menu.Item key='other'>I prefer not to say</Menu.Item>
+                </Menu.Content>
+              </Menu.Root>
+            </View>
+            <View
+              style={tw`flex-row justify-between border-b-[0.7px] border-b-white/30 py-3 pb-3 pr-4`}
+            >
+              <Text style={tw`p-0 text-base text-white`}>Pregnant</Text>
+              <Menu.Root>
+                <Menu.Trigger>
+                  <View style={tw`flex-row gap-1`}>
+                    <Text style={tw`p-0 text-base text-white`}>Yes/No</Text>
+                    <Ionicons
+                      name='chevron-expand-outline'
+                      size={24}
+                      color={'rgba(255 255 255 / 0.7)'}
+                    />
+                  </View>
+                </Menu.Trigger>
+                {/*@ts-ignore*/}
+                <Menu.Content>
+                  <Menu.Item key='pregnant'>Yes</Menu.Item>
+                  <Menu.Item key='not-pregnant'>No</Menu.Item>
+                </Menu.Content>
+              </Menu.Root>
+            </View>
+            <View
+              style={tw`flex-row justify-between border-b-[0.7px] py-3 pb-3 pr-4`}
+            >
+              <Text style={tw`p-0 text-base text-white`}>Breastfeeding</Text>
+              <Menu.Root>
+                <Menu.Trigger>
+                  <View style={tw`flex-row gap-1`}>
+                    <Text style={tw`p-0 text-base text-white`}>Yes/No</Text>
+                    <Ionicons
+                      name='chevron-expand-outline'
+                      size={24}
+                      color={'rgba(255 255 255 / 0.7)'}
+                    />
+                  </View>
+                </Menu.Trigger>
+                {/*@ts-ignore*/}
+                <Menu.Content>
+                  <Menu.Item key='breastfeeding'>yes</Menu.Item>
+                  <Menu.Item key='not-breastfeeding'>No</Menu.Item>
+                </Menu.Content>
+              </Menu.Root>
+            </View>
           </View>
           <Pressable style={tw`items-center rounded-2xl bg-blue-500 p-3`}>
             <Text style={tw`text-base text-white`}>Save</Text>
