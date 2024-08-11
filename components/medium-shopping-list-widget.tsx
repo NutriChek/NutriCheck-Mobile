@@ -6,8 +6,6 @@ import React, { useState } from 'react';
 
 import CheckBox from 'expo-checkbox';
 
-const image = require('../assets/images/color-blur.png');
-
 export default function MediumShoppingWidget({ items }: { items: string[] }) {
   return (
     <View style={tw`flex-1 overflow-hidden rounded-[20px]`}>

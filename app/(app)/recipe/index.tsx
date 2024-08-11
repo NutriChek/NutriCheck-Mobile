@@ -1,7 +1,7 @@
-import tw from 'twrnc';
 import { Text, View, ScrollView, ImageBackground } from 'react-native';
 import React from 'react';
 import CookAI from '@/components/cook-ai';
+import tw from '@/lib/tailwind';
 
 type RecipeProps = {
     name: string;

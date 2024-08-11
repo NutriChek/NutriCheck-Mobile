@@ -1,8 +1,8 @@
 import { Pressable, Text, TextInput, View } from 'react-native';
 import { Controller } from 'react-hook-form';
-import tw from 'twrnc';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useState } from 'react';
+import tw from '@/lib/tailwind';
 
 export default function FormInput({
   placeholder,

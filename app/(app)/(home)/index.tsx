@@ -31,9 +31,19 @@ export default function HomeScreen() {
 
               <View style={tw`flex-row gap-4`}>
                 <SmallShoppingWidget
-                  items={['Coca Cola Zero', 'Lays Chips', 'MYlka Chocolate']}
+                  items={[
+                    'Coca Cola Zero',
+                    'Lays Chips',
+                    'MYlka Chocolate',
+                    'mere',
+                    'apa',
+                    'suc',
+                    '1',
+                    '2',
+                    '3'
+                  ]}
                 />
-                <SmallShoppingWidget items={['Mar']}/>
+                <SmallShoppingWidget items={['Mar']} />
               </View>
             </View>
           </ScrollView>

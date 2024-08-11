@@ -1,5 +1,5 @@
-import tw from 'twrnc';
 import { Pressable, Text } from 'react-native';
+import tw from '@/lib/tailwind';
 
 export default function InputField({
   text,

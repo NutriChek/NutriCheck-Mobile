@@ -1,6 +1,5 @@
 import { SFSymbols5_0 } from 'sf-symbols-typescript';
 import { VariableBlurView } from '@/components/blur-view';
-import tw from 'twrnc';
 import { Platform, Pressable, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { BlurView } from 'expo-blur';
@@ -8,6 +7,7 @@ import { SymbolView } from 'expo-symbols';
 import { rgbaToHex } from '@/lib/util';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
+import tw from '@/lib/tailwind';
 
 export default function TabBar(props: BottomTabBarProps) {
   const tabs: {
