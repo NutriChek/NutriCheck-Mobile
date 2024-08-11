@@ -1,5 +1,5 @@
 import { SFSymbols5_0 } from 'sf-symbols-typescript';
-import { VariableBlurView } from '@/components/blur-view';
+import { VariableBlurView } from '@/blur-view';
 import { Platform, Pressable, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { BlurView } from 'expo-blur';

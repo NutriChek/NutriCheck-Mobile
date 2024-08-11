@@ -10,11 +10,15 @@ import Caption from '@/components/caption';
 
 const Wrapper = ({ children }: { children: ReactNode }) =>
   Platform.OS === 'ios' ? (
+      // <View style={tw`flex-1 bg-[#000000]`}>{children}</View>
     <BlurView style={tw`flex-1`} intensity={70}>
       {children}
     </BlurView>
   ) : (
-    <View style={tw`flex-1 bg-black`}>{children}</View>
+    <View style={tw`flex-1 bg-[#000000]`}>{children}</View>
+    // <BlurView style={tw`flex-1`} intensity={70} experimentalBlurMethod='dimezisBlurView'>
+    //   {children}
+    // </BlurView>
   );
 
 export default function Account() {

@@ -10,7 +10,8 @@ export default function Layout() {
           name='modals'
           options={{
             presentation: Platform.OS === 'ios' ? 'transparentModal' : 'modal',
-            headerShown: false
+            headerShown: false,
+            // animation: 'fade',
           }}
         />
       </Stack>

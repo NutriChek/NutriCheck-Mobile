@@ -5,7 +5,7 @@ import { rgbaToHex } from '@/lib/util';
 import { MaterialIcons } from 'expo-vector-icons';
 import { Image } from 'expo-image';
 import BaseButton from '@/components/base-button';
-import { VariableBlurView } from '@/components/blur-view';
+import { VariableBlurView } from '@/blur-view';
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 
@@ -37,7 +37,7 @@ export default function HomeHeader({ text }: { text: string }) {
               <View style={tw`overflow-hidden rounded-full`}>
                 <BaseButton
                   onPress={() => {
-                    router.push({pathname: '/recipe'});
+                    router.push({ pathname: '/recipe' });
                   }}
                   style={tw`aspect-square items-center justify-center rounded-full bg-white/70 p-2`}
                 >
@@ -60,7 +60,7 @@ export default function HomeHeader({ text }: { text: string }) {
               <View style={tw`overflow-hidden rounded-full`}>
                 <BaseButton
                   onPress={() => {
-                    router.push({pathname: '/modals/account'});
+                    router.push({ pathname: '/modals/account' });
                   }}
                   style={tw`aspect-square items-center justify-center rounded-full bg-white/70`}
                 >
