@@ -10,7 +10,7 @@ import Caption from '@/components/caption';
 
 const Wrapper = ({ children }: { children: ReactNode }) =>
   Platform.OS === 'ios' ? (
-      // <View style={tw`flex-1 bg-[#000000]`}>{children}</View>
+    // <View style={tw`flex-1 bg-[#000000]`}>{children}</View>
     <BlurView style={tw`flex-1`} intensity={70}>
       {children}
     </BlurView>
@@ -31,7 +31,9 @@ export default function Account() {
         }}
       />
       <ScrollView style={tw`px-4`}>
-        <View style={tw`items-center bg-white/25 rounded-2xl p-6 justify-center`}>
+        <View
+          style={tw`items-center justify-center rounded-2xl bg-white/25 p-6`}
+        >
           <Ionicons
             name='person-circle-outline'
             size={120}
@@ -51,6 +53,20 @@ export default function Account() {
             text={`Log out`}
             textStyle='text-red-600'
             onPress={() => {}}
+          />
+        </List>
+        <Caption style='text-white' text={`Preferences`} />
+        <List childrenStyle={tw`bg-white/25`} appearance='light'>
+          <List.Item
+            text={`Body profile`}
+            onPress={() => {
+              router.push({ pathname: '/modals/body-profile' });
+            }}
+          />
+          <List.Item
+            text={`Nutritional preferences`}
+            onPress={() => {
+            }}
           />
         </List>
       </ScrollView>

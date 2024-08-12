@@ -71,6 +71,7 @@ export default function HomeScreen() {
               <AskAIWidget cards={['ceva', 'altceva']} />
               <OngoingRecipeWidget /> 
             </View>
+            
           </ScrollView>
         </ImageBackground>
       </View>
