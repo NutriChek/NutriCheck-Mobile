@@ -21,6 +21,7 @@ export default function SuggestionCard({
           resizeMode='stretch'
           source={image}
           style={tw`grow flex-row items-center justify-between py-3 pl-6 pr-4`}
+          imageStyle={tw`opacity-70`}
         >
           <Text
             style={tw`text-[#2C2C2C]/74 flex-1 flex-wrap text-[15px] font-bold leading-tight`}

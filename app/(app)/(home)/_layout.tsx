@@ -1,11 +1,19 @@
 import { Tabs } from 'expo-router';
 import HomeHeader from '@/components/home-header';
 import TabBar from '@/components/tab-bar';
+import React from 'react';
+import BackgroundSvg from '@/components/background-svg';
+import { Platform } from 'react-native';
 
 export default function Layout() {
   return (
-    <>        
-      <Tabs tabBar={(props) => <TabBar {...props} />}>
+    <>
+      <Tabs
+        sceneContainerStyle={{
+          backgroundColor: 'transparent'
+        }}
+        tabBar={(props) => <TabBar {...props} />}
+      >
         <Tabs.Screen
           name='index'
           options={{
@@ -35,6 +43,7 @@ export default function Layout() {
           }}
         />
       </Tabs>
+      {Platform.OS !== 'ios' && <BackgroundSvg />}
     </>
   );
 }

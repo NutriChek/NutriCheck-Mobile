@@ -31,8 +31,8 @@ function Suggestion({
           resizeMode='stretch'
           source={image}
           style={tw`grow flex-row items-center justify-between py-2 pl-3 pr-2`}
+          imageStyle={tw`opacity-60`}
         >
-          <View style={tw`absolute inset-0 bg-white opacity-40`} />
           <Text
             style={tw`flex-1 flex-wrap text-sm font-bold leading-tight text-black/60`}
           >
