@@ -17,7 +17,7 @@ export default function Layout() {
                   : 'rgba(0, 0, 0, 1)'
             },
             headerShown: false,
-            animation: 'ios'
+            animation: Platform.OS === 'ios' ? 'default' : 'fade_from_bottom'
           }}
         />
         <Stack.Screen
@@ -31,7 +31,7 @@ export default function Layout() {
                   : 'rgba(0, 0, 0, 1)'
             },
             headerShown: false,
-            animation: 'ios'
+            animation: Platform.OS === 'ios' ? 'default' : 'fade_from_bottom'
           }}
         />
       </Stack>

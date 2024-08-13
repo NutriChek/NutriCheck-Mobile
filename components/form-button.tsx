@@ -1,32 +1,58 @@
-import { Pressable, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import tw from '@/lib/tailwind';
 import { ReactNode } from 'react';
-import { androidRipple } from '@/lib/util';
+import { SFSymbols5_0 } from 'sf-symbols-typescript';
+import { ClassInput } from 'twrnc';
+import BaseButton from '@/components/base-button';
+import { SymbolView } from 'expo-symbols';
+import { MaterialIcons } from 'expo-vector-icons';
 
-export default function FormButton({
+export default function LargeButton({
   onPress,
   children,
-  style
+  style,
+  contentContainerStyle,
+  textStyle,
+  symbolName,
+  materialIconName
 }: {
-  onPress: () => void;
   children: ReactNode;
-  style?: string;
+  onPress: () => void;
+  style?: ClassInput;
+  contentContainerStyle?: ClassInput;
+  symbolName?: SFSymbols5_0;
+  materialIconName?: string;
+  textStyle?: ClassInput;
 }) {
   return (
     <View style={tw.style(`overflow-hidden rounded-full`, style)}>
-      <Pressable
+      <BaseButton
+        style={tw.style(`rounded-full bg-black/60`, contentContainerStyle)}
         onPress={onPress}
-        android_ripple={androidRipple}
-        style={({ pressed }) =>
-          tw.style(`rounded-full bg-black/60`, pressed && `ios:bg-black/70`)
-        }
       >
-        <View style={tw`h-16 w-full flex-row items-center justify-center`}>
-          <Text style={tw`text-white/85 text-base font-semibold`}>
+        <View style={tw`h-16 w-full flex-row items-center justify-center gap-2`}>
+          {symbolName && (
+            <SymbolView
+              name={symbolName}
+              tintColor='white'
+              resizeMode='scaleAspectFill'
+              size={24}
+              fallback={
+                <MaterialIcons
+                  name={materialIconName ?? 'question-mark'}
+                  size={24}
+                  color='white'
+                />
+              }
+            />
+          )}
+          <Text
+            style={tw.style(`text-white/85 text-base font-semibold`, textStyle)}
+          >
             {children}
           </Text>
         </View>
-      </Pressable>
+      </BaseButton>
     </View>
   );
 }

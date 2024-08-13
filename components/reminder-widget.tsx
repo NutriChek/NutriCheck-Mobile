@@ -1,9 +1,8 @@
 import tw from '@/lib/tailwind';
 import HeaderWidgetWrapper from '@/components/header-widget-wrapper';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { AbstractChartConfig } from '@/components/react-native-chart-kit/dist/AbstractChart';
 import { ImageBackground, Pressable, Text, View } from 'react-native';
-import { ProgressChart } from '@/components/react-native-chart-kit';
+import { ProgressChart } from '../modules/react-native-chart-kit';
 import { router } from 'expo-router';
 import { androidRipple, rgbaToHex } from '@/lib/util';
 import { SymbolView } from 'expo-symbols';
@@ -14,47 +13,35 @@ const dataProgress = {
   data: [0.25]
 };
 
-const chartConfigBar: AbstractChartConfig = {
-  backgroundGradientFromOpacity: 0,
-  backgroundGradientToOpacity: 0,
-  color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
-  barPercentage: 0.2,
-  barRadius: 3,
-  fillShadowGradientFrom: '#000000',
-  fillShadowGradientTo: '#000000',
-  fillShadowGradientOpacity: 0.2,
-  fillShadowGradientToOpacity: 0.2
-};
-
 const image = require('../assets/images/color-blur.png');
 
 function Suggestion({
-                      text,
-                      image,
-                      onPress
-                    }: {
+  text,
+  image,
+  onPress
+}: {
   text: string;
   image: any;
   onPress: () => void;
 }) {
   return (
-    <View style={tw`overflow-hidden rounded-[20px] pt-2 pl-3`}>
+    <View style={tw`overflow-hidden rounded-[20px] pl-3 pt-2`}>
       <View style={tw.style(`w-full flex-row overflow-hidden rounded-[20px]`)}>
         <ImageBackground
           resizeMode='stretch'
           source={image}
-          style={tw`grow flex-row items-center justify-between py-1.5 pl-3 pr-3`}
+          style={tw`grow flex-row items-center justify-between py-2 pl-3 pr-2`}
         >
-          <View style={tw`absolute inset-0 bg-white opacity-50`} />
+          <View style={tw`absolute inset-0 bg-white opacity-40`} />
           <Text
-            style={tw`text-[#2C2C2C]/74 flex-1 flex-wrap text-[12px] font-bold leading-tight`}
+            style={tw`flex-1 flex-wrap text-sm font-bold leading-tight text-black/60`}
           >
             {text}
           </Text>
           <Pressable
             onPress={onPress}
             android_ripple={androidRipple}
-            style={tw`items-center justify-center rounded-full bg-black/60 px-3.5 py-0.5`}
+            style={tw`items-center justify-center rounded-full bg-black/60 px-3.5 py-1`}
           >
             <SymbolView
               name='arrow.forward'
@@ -100,8 +87,8 @@ export default function ReminderWidget() {
           hideLegend={true}
         />
         <View style={tw`flex-1`}>
-          <Text style={tw`text-sm font-bold text-black/70 pl-3`}>
-            It’s 14:30 and you’ve only eaten 300 kcal. Maybe trying eating
+          <Text style={tw`pl-3 text-sm font-bold text-black/70`}>
+            It’s 14:30 and you’ve only eaten 300 kcal. Maybe try eating
             something?
           </Text>
           <Suggestion

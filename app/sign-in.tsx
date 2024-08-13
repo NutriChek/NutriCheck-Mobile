@@ -14,7 +14,7 @@ import * as yup from 'yup';
 import { useSession } from '@/context/auth-context';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import FormButton from '@/components/form-button';
+import LargeButton from '@/components/form-button';
 import { router } from 'expo-router';
 import LogoView from '@/components/logo-view';
 
@@ -84,9 +84,9 @@ export default function SignIn() {
                 name='password'
                 password={true}
               />
-              <FormButton style='mt-7' onPress={handleSubmit(onSubmit)}>
+              <LargeButton style='mt-7' onPress={handleSubmit(onSubmit)}>
                 Sign in
-              </FormButton>
+              </LargeButton>
             </View>
             <View
               style={tw`h-1/3 flex-grow items-center justify-between pb-11`}

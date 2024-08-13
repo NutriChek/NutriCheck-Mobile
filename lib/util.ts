@@ -3,6 +3,7 @@ export const androidRipple = {
   borderless: false,
   radius: 500
 };
+
 export function rgbaToHex(rgba: string): string {
   const [r, g, b, a] = rgba.match(/\d+.?\d*/g) ?? [0, 0, 0, 1];
   const alpha = Math.round((a as number) * 255)
@@ -18,4 +19,11 @@ export function rgbaToHex(rgba: string): string {
     .toString(16)
     .padStart(2, '0');
   return `#${red}${green}${blue}${alpha}`;
+}
+
+export function kebabToTitleCase(kebab: string): string {
+  return kebab
+    .split('-')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
 }

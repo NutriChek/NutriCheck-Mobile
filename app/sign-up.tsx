@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import tw from '@/lib/tailwind';
 import FormInput from '@/components/form-input';
-import FormButton from '@/components/form-button';
+import LargeButton from '@/components/form-button';
 import OauthButtons from '@/components/oauth-buttons';
 import NavigationCard from '@/components/navigation-card';
 import * as yup from 'yup';
@@ -101,9 +101,9 @@ export default function SignIn() {
                 name='passwordRep'
                 password={true}
               />
-              <FormButton style='mt-7' onPress={handleSubmit(onSubmit)}>
+              <LargeButton style='mt-7' onPress={handleSubmit(onSubmit)}>
                 Sign up
-              </FormButton>
+              </LargeButton>
             </View>
             <View
               style={tw`flex-grow items-center justify-between gap-12 pb-11`}

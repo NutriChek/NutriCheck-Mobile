@@ -2,9 +2,8 @@ import tw from '@/lib/tailwind';
 import HeaderWidgetWrapper from '@/components/header-widget-wrapper';
 import { Text, View } from 'react-native';
 import { Image } from 'expo-image';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faFireBurner } from '@/node_modules/@fortawesome/free-solid-svg-icons/faFireBurner';
-import { ProgressChart } from '@/components/react-native-chart-kit';
+import { ProgressChart } from '../modules/react-native-chart-kit';
+import { SymbolView } from 'expo-symbols';
 
 function ImageDetailsWrapper() {
   return (
@@ -45,10 +44,11 @@ export default function OngoingRecipeWidget() {
         Current step
       </Text>
       <View style={tw`flex-row items-center pl-4 pt-2`}>
-        <FontAwesomeIcon
-          icon={faFireBurner}
-          size={45}
-          style={tw`text-black/60`}
+        <SymbolView
+          name='cooktop.fill'
+          size={35}
+          tintColor='black'
+          resizeMode='scaleAspectFill'
         />
         <View style={tw`pl-4`}>
           <Text style={tw`text-[15px] font-bold text-black/60`}>

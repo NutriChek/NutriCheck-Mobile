@@ -11,7 +11,7 @@ export default function Layout() {
           options={{
             presentation: Platform.OS === 'ios' ? 'transparentModal' : 'modal',
             headerShown: false,
-            // animation: 'fade',
+            animation: Platform.OS === 'ios' ? 'default' : 'fade_from_bottom'
           }}
         />
       </Stack>

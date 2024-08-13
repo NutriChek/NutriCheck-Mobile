@@ -43,7 +43,7 @@ export default function ListItem({
           appearance === 'dark' && 'bg-black',
           lastItem && 'rounded-b-2xl',
           firstItem && 'rounded-t-2xl',
-          shouldPress && pressed && 'opacity-80',
+          shouldPress && pressed && 'ios:opacity-80',
           style
         )
       }

@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import {
   ActivityLevel,
   Age,
@@ -18,13 +16,18 @@ import {
 } from './types';
 import { params, specialDefault, vitaminData } from './constants';
 
-export const calculateBMR = (weight: Weight, height: Height, age: Age, sex: Sex) => {
+export const calculateBMR = (
+  weight: Weight,
+  height: Height,
+  age: Age,
+  sex: Sex
+) => {
   if (sex === 'male') {
     return 10 * weight + 6.25 * height - (5 * age) / 12 + 5;
   } else {
     return 10 * weight + 6.25 * height - (5 * age) / 12 - 161;
   }
-}
+};
 
 export const getAgeGroup = (age: Age, special: Special) => {
   if (special.pregnant) {
@@ -100,8 +103,6 @@ export const getData = (
 export const getDeficits = (profile: Profile, products: Deficits[]) => {
   const deficits: Deficits = {};
 
-  // console.log(products[0].proteins, 'ok');
-
   const optimal = getData(
     profile.weight,
     profile.height,
@@ -116,7 +117,8 @@ export const getDeficits = (profile: Profile, products: Deficits[]) => {
       deficits[param] =
         (optimal.data[param] ?? 0) -
         (products.reduce(
-          (accumulator, currentValue) => accumulator + (currentValue[param] ?? 0),
+          (accumulator, currentValue) =>
+            accumulator + (currentValue[param] ?? 0),
           0
         ) ?? 0);
     } catch (e) {

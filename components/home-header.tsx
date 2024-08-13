@@ -5,7 +5,7 @@ import { rgbaToHex } from '@/lib/util';
 import { MaterialIcons } from 'expo-vector-icons';
 import { Image } from 'expo-image';
 import BaseButton from '@/components/base-button';
-import { VariableBlurView } from '@/blur-view';
+import { VariableBlurView } from '../modules/blur-view';
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 

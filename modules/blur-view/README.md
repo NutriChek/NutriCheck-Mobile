@@ -37,7 +37,7 @@ View the example app in the [example](./example/src/App.tsx) folder.
 | Property        | Type     | Default                                 | Description                                       |
 | --------------- | -------- | --------------------------------------- | ------------------------------------------------- |
 | `maxBlurRadius` | `number` | `20`                                    | The amount of blur to apply to the view.          |
-| `gradientMask`  | `string` | see [source](./ios/images/Gradient.png) | The gradient mask to apply to the view in base64. |
+| `gradientMask`  | `string` | see [source](ios/images/Gradient.png) | The gradient mask to apply to the view in base64. |
 
 ## Contributing
 

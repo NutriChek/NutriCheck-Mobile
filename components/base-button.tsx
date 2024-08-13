@@ -2,7 +2,7 @@ import { androidRipple } from '@/lib/util';
 import tw from '@/lib/tailwind';
 import { Pressable } from 'react-native';
 import { ReactNode } from 'react';
-import { Style } from 'twrnc';
+import { ClassInput } from 'twrnc';
 
 export default function BaseButton({
   children,
@@ -10,7 +10,7 @@ export default function BaseButton({
   onPress
 }: {
   children: ReactNode;
-  style?: Style;
+  style?: ClassInput;
   onPress?: () => void;
 }) {
   return (
