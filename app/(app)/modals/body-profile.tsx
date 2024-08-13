@@ -329,8 +329,8 @@ export default function BodyProfile() {
           </List>
           <LargeButton
             style={tw`mt-4`}
-            contentContainerStyle={tw`bg-white/50`}
-            textStyle={tw`text-white`}
+            contentContainerStyle={tw`bg-white/70`}
+            textStyle={tw`text-black/80 text-lg`}
             onPress={handleSubmit(onSubmit)}
           >
             Save

@@ -140,6 +140,7 @@ export default function TabBar(props: BottomTabBarProps) {
               {props.state.routes.map((route, index) => {
                 return (
                   <Tab
+                    key={route.key}
                     props={props}
                     route={route}
                     symbolName={tabs[index].symbolName}
