@@ -37,7 +37,7 @@ export default function HomeHeader({ text }: { text: string }) {
               <View style={tw`overflow-hidden rounded-full`}>
                 <BaseButton
                   onPress={() => {
-                    router.push({ pathname: '/recipe' });
+                    router.push({ pathname: '/modals/search' });
                   }}
                   style={tw`aspect-square items-center justify-center rounded-full bg-white/70 p-2`}
                 >

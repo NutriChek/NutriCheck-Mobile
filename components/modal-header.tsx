@@ -11,7 +11,7 @@ export default function ModalHeader({
   onPress: () => void;
 }) {
   return (
-    <SafeAreaView style={tw`flex-row items-center bg-transparent px-4 py-6`}>
+    <SafeAreaView style={tw`flex-row items-center bg-transparent px-4 py-6 z-10`}>
       <View style={tw`flex-row items-center px-4 py-6`}>
         <Text style={tw`flex-1 text-4xl font-bold text-white`}>{text}</Text>
         <View style={tw`overflow-hidden rounded-full`}>
