@@ -66,6 +66,7 @@ export default function Account() {
           <List.Item
             text={`Nutritional preferences`}
             onPress={() => {
+              router.push({ pathname: '/modals/nutritional-preferences' });
             }}
           />
         </List>
