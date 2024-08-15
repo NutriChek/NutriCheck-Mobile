@@ -4,6 +4,7 @@ import TabBar from '@/components/tab-bar';
 import React from 'react';
 import BackgroundSvg from '@/components/background-svg';
 import { Platform } from 'react-native';
+import IOSMeshGradient from '@/components/ios-mesh-gradient';
 
 export default function Layout() {
   return (
@@ -44,6 +45,9 @@ export default function Layout() {
         />
       </Tabs>
       {Platform.OS !== 'ios' && <BackgroundSvg />}
+      {Platform.OS === 'ios' && +Platform.Version >= 18.0 && (
+        <IOSMeshGradient />
+      )}
     </>
   );
 }

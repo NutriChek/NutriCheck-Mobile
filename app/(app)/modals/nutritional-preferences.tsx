@@ -14,12 +14,13 @@ import KeyboardAccessory from '@/components/keyboard-accessory';
 import List from '@/components/list';
 import Alergens from '@/components/alergens';
 import Nutriments from '@/components/nutriments';
+import Caption from '@/components/caption';
 
 const schema = yup
   .object({
     palmOil: yup.boolean().required(),
     diet: yup.number().required(),
-    searchIngredient: yup.number().required(),
+    searchIngredient: yup.number().required()
   })
   .required();
 
@@ -47,12 +48,12 @@ export default function NutritionalPreferences() {
           router.back();
         }}
       />
-      <ScrollView style={tw`px-4`}>
-        <Nutriments/>
-        <View style={tw`gap-3`}>
-          <Text style={tw`text-xl font-bold text-white pt-4 pl-4`}>Ingredients</Text>
+      <ScrollView style={tw`px-4`} contentContainerStyle={tw`pb-20`}>
+        <Nutriments />
+        <View>
+          <Caption style='text-white' text={'Ingredients'} />
           <List childrenStyle={tw`bg-white/25`} appearance='light'>
-          <List.Item
+            <List.Item
               text={`Palm oil`}
               shouldPress={false}
               rightComponent={
@@ -178,13 +179,12 @@ export default function NutritionalPreferences() {
                 />
               }
             />
-            
           </List>
         </View>
-        <View style={tw`gap-3`}>
-          <Text style={tw`text-base font-bold text-white pt-2 pl-4`}>Restricted Ingredients</Text>
+        <View>
+          <Caption text='Restricted ingredients' style={`text-white`} />
           <List childrenStyle={tw`bg-white/25`} appearance='light'>
-          <List.Item
+            <List.Item
               text={`Search for an ingredient`}
               shouldPress={false}
               rightComponent={
@@ -194,16 +194,14 @@ export default function NutritionalPreferences() {
                   render={({ field: { onChange, value } }) => (
                     <Menu.Root>
                       <Menu.Trigger>
-                          <Ionicons
-                            name='chevron-down-outline'
-                            size={20}
-                            color={'rgba(255 255 255 / 0.7)'}
-                          />
+                        <Ionicons
+                          name='chevron-down-outline'
+                          size={20}
+                          color={'rgba(255 255 255 / 0.7)'}
+                        />
                       </Menu.Trigger>
                       {/*@ts-ignore*/}
-                      <Menu.Content>
-                       
-                      </Menu.Content>
+                      <Menu.Content></Menu.Content>
                     </Menu.Root>
                   )}
                 />
@@ -211,15 +209,15 @@ export default function NutritionalPreferences() {
             />
           </List>
         </View>
-        <Alergens/>
+        <Alergens />
         <LargeButton
-            style={tw`mt-4`}
-            contentContainerStyle={tw`bg-white/70`}
-            textStyle={tw`text-black/80 text-lg`}
-            onPress={handleSubmit(onSubmit)}
-          >
-            Save
-          </LargeButton>
+          style={tw`mt-4`}
+          contentContainerStyle={tw`bg-white/70`}
+          textStyle={tw`text-black/80 text-lg`}
+          onPress={handleSubmit(onSubmit)}
+        >
+          Save
+        </LargeButton>
       </ScrollView>
       <KeyboardAccessory inputAccessoryViewID={'id'} />
     </ModalWrapper>

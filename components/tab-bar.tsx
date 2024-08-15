@@ -112,7 +112,7 @@ export default function TabBar(props: BottomTabBarProps) {
         style={tw`absolute bottom-0 left-0 w-full items-center justify-center`}
       >
         <LinearGradient
-          colors={['transparent', '#00000050']}
+          colors={['transparent', '#00000070']}
           style={tw`android:pb-4 w-full items-center pb-8`}
         >
           <View style={tw`overflow-hidden rounded-full`}>

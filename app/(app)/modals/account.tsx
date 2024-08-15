@@ -1,29 +1,16 @@
 import tw from '@/lib/tailwind';
-import { BlurView } from 'expo-blur';
-import { Platform, ScrollView, Text, View } from 'react-native';
-import React, { ReactNode } from 'react';
+import { ScrollView, Text, View } from 'react-native';
+import React from 'react';
 import { router } from 'expo-router';
 import ModalHeader from '@/components/modal-header';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import List from '@/components/list';
 import Caption from '@/components/caption';
-
-const Wrapper = ({ children }: { children: ReactNode }) =>
-  Platform.OS === 'ios' ? (
-    // <View style={tw`flex-1 bg-[#000000]`}>{children}</View>
-    <BlurView style={tw`flex-1`} intensity={70}>
-      {children}
-    </BlurView>
-  ) : (
-    <View style={tw`flex-1 bg-[#000000]`}>{children}</View>
-    // <BlurView style={tw`flex-1`} intensity={70} experimentalBlurMethod='dimezisBlurView'>
-    //   {children}
-    // </BlurView>
-  );
+import ModalWrapper from '@/components/modal-wrapper';
 
 export default function Account() {
   return (
-    <Wrapper>
+    <ModalWrapper>
       <ModalHeader
         text='Account'
         onPress={() => {
@@ -71,6 +58,6 @@ export default function Account() {
           />
         </List>
       </ScrollView>
-    </Wrapper>
+    </ModalWrapper>
   );
 }

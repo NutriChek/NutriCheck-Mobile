@@ -5,7 +5,7 @@ import { rgbaToHex } from '@/lib/util';
 import { MaterialIcons } from 'expo-vector-icons';
 import { Image } from 'expo-image';
 import BaseButton from '@/components/base-button';
-import { VariableBlurView } from '../modules/blur-view';
+import { VariableBlurView } from '@/modules/blur-view';
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 
@@ -21,8 +21,8 @@ export default function HomeHeader({ text }: { text: string }) {
         />
       )}
       <LinearGradient
-        colors={['#000000aa', 'transparent']}
-        style={tw`w-full pb-8`}
+        colors={['#000000bb', 'transparent']}
+        style={tw`w-full pb-12`}
       >
         <SafeAreaView>
           <View
