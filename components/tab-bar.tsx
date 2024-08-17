@@ -86,8 +86,8 @@ export default function TabBar(props: BottomTabBarProps) {
       materialIconName: 'restaurant'
     },
     {
-      symbolName: 'dumbbell.fill',
-      materialIconName: 'body'
+      symbolName: 'heart.fill',
+      materialIconName: 'heart'
     }
   ];
 
@@ -117,7 +117,6 @@ export default function TabBar(props: BottomTabBarProps) {
         >
           <View style={tw`overflow-hidden rounded-full`}>
             <BlurView
-              experimentalBlurMethod='dimezisBlurView'
               style={tw`flex-row rounded-full bg-white/70 p-2 py-2`}
             >
               <Animated.View
@@ -127,7 +126,7 @@ export default function TabBar(props: BottomTabBarProps) {
                     backgroundColor: 'white',
                     position: 'absolute',
                     top: 6,
-                    height: 42,
+                    height: 44,
                     borderRadius: 100,
                     shadowOffset: { width: 0, height: 0 },
                     shadowColor: 'black',

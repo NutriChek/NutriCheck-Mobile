@@ -3,11 +3,11 @@ import HeaderWidgetWrapper from '@/components/header-widget-wrapper';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { ImageBackground, Pressable, Text, View } from 'react-native';
 import { ProgressChart } from '../modules/react-native-chart-kit';
-import { router } from 'expo-router';
 import { androidRipple, rgbaToHex } from '@/lib/util';
 import { SymbolView } from 'expo-symbols';
 import { MaterialIcons } from 'expo-vector-icons';
 import React from 'react';
+import SuggestionCard from '@/components/suggestion-card';
 
 const dataProgress = {
   data: [0.25]
@@ -72,7 +72,7 @@ export default function ReminderWidget() {
         <Ionicons name='alert-circle' size={20} color={tw.color('black/50')} />
       }
     >
-      <View style={tw`flex-row`}>
+      <View style={tw`flex-row items-center gap-2`}>
         <ProgressChart
           data={dataProgress}
           width={100}
@@ -86,17 +86,17 @@ export default function ReminderWidget() {
           }}
           hideLegend={true}
         />
-        <View style={tw`flex-1`}>
-          <Text style={tw`pl-3 text-sm font-bold text-black/70`}>
+        <View style={tw`flex-1 gap-2`}>
+          <Text style={tw`text-sm font-bold text-black/70 leading-tight`}>
             It’s 14:30 and you’ve only eaten 300 kcal. Maybe try eating
             something?
           </Text>
-          <Suggestion
-            text='Get suggested recipes'
+          <SuggestionCard
+            text='Log a meal'
             image={image}
-            onPress={() => {
-              router.replace('/page');
-            }}
+            onPress={() => {}}
+            contentContainerStyle={tw`py-2 pr-2 pl-3`}
+            imageStyle={tw`opacity-60`}
           />
         </View>
       </View>

@@ -2,7 +2,7 @@ import { Text, View } from 'react-native';
 import tw from '@/lib/tailwind';
 import { ReactNode } from 'react';
 import { Style } from 'twrnc';
-import WidgetWrapper from '@/components/widget-wrapper';
+import WidgetBase from '@/components/widget-base';
 
 export default function HeaderWidgetWrapper({
   children,
@@ -16,14 +16,14 @@ export default function HeaderWidgetWrapper({
   style?: Style;
 }) {
   return (
-    <WidgetWrapper>
-      <View style={tw`flex-row items-center pb-3`}>
+    <WidgetBase>
+      <View style={tw`flex-row items-center`}>
         {icon}
         <Text style={tw`pl-2 text-sm font-bold text-black/56`}>
           {title}
         </Text>
       </View>
       <View style={{ ...tw``, ...style }}>{children}</View>
-    </WidgetWrapper>
+    </WidgetBase>
   );
 }

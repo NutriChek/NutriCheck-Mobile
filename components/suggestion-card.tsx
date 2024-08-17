@@ -4,38 +4,48 @@ import tw from '@/lib/tailwind';
 import { androidRipple, rgbaToHex } from '@/lib/util';
 import { SymbolView } from 'expo-symbols';
 import { MaterialIcons } from 'expo-vector-icons';
+import { Style } from 'twrnc';
 
 export default function SuggestionCard({
   text,
   image,
-  onPress
+  onPress,
+  contentContainerStyle,
+  imageStyle
 }: {
   text: string;
   image: any;
   onPress: () => void;
+  contentContainerStyle?: Style;
+  imageStyle?: Style;
 }) {
   return (
     <View style={tw`overflow-hidden rounded-[20px]`}>
-      <View style={tw.style(`w-full flex-row overflow-hidden rounded-[20px]`)}>
+      <Pressable
+        onPress={onPress}
+        android_ripple={androidRipple}
+        style={({ pressed }) => tw.style(pressed && 'ios:opacity-80')}
+      >
         <ImageBackground
           resizeMode='stretch'
           source={image}
-          style={tw`grow flex-row items-center justify-between py-3 pl-6 pr-4`}
-          imageStyle={tw`opacity-70`}
+          style={tw.style(
+            `grow flex-row items-center justify-between py-3 pl-6 pr-3`,
+            contentContainerStyle
+          )}
+          imageStyle={tw.style(`opacity-70`, imageStyle)}
         >
           <Text
             style={tw`text-[#2C2C2C]/74 flex-1 flex-wrap text-[15px] font-bold leading-tight`}
           >
             {text}
           </Text>
-          <Pressable
-            onPress={onPress}
-            android_ripple={androidRipple}
+          <View
             style={tw`items-center justify-center rounded-full bg-black/60 px-3 py-1`}
           >
             <SymbolView
               name='arrow.forward'
-              resizeMode='scaleAspectFill'
+              resizeMode='scaleAspectFit'
               weight='semibold'
               size={20}
               tintColor={rgbaToHex(tw.color('white/80') as string)}
@@ -47,9 +57,9 @@ export default function SuggestionCard({
                 />
               }
             />
-          </Pressable>
+          </View>
         </ImageBackground>
-      </View>
+      </Pressable>
     </View>
   );
 }

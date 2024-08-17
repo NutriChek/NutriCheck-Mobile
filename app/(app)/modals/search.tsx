@@ -13,11 +13,10 @@ import Animated, {
 } from 'react-native-reanimated';
 import tw from '@/lib/tailwind';
 import { BlurView } from 'expo-blur';
-import Ionicons from '@expo/vector-icons/Ionicons';
 import { SymbolView } from 'expo-symbols';
 import { androidRipple, rgbaToHex } from '@/lib/util';
 import { SFSymbols5_0 } from 'sf-symbols-typescript';
-import { MaterialIcons } from 'expo-vector-icons';
+import { MaterialCommunityIcons, MaterialIcons } from 'expo-vector-icons';
 
 function SuggestionCard({
   text,
@@ -74,11 +73,13 @@ function SuggestionCard({
         <Pressable
           android_ripple={androidRipple}
           onPress={onPress}
-          style={({ pressed }) => tw.style(pressed && 'ios:bg-white/20')}
+          style={({ pressed }) =>
+            tw.style('bg-white/45', pressed && 'ios:bg-white/30')
+          }
         >
           <BlurView
             intensity={50}
-            style={tw`bg-white/45 h-full flex-row items-center justify-center gap-1.5 p-4`}
+            style={tw`h-full flex-row items-center justify-center gap-1.5 p-4`}
           >
             <SymbolView
               name={symbolName}
@@ -195,27 +196,73 @@ export default function Search() {
         <Animated.View
           style={[
             animatedSearchStyle,
-            tw`w-full flex-row items-center gap-2 rounded-2xl bg-white/70 px-4`,
             {
-              shadowOffset: { width: 0, height: 0 },
-              shadowColor: 'black',
-              shadowOpacity: 0.3,
-              shadowRadius: 16
+              flexDirection: 'row',
+              gap: 8
             }
           ]}
         >
-          <Ionicons name='search' size={20} color={tw.color('black/60')} />
-          <TextInput
-            autoFocus={true}
-            style={tw`h-13 grow text-base leading-tight`}
-            keyboardAppearance='light'
-            inputAccessoryViewID='inputAccessoryView1'
-            returnKeyType='search'
-            placeholder='Search for anything...'
-            placeholderTextColor={tw.color('black/60')}
-            clearButtonMode='while-editing'
-            onSubmitEditing={() => {}}
-          />
+          <View
+            style={[
+              tw`grow flex-row items-center gap-2 rounded-2xl bg-white/70 px-4`,
+              {
+                shadowOffset: { width: 0, height: 0 },
+                shadowColor: 'black',
+                shadowOpacity: 0.3,
+                shadowRadius: 16
+              }
+            ]}
+          >
+            <SymbolView
+              name={'magnifyingglass'}
+              size={20}
+              tintColor={rgbaToHex(tw.color('black/70') as string)}
+              fallback={
+                <MaterialIcons
+                  name={'search'}
+                  size={20}
+                  color={rgbaToHex(tw.color('black/70') as string)}
+                />
+              }
+            />
+            <TextInput
+              autoFocus={true}
+              style={tw`h-13 grow text-base leading-tight`}
+              keyboardAppearance='light'
+              inputAccessoryViewID='inputAccessoryView1'
+              returnKeyType='search'
+              placeholder='Search for anything...'
+              placeholderTextColor={tw.color('black/60')}
+              clearButtonMode='while-editing'
+              onSubmitEditing={() => {}}
+            />
+          </View>
+          <Pressable
+            style={({ pressed }) => [
+              tw`h-full flex-row items-center gap-2 rounded-2xl bg-white/90 px-4`,
+              {
+                shadowOffset: { width: 0, height: 0 },
+                shadowColor: 'black',
+                shadowOpacity: 0.3,
+                shadowRadius: 16
+              },
+              pressed && tw`ios:bg-white/55`
+            ]}
+          >
+            <SymbolView
+              name={'barcode.viewfinder'}
+              size={28}
+              tintColor={rgbaToHex(tw.color('black/70') as string)}
+              resizeMode='scaleAspectFit'
+              fallback={
+                <MaterialCommunityIcons
+                  name={'barcode-scan'}
+                  size={28}
+                  color={rgbaToHex(tw.color('black/70') as string)}
+                />
+              }
+            />
+          </Pressable>
         </Animated.View>
       </Animated.View>
     </ModalWrapper>

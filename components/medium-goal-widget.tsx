@@ -1,8 +1,7 @@
 import { Text, View } from 'react-native';
 import tw from '@/lib/tailwind';
-import HeaderWidgetWrapper from '@/components/header-widget-wrapper';
-import Ionicons from '@expo/vector-icons/Ionicons';
 import { ProgressChart } from '../modules/react-native-chart-kit';
+import WidgetBase from '@/components/widget-base';
 
 const dataProgress = {
   data: [0.75, 0.75, 0.75],
@@ -40,29 +39,25 @@ function ChartContainer() {
 
 export default function MediumGoalWidget() {
   return (
-    <HeaderWidgetWrapper
-      style={tw`flex-row items-center`}
+    <WidgetBase
       title='Your goals for today'
-      icon={
-        <Ionicons
-          name='pie-chart'
-          size={20}
-          color={tw.color('black/56')}
-        />
-      }
+      symbolName='chart.pie.fill'
+      materialIconName='chart-pie'
     >
-      <ChartContainer />
-      <View style={tw`flex-1 justify-center`}>
-        <Text style={tw`text-base font-bold text-black/60`}>
-          7546/10000 steps
-        </Text>
-        <Text style={tw`text-base font-bold text-black/60`}>
-          1550/2500 kcal consumed
-        </Text>
-        <Text style={tw`text-base font-bold text-black/60`}>
-          270/350 kcal burned
-        </Text>
+      <View style={tw`flex-row items-center`}>
+        <ChartContainer />
+        <View style={tw`flex-1 justify-center`}>
+          <Text style={tw`text-base font-bold text-black/60`}>
+            7546/10000 steps
+          </Text>
+          <Text style={tw`text-base font-bold text-black/60`}>
+            1550/2500 kcal consumed
+          </Text>
+          <Text style={tw`text-base font-bold text-black/60`}>
+            270/350 kcal burned
+          </Text>
+        </View>
       </View>
-    </HeaderWidgetWrapper>
+    </WidgetBase>
   );
 }

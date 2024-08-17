@@ -1,5 +1,5 @@
 import { Text, View } from 'react-native';
-import WidgetWrapper from '@/components/widget-wrapper';
+import WidgetBase from '@/components/widget-base';
 import tw from '@/lib/tailwind';
 import { ProgressChart } from '../modules/react-native-chart-kit';
 
@@ -14,7 +14,7 @@ const dataProgress = {
 
 export default function SmallGoalWidget() {
   return (
-    <WidgetWrapper style={tw`aspect-square gap-2`}>
+    <WidgetBase style={tw`aspect-square gap-2`}>
       <View>
         <ProgressChart
           data={dataProgress}
@@ -46,6 +46,6 @@ export default function SmallGoalWidget() {
           270 <Text style={tw`text-sm`}>kcal burned</Text>
         </Text>
       </View>
-    </WidgetWrapper>
+    </WidgetBase>
   );
 }

@@ -1,10 +1,9 @@
 import { Tabs } from 'expo-router';
 import HomeHeader from '@/components/home-header';
-import TabBar from '@/components/tab-bar';
 import React from 'react';
-import BackgroundSvg from '@/components/background-svg';
-import { Platform } from 'react-native';
+import { Platform, StatusBar } from 'react-native';
 import IOSMeshGradient from '@/components/ios-mesh-gradient';
+import TabBar from '@/components/tab-bar';
 
 export default function Layout() {
   return (
@@ -44,7 +43,8 @@ export default function Layout() {
           }}
         />
       </Tabs>
-      {Platform.OS !== 'ios' && <BackgroundSvg />}
+      <StatusBar barStyle='light-content' />
+      {/*{Platform.OS !== 'ios' && <BackgroundSvg />}*/}
       {Platform.OS === 'ios' && +Platform.Version >= 18.0 && (
         <IOSMeshGradient />
       )}

@@ -3,18 +3,16 @@ import { Platform } from 'react-native';
 
 export default function Layout() {
   return (
-    <>
-      <Stack>
-        <Stack.Screen name='(home)' options={{ headerShown: false }} />
-        <Stack.Screen
-          name='modals'
-          options={{
-            presentation: Platform.OS === 'ios' ? 'transparentModal' : 'modal',
-            headerShown: false,
-            animation: Platform.OS === 'ios' ? 'default' : 'fade_from_bottom'
-          }}
-        />
-      </Stack>
-    </>
+    <Stack>
+      <Stack.Screen name='(home)' options={{ headerShown: false }} />
+      <Stack.Screen
+        name='modals'
+        options={{
+          presentation: Platform.OS === 'ios' ? 'transparentModal' : 'modal',
+          headerShown: false,
+          animation: Platform.OS === 'ios' ? 'default' : 'fade_from_bottom'
+        }}
+      />
+    </Stack>
   );
 }
