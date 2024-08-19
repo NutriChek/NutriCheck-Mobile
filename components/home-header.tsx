@@ -22,7 +22,7 @@ export default function HomeHeader({ text }: { text: string }) {
       )}
       <LinearGradient
         colors={['#000000bb', 'transparent']}
-        style={tw`w-full pb-12`}
+        style={tw`w-full pb-10`}
       >
         <SafeAreaView>
           <View

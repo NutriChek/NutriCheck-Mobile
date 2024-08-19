@@ -17,16 +17,15 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import LargeButton from '@/components/form-button';
 import { router } from 'expo-router';
 import LogoView from '@/components/logo-view';
+import Toast from 'react-native-toast-message';
+import { AxiosError } from 'axios';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 const image = require('../assets/images/background-blur.png');
 
 const schema = yup
   .object({
-    username: yup
-      .string()
-      .required('Username is required')
-      .min(3, 'Username must have at least 3 characters')
-      .max(50, 'Username must have at most 50 characters'),
+    email: yup.string().email('Invalid email').required('Email is required'),
     password: yup
       .string()
       .required('Password is required')
@@ -39,25 +38,35 @@ export default function SignIn() {
 
   const { control, handleSubmit } = useForm({
     defaultValues: {
-      username: '',
+      email: '',
       password: ''
     },
     resolver: yupResolver(schema),
     mode: 'onChange'
   });
 
-  const onSubmit: any = (data: typeof schema.fields) => {
+  const onSubmit: any = (data: { email: string; password: string }) => {
     console.log(data);
-    signIn();
-    router.replace('/');
+    signIn({ email: data.email, password: data.password })
+      .then(() => {
+        router.replace('/');
+      })
+      .catch((err: AxiosError<{ message: string }>) => {
+        Toast.show({
+          type: 'customToast',
+          text1: `Can't sign you in!`,
+          text2: err.response?.data ? err.response.data.message : err.message,
+          position: 'bottom'
+        });
+      });
   };
 
   const { height } = useWindowDimensions();
 
   return (
-    <KeyboardAvoidingView behavior='height'>
+    <>
       <StatusBar barStyle='dark-content' />
-      <ScrollView>
+      <KeyboardAwareScrollView>
         <ImageBackground
           resizeMode='cover'
           source={image}
@@ -76,13 +85,17 @@ export default function SignIn() {
               <FormInput
                 placeholder='Username'
                 control={control}
-                name='username'
+                name='email'
+                autoCapitalize='none'
+                keyboardType='email-address'
+                textContentType='emailAddress'
               />
               <FormInput
                 placeholder='Password'
                 control={control}
                 name='password'
                 password={true}
+                textContentType='password'
               />
               <LargeButton style='mt-7' onPress={handleSubmit(onSubmit)}>
                 Sign in
@@ -102,7 +115,7 @@ export default function SignIn() {
             </View>
           </View>
         </ImageBackground>
-      </ScrollView>
-    </KeyboardAvoidingView>
+      </KeyboardAwareScrollView>
+    </>
   );
 }

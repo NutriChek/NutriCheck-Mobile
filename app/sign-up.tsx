@@ -17,12 +17,24 @@ import { useSession } from '@/context/auth-context';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import LogoView from '@/components/logo-view';
+import Toast from 'react-native-toast-message';
+import { AxiosError } from 'axios';
+import KeyboardAccessory from '@/components/keyboard-accessory';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 const image = require('../assets/images/background-blur.png');
 
 export default function SignIn() {
   const schema = yup
     .object({
+      firstName: yup
+        .string()
+        .required('First name is required')
+        .max(50, 'First name must have at most 50 characters'),
+      lastName: yup
+        .string()
+        .required('Last name is required')
+        .max(50, 'Last name must have at most 50 characters'),
       username: yup
         .string()
         .required('Username is required')
@@ -54,20 +66,54 @@ export default function SignIn() {
     mode: 'onChange'
   });
 
-  const { signIn } = useSession();
+  const { signIn, signUp } = useSession();
 
-  const onSubmit: any = (data: typeof schema.fields) => {
-    console.log(data);
-    signIn();
-    router.replace('/');
+  const onSubmit: any = (data: {
+    firstName: string;
+    lastName: string;
+    username: string;
+    email: string;
+    password: string;
+  }) => {
+    signUp({
+      firstName: data.firstName,
+      lastName: data.lastName,
+      username: data.username,
+      email: data.email,
+      password: data.password
+    })
+      .then(() => {
+        signIn({ email: data.email, password: data.password })
+          .then(() => {
+            router.replace('/');
+          })
+          .catch((err: AxiosError<{ message: string }>) => {
+            Toast.show({
+              type: 'customToast',
+              text1: `Can't sign you in!`,
+              text2: err.response?.data
+                ? err.response.data.message
+                : err.message,
+              position: 'bottom'
+            });
+          });
+      })
+      .catch((err: AxiosError<{ message: string }>) => {
+        Toast.show({
+          type: 'customToast',
+          text1: `Can't sign you up!`,
+          text2: err.response?.data ? err.response.data.message : err.message,
+          position: 'bottom'
+        });
+      });
   };
 
   const { height } = useWindowDimensions();
 
   return (
-    <KeyboardAvoidingView behavior='height'>
+    <>
       <StatusBar barStyle='dark-content' />
-      <ScrollView>
+      <KeyboardAwareScrollView>
         <ImageBackground
           resizeMode='cover'
           source={image}
@@ -83,23 +129,52 @@ export default function SignIn() {
               <LogoView />
             </View>
             <View style={tw`w-full gap-3 pt-10`}>
-              <FormInput placeholder='Email' control={control} name='email' />
+              <FormInput
+                placeholder='First name'
+                control={control}
+                name='firstName'
+                inputAccessoryViewID='sign-up'
+                textContentType='givenName'
+              />
+              <FormInput
+                placeholder='Last name'
+                control={control}
+                name='lastName'
+                inputAccessoryViewID='sign-up'
+                textContentType='familyName'
+              />
               <FormInput
                 placeholder='Username'
                 control={control}
                 name='username'
+                autoCapitalize='none'
+                inputAccessoryViewID='sign-up'
+                textContentType='username'
+              />
+              <FormInput
+                placeholder='Email'
+                control={control}
+                name='email'
+                autoCapitalize='none'
+                inputAccessoryViewID='sign-up'
+                textContentType='emailAddress'
+                keyboardType='email-address'
               />
               <FormInput
                 placeholder='Password'
                 control={control}
                 name='password'
                 password={true}
+                inputAccessoryViewID='sign-up'
+                textContentType='newPassword'
               />
               <FormInput
                 placeholder='Repeat password'
                 control={control}
                 name='passwordRep'
                 password={true}
+                inputAccessoryViewID='sign-up'
+                textContentType='newPassword'
               />
               <LargeButton style='mt-7' onPress={handleSubmit(onSubmit)}>
                 Sign up
@@ -119,7 +194,8 @@ export default function SignIn() {
             </View>
           </View>
         </ImageBackground>
-      </ScrollView>
-    </KeyboardAvoidingView>
+      </KeyboardAwareScrollView>
+      <KeyboardAccessory inputAccessoryViewID='sign-up' />
+    </>
   );
 }

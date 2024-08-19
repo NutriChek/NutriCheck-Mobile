@@ -1,8 +1,10 @@
 import {
+  Keyboard,
   KeyboardTypeOptions,
   Pressable,
   Text,
   TextInput,
+  TextInputIOSProps,
   View
 } from 'react-native';
 import { Controller } from 'react-hook-form';
@@ -22,7 +24,9 @@ export default function FormInput({
   titleText,
   titleStyle,
   keyboardType,
-  inputAccessoryViewID = 'id'
+  inputAccessoryViewID = 'id',
+  autoCapitalize = 'sentences',
+  textContentType = 'none'
 }: {
   placeholder: string;
   control: any;
@@ -35,6 +39,8 @@ export default function FormInput({
   titleStyle?: ClassInput;
   keyboardType?: KeyboardTypeOptions;
   inputAccessoryViewID?: string;
+  autoCapitalize?: 'none' | 'sentences' | 'words' | 'characters';
+  textContentType?: TextInputIOSProps['textContentType'];
 }) {
   const [showPassword, setShowPassword] = useState(true);
 
@@ -83,6 +89,8 @@ export default function FormInput({
               secureTextEntry={password && showPassword}
               keyboardType={keyboardType}
               inputAccessoryViewID={inputAccessoryViewID}
+              autoCapitalize={autoCapitalize}
+              textContentType={textContentType}
             />
             {password && (
               <Pressable

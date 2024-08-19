@@ -29,7 +29,7 @@ export default function WidgetBase({
     <View style={tw.style(`overflow-hidden rounded-3xl`, containerStyle)}>
       <BlurView
         intensity={100}
-        style={tw.style(`grow gap-4 rounded-3xl bg-white/70 p-4`, style)}
+        style={tw.style(`grow gap-3 rounded-3xl bg-white/70 p-4`, style)}
       >
         {(title || rightComponent) && (
           <View style={tw`flex-row items-center justify-between`}>
