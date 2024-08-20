@@ -24,7 +24,7 @@ const fetchAccount = async () => {
 };
 
 const updateAccount = async (updateAccountDto: UpdateAccountDto) => {
-  return api.put<void>(`/account`, updateAccountDto).then((res) => res.data);
+  return api.patch<void>(`/account`, updateAccountDto).then((res) => res.data);
 };
 
 export const useGetAccount = () => {

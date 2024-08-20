@@ -7,17 +7,21 @@ import { ClassInput } from 'twrnc';
 export default function BaseButton({
   children,
   style,
-  onPress
+  onPress,
+  active = true
 }: {
   children: ReactNode;
   style?: ClassInput;
   onPress?: () => void;
+  active?: boolean
 }) {
+  const props = active ? { android_ripple: androidRipple } : null;
+
   return (
     <Pressable
-      android_ripple={androidRipple}
-      style={({ pressed }) => tw.style(style, pressed && 'ios:opacity-70')}
-      onPress={onPress}
+      {...props}
+      style={({ pressed }) => tw.style(style, pressed && active && 'ios:opacity-70')}
+      onPress={active ? onPress : null}
     >
       {children}
     </Pressable>

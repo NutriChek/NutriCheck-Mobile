@@ -14,7 +14,8 @@ export default function LargeButton({
   contentContainerStyle,
   textStyle,
   symbolName,
-  materialIconName
+  materialIconName,
+  active = true
 }: {
   children: ReactNode;
   onPress: () => void;
@@ -23,12 +24,14 @@ export default function LargeButton({
   symbolName?: SFSymbols5_0;
   materialIconName?: string;
   textStyle?: ClassInput;
+  active?: boolean;
 }) {
   return (
     <View style={tw.style(`overflow-hidden rounded-full`, style)}>
       <BaseButton
-        style={tw.style(`rounded-full bg-black/60`, contentContainerStyle)}
+        style={tw.style(`rounded-full bg-black/60`, contentContainerStyle, !active && `opacity-70`)}
         onPress={onPress}
+        active={active}
       >
         <View style={tw`h-16 w-full flex-row items-center justify-center gap-2`}>
           {symbolName && (

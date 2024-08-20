@@ -73,7 +73,13 @@ export default function Account() {
         </View>
         <Caption style='text-white' text={`Account`} />
         <List childrenStyle={tw`bg-white/25`} appearance='light'>
-          <List.Item text={`Change password`} onPress={() => {}} />
+          <List.Item text={`Change password`} onPress={() => { }} />
+          <List.Item text={'Edit account'} onPress={() => { router.push({ pathname: '/modals/edit-account', params: {
+            firstName: account.data.firstName,
+            email: account.data.email,
+            lastName: account.data.lastName,
+            username: account.data.username
+          } }) }} />
           <List.Item
             text={`Log out`}
             textStyle='text-red-600'
