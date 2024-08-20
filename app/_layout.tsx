@@ -9,6 +9,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Toast, { ToastConfig } from 'react-native-toast-message';
 import { Text } from 'react-native';
 import { BlurView } from 'expo-blur';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const toastConfig: ToastConfig = {
   customToast: ({ text1, text2 }: { text1?: string; text2?: string }) => {
@@ -44,11 +45,13 @@ export default function Root() {
   }
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <SessionProvider>
-        <Stack screenOptions={{ headerShown: false }} />
-        <Toast config={toastConfig} />
-      </SessionProvider>
-    </QueryClientProvider>
+    <GestureHandlerRootView>
+      <QueryClientProvider client={queryClient}>
+        <SessionProvider>
+          <Stack screenOptions={{ headerShown: false }} />
+          <Toast config={toastConfig} />
+        </SessionProvider>
+      </QueryClientProvider>
+    </GestureHandlerRootView>
   );
 }
