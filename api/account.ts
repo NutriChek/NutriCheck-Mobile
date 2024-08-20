@@ -1,5 +1,6 @@
 import api from '@/api/api';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import Toast from 'react-native-toast-message';
 
 export interface Account {
   id: number;
@@ -12,10 +13,10 @@ export interface Account {
 }
 
 export interface UpdateAccountDto {
-  username: string;
-  email: string;
-  firstName: string;
-  lastName: string;
+  username?: string;
+  email?: string;
+  firstName?: string;
+  lastName?: string;
 }
 
 const fetchAccount = async () => {
@@ -30,5 +31,27 @@ export const useGetAccount = () => {
   return useQuery({
     queryKey: ['account'],
     queryFn: fetchAccount
+  });
+};
+
+export const useUpdateAccount = () => {
+  return useMutation({
+    mutationFn: updateAccount,
+    onError: (err) => {
+      Toast.show({
+        type: 'customToast',
+        text1: 'Error updating account!',
+        text2: err.message,
+        position: 'bottom'
+      });
+    },
+    onSuccess: () => {
+      Toast.show({
+        type: 'customToast',
+        text1: 'Account updated!',
+        text2: 'Your account has been updated successfully',
+        position: 'bottom'
+      });
+    }
   });
 };
