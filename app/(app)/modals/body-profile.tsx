@@ -14,6 +14,7 @@ import FormInput from '@/components/form-input';
 import KeyboardAccessory from '@/components/keyboard-accessory';
 import List from '@/components/list';
 import { kebabToTitleCase } from '@/lib/util';
+import { useGetBodyProfile, useUpdateBodyProfile } from '@/api/body-profile';
 
 const schema = yup
   .object({
@@ -28,23 +29,60 @@ const schema = yup
   .required();
 
 export default function BodyProfile() {
-  const { control, handleSubmit } = useForm({
+  const updateBodyProfile = useUpdateBodyProfile();
+  const bodyProfile = useGetBodyProfile();
+
+  const { height, weight, age, activityLevel, sex, pregnant, breastfeeding } = bodyProfile?.data?.bodyProfile || {};
+
+  const { control, handleSubmit, watch } = useForm({
     defaultValues: {
-      height: '0' as unknown as number,
-      weight: '0' as unknown as number,
-      age: '0' as unknown as number,
-      activityLevel: '1' as unknown as number,
-      sex: 'male',
-      pregnant: false,
-      breastfeeding: false
+      height: height || 0 as number,
+      weight: weight || 0 as number,
+      age: age || 0 as number,
+      activityLevel: activityLevel || 1 as number,
+      sex: sex || 'male' as string,
+      pregnant: pregnant || false as boolean,
+      breastfeeding: breastfeeding || false as boolean
     },
     resolver: yupResolver(schema),
     mode: 'onChange'
   });
 
-  const onSubmit: any = (data: typeof schema.fields) => {
-    console.log(data);
-    router.back();
+  const heightChanged = watch('height');
+  const weightChanged = watch('weight');
+  const ageChanged = watch('age');
+  const activityLevelChanged = watch('activityLevel');
+  const sexChanged = watch('sex');
+  const pregnantChanged = watch('pregnant');
+  const breastfeedingChanged = watch('breastfeeding');
+
+  const isChanged = () => {
+    return height != heightChanged
+      || weight != weightChanged
+      || age != ageChanged
+      || activityLevel != activityLevelChanged
+      || sex != sexChanged
+      || pregnant != pregnantChanged
+      || breastfeeding != breastfeedingChanged
+  }
+
+  const onSubmit: any = (data: {
+    height: number;
+    weight: number;
+    age: number;
+    activityLevel: number;
+    sex: string;
+    pregnant: boolean;
+    breastfeeding: boolean;
+  }) => {
+    updateBodyProfile.mutate({
+      bodyProfile: data
+    }, {
+      onSuccess: () => {
+        bodyProfile.refetch();
+        router.back();
+      }
+    })
   };
 
   return (
@@ -332,6 +370,7 @@ export default function BodyProfile() {
             contentContainerStyle={tw`bg-white/70`}
             textStyle={tw`text-black/80 text-lg`}
             onPress={handleSubmit(onSubmit)}
+            active={isChanged()}
           >
             Save
           </LargeButton>
