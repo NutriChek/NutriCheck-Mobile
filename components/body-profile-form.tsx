@@ -179,7 +179,7 @@ export default function BodyProfileForm({
                     {/*@ts-ignore*/}
                     <Menu.Content>
                       <Menu.CheckboxItem
-                        value={value === 1 ? 'on' : 'off'}
+                        value={value == 1 ? 'on' : 'off'}
                         key='extremely-inactive'
                         onValueChange={() => {
                           onChange(1);
@@ -189,7 +189,7 @@ export default function BodyProfileForm({
                         <Menu.ItemTitle>Extremely inactive</Menu.ItemTitle>
                       </Menu.CheckboxItem>
                       <Menu.CheckboxItem
-                        value={value === 1.4 ? 'on' : 'off'}
+                        value={value == 1.4 ? 'on' : 'off'}
                         key='sedentary'
                         onValueChange={() => {
                           onChange(1.4);
@@ -199,7 +199,7 @@ export default function BodyProfileForm({
                         <Menu.ItemTitle>Sedentary</Menu.ItemTitle>
                       </Menu.CheckboxItem>
                       <Menu.CheckboxItem
-                        value={value === 1.7 ? 'on' : 'off'}
+                        value={value == 1.7 ? 'on' : 'off'}
                         key='moderately-active'
                         onValueChange={() => {
                           onChange(1.7);
@@ -209,7 +209,7 @@ export default function BodyProfileForm({
                         <Menu.ItemTitle>Moderately active</Menu.ItemTitle>
                       </Menu.CheckboxItem>
                       <Menu.CheckboxItem
-                        value={value === 2.0 ? 'on' : 'off'}
+                        value={value == 2.0 ? 'on' : 'off'}
                         key='vigorously-active'
                         onValueChange={() => {
                           onChange(2.0);
@@ -219,7 +219,7 @@ export default function BodyProfileForm({
                         <Menu.ItemTitle>Vigorously active</Menu.ItemTitle>
                       </Menu.CheckboxItem>
                       <Menu.CheckboxItem
-                        value={value === 2.4 ? 'on' : 'off'}
+                        value={value == 2.4 ? 'on' : 'off'}
                         key='extremely-active'
                         onValueChange={() => {
                           onChange(2.4);
