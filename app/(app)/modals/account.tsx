@@ -11,10 +11,12 @@ import { useSession } from '@/context/auth-context';
 import { useGetAccount } from '@/api/account';
 import LoadingView from '@/components/loading-view';
 import ErrorView from '@/components/error-view';
+import { useQueryClient } from '@tanstack/react-query';
 
 export default function Account() {
   const { signOut } = useSession();
   const account = useGetAccount();
+  const queryClient = useQueryClient();
 
   if (account.isPending) {
     return (
@@ -73,18 +75,29 @@ export default function Account() {
         </View>
         <Caption style='text-white' text={`Account`} />
         <List childrenStyle={tw`bg-white/25`} appearance='light'>
-          <List.Item text={`Change password`} onPress={() => { }} />
-          <List.Item text={'Edit account'} onPress={() => { router.push({ pathname: '/modals/edit-account', params: {
-            firstName: account.data.firstName,
-            email: account.data.email,
-            lastName: account.data.lastName,
-            username: account.data.username
-          } }) }} />
+          <List.Item text={`Change password`} onPress={() => {}} />
+          <List.Item
+            text={'Edit account'}
+            onPress={() => {
+              router.push({
+                pathname: '/modals/edit-account',
+                params: {
+                  firstName: account.data.firstName,
+                  email: account.data.email,
+                  lastName: account.data.lastName,
+                  username: account.data.username
+                }
+              });
+            }}
+          />
           <List.Item
             text={`Log out`}
             textStyle='text-red-600'
-            onPress={() => {
+            onPress={async () => {
+              queryClient.clear();
+              await queryClient.resetQueries();
               signOut();
+              router.replace('/');
             }}
           />
         </List>

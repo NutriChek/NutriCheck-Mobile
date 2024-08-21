@@ -2,6 +2,7 @@ import { View } from 'react-native';
 import React, { ReactElement } from 'react';
 import ListItem from '@/components/list-item';
 import { Style } from 'twrnc';
+import tw from '@/lib/tailwind';
 
 export default function List({
   children,
@@ -51,7 +52,7 @@ export default function List({
     return null;
   });
 
-  return <View style={style}>{modifiedChildren}</View>;
+  return <View style={tw.style(`rounded-2xl`,style)}>{modifiedChildren}</View>;
 }
 
 List.Item = ListItem;
