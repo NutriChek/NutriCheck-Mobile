@@ -4,6 +4,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import SuggestionCard from './suggestion-card';
 import { router } from 'expo-router';
 import HeaderWidgetWrapper from '@/components/header-widget-wrapper';
+import WidgetBase from '@/components/widget-base';
 
 const backgrounds = [
   require('../assets/images/color-blur.png'),
@@ -20,18 +21,20 @@ export default function AskAIWidget({ cards }: { cards: string[] }) {
           <Ionicons name='sparkles' size={20} color={tw.color('black/55')} />
         }
       >
-        <View style={tw`gap-3`}>
-          {cards.map((card, index) => (
-            <SuggestionCard
-              key={index}
-              text={card}
-              image={backgrounds[index % backgrounds.length]}
-              onPress={() => {
-                router.replace('/page');
-              }}
-            />
-          ))}
-        </View>
+        <WidgetBase size='lg'>
+          <View style={tw`gap-3`}>
+            {cards.map((card, index) => (
+              <SuggestionCard
+                key={index}
+                text={card}
+                image={backgrounds[index % backgrounds.length]}
+                onPress={() => {
+                  router.replace('/page');
+                }}
+              />
+            ))}
+          </View>
+        </WidgetBase>
       </HeaderWidgetWrapper>
     </>
   );

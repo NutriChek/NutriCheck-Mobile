@@ -1,5 +1,5 @@
 import ModalWrapper from '@/components/modal-wrapper';
-import { Pressable, Text, TextInput, View } from 'react-native';
+import { Pressable, TextInput, View } from 'react-native';
 import ModalHeader from '@/components/modal-header';
 import { router } from 'expo-router';
 import React, { useEffect, useState } from 'react';
@@ -8,105 +8,13 @@ import Animated, {
   useAnimatedStyle,
   withDelay,
   withSequence,
-  withSpring,
   withTiming
 } from 'react-native-reanimated';
 import tw from '@/lib/tailwind';
-import { BlurView } from 'expo-blur';
 import { SymbolView } from 'expo-symbols';
-import { androidRipple, rgbaToHex } from '@/lib/util';
-import { SFSymbols5_0 } from 'sf-symbols-typescript';
+import { rgbaToHex } from '@/lib/util';
 import { MaterialCommunityIcons, MaterialIcons } from 'expo-vector-icons';
-
-function SuggestionCard({
-  text,
-  state,
-  transformSize,
-  transformDelay,
-  opacityDelay,
-  symbolName,
-  materialIconName,
-  onPress
-}: {
-  text: string;
-  state: boolean;
-  transformSize: number;
-  transformDelay: number;
-  opacityDelay: number;
-  symbolName: SFSymbols5_0;
-  materialIconName: string;
-  onPress: () => void;
-}) {
-  const style = useAnimatedStyle(() => {
-    return {
-      transform: [
-        {
-          translateY: withDelay(
-            transformDelay,
-            withSpring(+state * transformSize, {
-              damping: 13.5
-            })
-          )
-        }
-      ],
-      opacity: withDelay(opacityDelay, withTiming(+state))
-    };
-  });
-
-  return (
-    <Animated.View
-      style={[
-        style,
-        {
-          height: 50,
-          position: 'absolute',
-          left: 16,
-          bottom: 0,
-          shadowOffset: { width: 0, height: 0 },
-          shadowColor: 'black',
-          shadowOpacity: 0.15,
-          shadowRadius: 10
-        }
-      ]}
-    >
-      <View style={tw`overflow-hidden rounded-2xl`}>
-        <Pressable
-          android_ripple={androidRipple}
-          onPress={onPress}
-          style={({ pressed }) =>
-            tw.style('bg-white/45', pressed && 'ios:bg-white/30')
-          }
-        >
-          <BlurView
-            intensity={50}
-            style={tw`h-full flex-row items-center justify-center gap-1.5 p-4`}
-          >
-            <SymbolView
-              name={symbolName}
-              size={20}
-              tintColor={rgbaToHex(tw.color('black/70') as string)}
-              fallback={
-                <MaterialIcons
-                  name={materialIconName as any}
-                  size={20}
-                  color={rgbaToHex(tw.color('black/70') as string)}
-                />
-              }
-            />
-            <Text
-              style={{
-                ...tw`text-[16px] font-medium text-black/80`,
-                includeFontPadding: false
-              }}
-            >
-              {text}
-            </Text>
-          </BlurView>
-        </Pressable>
-      </View>
-    </Animated.View>
-  );
-}
+import { SuggestionChip } from '@/components/suggestion-chip';
 
 export default function Search() {
   const keyboard = useAnimatedKeyboard({ isStatusBarTranslucentAndroid: true });
@@ -153,7 +61,7 @@ export default function Search() {
           }
         ]}
       >
-        <SuggestionCard
+        <SuggestionChip
           text='Sarmale de post'
           symbolName='magnifyingglass'
           materialIconName='search'
@@ -163,7 +71,7 @@ export default function Search() {
           transformDelay={250}
           opacityDelay={250}
         />
-        <SuggestionCard
+        <SuggestionChip
           text='Tochitura cu mamaliga'
           symbolName='magnifyingglass'
           materialIconName='search'
@@ -173,7 +81,7 @@ export default function Search() {
           transformDelay={200}
           opacityDelay={200}
         />
-        <SuggestionCard
+        <SuggestionChip
           text='Reteta de cartofi prajiti sanatosi'
           symbolName='magnifyingglass'
           materialIconName='search'
@@ -183,7 +91,7 @@ export default function Search() {
           transformDelay={150}
           opacityDelay={150}
         />
-        <SuggestionCard
+        <SuggestionChip
           text='elon musk'
           symbolName='clock'
           materialIconName='access-time'

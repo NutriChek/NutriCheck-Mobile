@@ -1,4 +1,4 @@
-import { Text, View } from 'react-native';
+import { Text, useWindowDimensions, View } from 'react-native';
 import tw from '@/lib/tailwind';
 import { ReactNode } from 'react';
 import { Style } from 'twrnc';
@@ -16,6 +16,8 @@ export default function WidgetBase({
   rightComponent,
   style,
   containerStyle,
+  size = 'auto',
+  inset = 0
 }: {
   children: ReactNode;
   title?: string;
@@ -24,9 +26,24 @@ export default function WidgetBase({
   rightComponent?: ReactNode;
   style?: Style;
   containerStyle?: Style;
+  size?: 'sm' | 'md' | 'lg' | 'auto';
+  inset?: number;
 }) {
+  const { width } = useWindowDimensions();
+
   return (
-    <View style={tw.style(`overflow-hidden rounded-3xl`, containerStyle)}>
+    <View
+      style={tw.style(
+        `overflow-hidden rounded-3xl`,
+        containerStyle,
+        size === 'sm' && {
+          width: width / 2 - inset,
+          height: width / 2 - inset
+        },
+        size === 'md' && { width: width - inset, height: width / 2 - inset },
+        size === 'lg' && { width: width - inset, height: width - inset }
+      )}
+    >
       <BlurView
         intensity={100}
         style={tw.style(`grow gap-3 rounded-3xl bg-white/70 p-4`, style)}
