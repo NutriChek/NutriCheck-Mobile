@@ -1,5 +1,5 @@
 import tw from '@/lib/tailwind';
-import { Text, View } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 import React from 'react';
 import { router } from 'expo-router';
 import * as Menu from 'zeego/dropdown-menu';
@@ -52,7 +52,7 @@ export default function Nutriments() {
               render={({ field: { onChange, value } }) => (
                 <Menu.Root>
                   <Menu.Trigger>
-                    <View style={tw`flex-row gap-1`}>
+                    <Pressable style={tw`flex-row gap-1`}>
                       <Text style={tw`p-0 text-base text-white`}>
                         {value == 1
                           ? 'A'
@@ -69,50 +69,46 @@ export default function Nutriments() {
                         size={24}
                         color={'rgba(255 255 255 / 0.7)'}
                       />
-                    </View>
+                    </Pressable>
                   </Menu.Trigger>
                   {/*@ts-ignore*/}
                   <Menu.Content>
-                    <Menu.CheckboxItem
-                      value={value === 1 ? 'on' : 'off'}
+                    <Menu.Item
                       key='A'
-                      onValueChange={() => {
+                      onSelect={() => {
                         onChange(1);
                       }}
                     >
                       <Menu.ItemIndicator />
                       <Menu.ItemTitle>A</Menu.ItemTitle>
-                    </Menu.CheckboxItem>
-                    <Menu.CheckboxItem
-                      value={value === 1.4 ? 'on' : 'off'}
+                    </Menu.Item>
+                    <Menu.Item
                       key='B'
-                      onValueChange={() => {
+                      onSelect={() => {
                         onChange(1.4);
                       }}
                     >
                       <Menu.ItemIndicator />
                       <Menu.ItemTitle>B</Menu.ItemTitle>
-                    </Menu.CheckboxItem>
-                    <Menu.CheckboxItem
-                      value={value === 1.7 ? 'on' : 'off'}
+                    </Menu.Item>
+                    <Menu.Item
                       key='C'
-                      onValueChange={() => {
+                      onSelect={() => {
                         onChange(1.7);
                       }}
                     >
                       <Menu.ItemIndicator />
                       <Menu.ItemTitle>C</Menu.ItemTitle>
-                    </Menu.CheckboxItem>
-                    <Menu.CheckboxItem
-                      value={value === 2.0 ? 'on' : 'off'}
+                    </Menu.Item>
+                    <Menu.Item
                       key='D'
-                      onValueChange={() => {
+                      onSelect={() => {
                         onChange(2.0);
                       }}
                     >
                       <Menu.ItemIndicator />
                       <Menu.ItemTitle>D</Menu.ItemTitle>
-                    </Menu.CheckboxItem>
+                    </Menu.Item>
                   </Menu.Content>
                 </Menu.Root>
               )}
@@ -129,7 +125,7 @@ export default function Nutriments() {
               render={({ field: { onChange, value } }) => (
                 <Menu.Root>
                   <Menu.Trigger>
-                    <View style={tw`flex-row gap-1`}>
+                    <Pressable style={tw`flex-row gap-1`}>
                       <Text style={tw`p-0 text-base text-white`}>
                         {value ? 'Yes' : 'No'}
                       </Text>
@@ -138,30 +134,28 @@ export default function Nutriments() {
                         size={24}
                         color={'rgba(255 255 255 / 0.7)'}
                       />
-                    </View>
+                    </Pressable>
                   </Menu.Trigger>
                   {/*@ts-ignore*/}
                   <Menu.Content>
-                    <Menu.CheckboxItem
-                      value={value ? 'on' : 'off'}
+                    <Menu.Item
                       key='yes'
-                      onValueChange={() => {
+                      onSelect={() => {
                         onChange(true);
                       }}
                     >
                       <Menu.ItemIndicator />
                       <Menu.ItemTitle>Yes</Menu.ItemTitle>
-                    </Menu.CheckboxItem>
-                    <Menu.CheckboxItem
-                      value={!value ? 'on' : 'off'}
+                    </Menu.Item>
+                    <Menu.Item
                       key='no'
-                      onValueChange={() => {
+                      onSelect={() => {
                         onChange(false);
                       }}
                     >
                       <Menu.ItemIndicator />
                       <Menu.ItemTitle>No</Menu.ItemTitle>
-                    </Menu.CheckboxItem>
+                    </Menu.Item>
                   </Menu.Content>
                 </Menu.Root>
               )}
@@ -178,7 +172,7 @@ export default function Nutriments() {
               render={({ field: { onChange, value } }) => (
                 <Menu.Root>
                   <Menu.Trigger>
-                    <View style={tw`flex-row gap-1`}>
+                    <Pressable style={tw`flex-row gap-1`}>
                       <Text style={tw`p-0 text-base text-white`}>
                         {value ? 'Yes' : 'No'}
                       </Text>
@@ -187,30 +181,28 @@ export default function Nutriments() {
                         size={24}
                         color={'rgba(255 255 255 / 0.7)'}
                       />
-                    </View>
+                    </Pressable>
                   </Menu.Trigger>
                   {/*@ts-ignore*/}
                   <Menu.Content>
-                    <Menu.CheckboxItem
-                      value={value ? 'on' : 'off'}
+                    <Menu.Item
                       key='yes'
-                      onValueChange={() => {
+                      onSelect={() => {
                         onChange(true);
                       }}
                     >
                       <Menu.ItemIndicator />
                       <Menu.ItemTitle>Yes</Menu.ItemTitle>
-                    </Menu.CheckboxItem>
-                    <Menu.CheckboxItem
-                      value={!value ? 'on' : 'off'}
+                    </Menu.Item>
+                    <Menu.Item
                       key='no'
-                      onValueChange={() => {
+                      onSelect={() => {
                         onChange(false);
                       }}
                     >
                       <Menu.ItemIndicator />
                       <Menu.ItemTitle>No</Menu.ItemTitle>
-                    </Menu.CheckboxItem>
+                    </Menu.Item>
                   </Menu.Content>
                 </Menu.Root>
               )}
@@ -227,7 +219,7 @@ export default function Nutriments() {
               render={({ field: { onChange, value } }) => (
                 <Menu.Root>
                   <Menu.Trigger>
-                    <View style={tw`flex-row gap-1`}>
+                    <Pressable style={tw`flex-row gap-1`}>
                       <Text style={tw`p-0 text-base text-white`}>
                         {value ? 'Yes' : 'No'}
                       </Text>
@@ -236,30 +228,28 @@ export default function Nutriments() {
                         size={24}
                         color={'rgba(255 255 255 / 0.7)'}
                       />
-                    </View>
+                    </Pressable>
                   </Menu.Trigger>
                   {/*@ts-ignore*/}
                   <Menu.Content>
-                    <Menu.CheckboxItem
-                      value={value ? 'on' : 'off'}
+                    <Menu.Item
                       key='yes'
-                      onValueChange={() => {
+                      onSelect={() => {
                         onChange(true);
                       }}
                     >
                       <Menu.ItemIndicator />
                       <Menu.ItemTitle>Yes</Menu.ItemTitle>
-                    </Menu.CheckboxItem>
-                    <Menu.CheckboxItem
-                      value={!value ? 'on' : 'off'}
+                    </Menu.Item>
+                    <Menu.Item
                       key='no'
-                      onValueChange={() => {
+                      onSelect={() => {
                         onChange(false);
                       }}
                     >
                       <Menu.ItemIndicator />
                       <Menu.ItemTitle>No</Menu.ItemTitle>
-                    </Menu.CheckboxItem>
+                    </Menu.Item>
                   </Menu.Content>
                 </Menu.Root>
               )}
@@ -276,7 +266,7 @@ export default function Nutriments() {
               render={({ field: { onChange, value } }) => (
                 <Menu.Root>
                   <Menu.Trigger>
-                    <View style={tw`flex-row gap-1`}>
+                    <Pressable style={tw`flex-row gap-1`}>
                       <Text style={tw`p-0 text-base text-white`}>
                         {value ? 'Yes' : 'No'}
                       </Text>
@@ -285,30 +275,28 @@ export default function Nutriments() {
                         size={24}
                         color={'rgba(255 255 255 / 0.7)'}
                       />
-                    </View>
+                    </Pressable>
                   </Menu.Trigger>
                   {/*@ts-ignore*/}
                   <Menu.Content>
-                    <Menu.CheckboxItem
-                      value={value ? 'on' : 'off'}
+                    <Menu.Item
                       key='yes'
-                      onValueChange={() => {
+                      onSelect={() => {
                         onChange(true);
                       }}
                     >
                       <Menu.ItemIndicator />
                       <Menu.ItemTitle>Yes</Menu.ItemTitle>
-                    </Menu.CheckboxItem>
-                    <Menu.CheckboxItem
-                      value={!value ? 'on' : 'off'}
+                    </Menu.Item>
+                    <Menu.Item
                       key='no'
-                      onValueChange={() => {
+                      onSelect={() => {
                         onChange(false);
                       }}
                     >
                       <Menu.ItemIndicator />
                       <Menu.ItemTitle>No</Menu.ItemTitle>
-                    </Menu.CheckboxItem>
+                    </Menu.Item>
                   </Menu.Content>
                 </Menu.Root>
               )}
