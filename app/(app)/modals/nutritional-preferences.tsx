@@ -37,28 +37,7 @@ export default function NutritionalPreferences() {
       />
       <ScrollView style={tw`px-4`}>
         <NutritionalPreferencesForm
-        palmOil = {nutritionalPreferences.data.palmOil}
-        diet = {nutritionalPreferences.data.diet}
-        searchIngredient = {nutritionalPreferences.data.searchIngredient} 
-        nutriscore = {nutritionalPreferences.data.nutriscore}
-        salt = {nutritionalPreferences.data.salt}
-        sugar = {nutritionalPreferences.data.sugar} 
-        fat = {nutritionalPreferences.data.fat}
-        saturatedFat = {nutritionalPreferences.data.saturatedFat} 
-        gluten = {nutritionalPreferences.data.gluten}
-        milk = {nutritionalPreferences.data.milk}
-        eggs = {nutritionalPreferences.data.eggs}
-        nuts = {nutritionalPreferences.data.nuts}
-        peanuts = {nutritionalPreferences.data.peanuts} 
-        sesameSeeds = {nutritionalPreferences.data.sesameSeeds}
-        soybeans = {nutritionalPreferences.data.soybeans} 
-        celery = {nutritionalPreferences.data.celery} 
-        mustard = {nutritionalPreferences.data.mustard} 
-        lupin = {nutritionalPreferences.data.lupin} 
-        fish = {nutritionalPreferences.data.fish} 
-        crustaceans = {nutritionalPreferences.data.crustaceans}
-        molluscs = {nutritionalPreferences.data.molluscs} 
-        sulphurDioxide = {nutritionalPreferences.data.sulphurDioxide}
+          data={nutritionalPreferences.data}
           onSuccess={() => {
             nutritionalPreferences.refetch();
             router.back();

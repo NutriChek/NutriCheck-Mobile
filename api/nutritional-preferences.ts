@@ -4,13 +4,14 @@ import Toast from 'react-native-toast-message';
 
 export interface NutritionalPreferences {
   nutriscore: number;
-  salt: boolean;
-  sugar: boolean;
-  fat: boolean;
-  saturatedFat: boolean;
+  lowSalt: boolean;
+  lowSugar: boolean;
+  lowFat: boolean;
+  lowSaturatedFat: boolean;
+
   palmOil: boolean;
   diet: number;
-  searchIngredient: number;
+
   gluten: boolean;
   milk: boolean;
   eggs: boolean;
@@ -24,7 +25,7 @@ export interface NutritionalPreferences {
   fish: boolean;
   crustaceans: boolean;
   molluscs: boolean;
-  sulphurDioxide: boolean;
+  sulphurs: boolean;
 }
 
 export interface NutritionalPreferencesDto {

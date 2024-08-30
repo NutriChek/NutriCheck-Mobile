@@ -1,4 +1,4 @@
-import { Pressable, ScrollView, Text, View } from 'react-native';
+import { View } from 'react-native';
 import tw from '@/lib/tailwind';
 import List from '@/components/list';
 import { Controller, useForm } from 'react-hook-form';
@@ -9,116 +9,73 @@ import React from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { NutritionalPreferences, useUpdateNutritionalPreferences } from '@/api/nutritional-preferences';
-import ModalWrapper from './modal-wrapper';
-import ModalHeader from './modal-header';
 import Caption from './caption';
 import Nutriments from './nutriments';
-import { router } from 'expo-router';
 import Alergens from './alergens';
 import KeyboardAccessory from './keyboard-accessory';
+import SelectController from './select-controller';
+import YesNoController from './yes-no-controller';
 
-const schema = yup
-  .object({
-    palmOil: yup.boolean().required(),
-    diet: yup.number().required(),
-    searchIngredient: yup.number(),
-    nutriscore: yup.number().required(),
-    salt: yup.boolean().required(),
-    sugar: yup.boolean().required(),
-    fat: yup.boolean().required(),
-    saturatedFat: yup.boolean().required(),
-    gluten: yup.boolean().required(),
-    milk: yup.boolean().required(),
-    eggs: yup.boolean().required(),
-    nuts: yup.boolean().required(),
-    peanuts: yup.boolean().required(),
-    sesameSeeds: yup.boolean().required(),
-    soybeans: yup.boolean().required(),
-    celery: yup.boolean().required(),
-    mustard: yup.boolean().required(),
-    lupin: yup.boolean().required(),
-    fish: yup.boolean().required(),
-    crustaceans: yup.boolean().required(),
-    molluscs: yup.boolean().required(),
-    sulphurDioxide: yup.boolean().required()
-  })
-  .required();
+const schema = yup.object({
+  nutriscore: yup.number().required(),
+  lowSalt: yup.boolean().required(),
+  lowSugar: yup.boolean().required(),
+  lowFat: yup.boolean().required(),
+  lowSaturatedFat: yup.boolean().required(),
+
+  palmOil: yup.boolean().required(),
+  diet: yup.number().required(),
+
+  gluten: yup.boolean().required(),
+  milk: yup.boolean().required(),
+  eggs: yup.boolean().required(),
+  nuts: yup.boolean().required(),
+  peanuts: yup.boolean().required(),
+  sesameSeeds: yup.boolean().required(),
+  soybeans: yup.boolean().required(),
+  celery: yup.boolean().required(),
+  mustard: yup.boolean().required(),
+  lupin: yup.boolean().required(),
+  fish: yup.boolean().required(),
+  crustaceans: yup.boolean().required(),
+  molluscs: yup.boolean().required(),
+  sulphurs: yup.boolean().required()
+}).required();
 
 export default function NutritionalPreferencesForm({
-    palmOil, 
-    diet, 
-    searchIngredient, 
-    nutriscore, 
-    salt, 
-    sugar, 
-    fat, 
-    saturatedFat, 
-    gluten,
-    milk, 
-    eggs, 
-    nuts, 
-    peanuts, 
-    sesameSeeds, 
-    soybeans, 
-    celery, 
-    mustard, 
-    lupin, 
-    fish, 
-    crustaceans,
-    molluscs, 
-    sulphurDioxide,
-    onSuccess
+  data,
+  onSuccess
 }: {
-    palmOil: boolean,
-    diet: number | null | undefined,
-    searchIngredient : number | null | undefined, 
-    nutriscore: number | null | undefined, 
-    salt: boolean, 
-    sugar: boolean, 
-    fat: boolean, 
-    saturatedFat: boolean, 
-    gluten: boolean,
-    milk: boolean, 
-    eggs: boolean, 
-    nuts: boolean, 
-    peanuts: boolean, 
-    sesameSeeds: boolean, 
-    soybeans: boolean, 
-    celery: boolean, 
-    mustard: boolean, 
-    lupin: boolean, 
-    fish: boolean, 
-    crustaceans: boolean,
-    molluscs: boolean, 
-    sulphurDioxide: boolean,
-    onSuccess: () => void;
+  data: NutritionalPreferences;
+  onSuccess: () => void;
 }) {
   const updateNutritionalPreferences = useUpdateNutritionalPreferences();
 
   const { control, handleSubmit, watch } = useForm({
     defaultValues: {
-      palmOil: palmOil || false,
-      diet: diet || 2.0 as unknown as number,
-      searchIngredient: searchIngredient as unknown as number,
-      nutriscore: nutriscore || 0 as unknown as number,
-      salt: salt || false,
-      sugar: sugar || false,
-      fat: fat || false,
-      saturatedFat: saturatedFat || false,
-      gluten: gluten || false,
-      milk: milk || false,
-      eggs: eggs || false,
-      nuts: nuts || false,
-      peanuts: peanuts || false,
-      sesameSeeds: sesameSeeds || false,
-      soybeans: soybeans || false,
-      celery: celery || false,
-      mustard: mustard || false,
-      lupin: lupin || false,
-      fish: fish || false,
-      crustaceans: crustaceans || false,
-      molluscs: molluscs || false,
-      sulphurDioxide: sulphurDioxide || false,
+      nutriscore: data.nutriscore || 0 as unknown as number,
+      lowSalt: data.lowSalt || false,
+      lowSugar: data.lowSugar || false,
+      lowFat: data.lowFat || false,
+      lowSaturatedFat: data.lowSaturatedFat || false,
+
+      palmOil: data.palmOil || false,
+      diet: data.diet || 2.0 as unknown as number,
+
+      gluten: data.gluten || false,
+      milk: data.milk || false,
+      eggs: data.eggs || false,
+      nuts: data.nuts || false,
+      peanuts: data.peanuts || false,
+      sesameSeeds: data.sesameSeeds || false,
+      soybeans: data.soybeans || false,
+      celery: data.celery || false,
+      mustard: data.mustard || false,
+      lupin: data.lupin || false,
+      fish: data.fish || false,
+      crustaceans: data.crustaceans || false,
+      molluscs: data.molluscs || false,
+      sulphurs: data.sulphurs || false,
     },
     resolver: yupResolver(schema),
     mode: 'onChange'
@@ -127,28 +84,29 @@ export default function NutritionalPreferencesForm({
   const formWatch = watch();
 
   const isChanged = () => {
-    return palmOil != formWatch.palmOil
-      || diet != formWatch.diet
-      || searchIngredient != formWatch.searchIngredient
-      || nutriscore != formWatch.nutriscore
-      || salt != formWatch.salt
-      || sugar != formWatch.sugar
-      || fat != formWatch.fat
-      || saturatedFat != formWatch.saturatedFat
-      || gluten != formWatch.gluten
-      || milk != formWatch.gluten
-      || eggs != formWatch.eggs
-      || nuts != formWatch.nuts
-      || peanuts != formWatch.peanuts
-      || sesameSeeds != formWatch.sesameSeeds
-      || soybeans != formWatch.soybeans
-      || celery != formWatch.celery
-      || mustard != formWatch.mustard
-      || lupin != formWatch.lupin
-      || fish != formWatch.fish
-      || crustaceans != formWatch.crustaceans
-      || molluscs != formWatch.molluscs
-      || sulphurDioxide != formWatch.sulphurDioxide
+    return data.nutriscore != formWatch.nutriscore
+      || data.lowSalt != formWatch.lowSalt
+      || data.lowSugar != formWatch.lowSugar
+      || data.lowFat != formWatch.lowFat
+      || data.lowSaturatedFat != formWatch.lowSaturatedFat
+
+      || data.palmOil != formWatch.palmOil
+      || data.diet != formWatch.diet
+
+      || data.gluten != formWatch.gluten
+      || data.milk != formWatch.gluten
+      || data.eggs != formWatch.eggs
+      || data.nuts != formWatch.nuts
+      || data.peanuts != formWatch.peanuts
+      || data.sesameSeeds != formWatch.sesameSeeds
+      || data.soybeans != formWatch.soybeans
+      || data.celery != formWatch.celery
+      || data.mustard != formWatch.mustard
+      || data.lupin != formWatch.lupin
+      || data.fish != formWatch.fish
+      || data.crustaceans != formWatch.crustaceans
+      || data.molluscs != formWatch.molluscs
+      || data.sulphurs != formWatch.sulphurs
   }
 
   const onSubmit: any = (data: NutritionalPreferences) => {
@@ -161,130 +119,34 @@ export default function NutritionalPreferencesForm({
     <>
       <Nutriments />
       <View>
-        <Caption style='text-white' text={'Ingredients'} />
+        <Caption style={tw`text-white`} text={'Ingredients'} />
         <List childrenStyle={tw`bg-white/25`} appearance='light'>
           <List.Item
             text={`Palm oil`}
             shouldPress={false}
-            rightComponent={
-              <Controller
-                control={control}
-                name='palmOil'
-                render={({ field: { onChange, value } }) => (
-                  <Menu.Root>
-                    <Menu.Trigger>
-                      <Pressable style={tw`flex-row gap-1`}>
-                        <Text style={tw`p-0 text-base text-white`}>
-                          {value ? 'Yes' : 'No'}
-                        </Text>
-                        <Ionicons
-                          name='chevron-expand-outline'
-                          size={24}
-                          color={'rgba(255 255 255 / 0.7)'}
-                        />
-                      </Pressable>
-                    </Menu.Trigger>
-                    {/*@ts-ignore*/}
-                    <Menu.Content>
-                      <Menu.Item
-                        key='yes'
-                        onSelect={() => {
-                          onChange(true);
-                        }}
-                      >
-                        <Menu.ItemIndicator />
-                        <Menu.ItemTitle>Yes</Menu.ItemTitle>
-                      </Menu.Item>
-                      <Menu.Item
-                        key='no'
-                        onSelect={() => {
-                          onChange(false);
-                        }}
-                      >
-                        <Menu.ItemIndicator />
-                        <Menu.ItemTitle>No</Menu.ItemTitle>
-                      </Menu.Item>
-                    </Menu.Content>
-                  </Menu.Root>
-                )}
-              />
-            }
+            rightComponent={<YesNoController control={control} name="palmOil" />}
           />
           <List.Item
             text={`Diet`}
             shouldPress={false}
             rightComponent={
-              <Controller
+              <SelectController
                 control={control}
-                name='diet'
-                render={({ field: { onChange, value } }) => (
-                  <Menu.Root>
-                    <Menu.Trigger>
-                      <Pressable style={tw`flex-row gap-1`}>
-                        <Text style={tw`p-0 text-base text-white`}>
-                          {value == 1
-                            ? 'Vegan'
-                            : value == 1.4
-                              ? 'Keto'
-                              : value == 1.7
-                                ? 'Vegetarian'
-                                : 'None'}
-                        </Text>
-                        <Ionicons
-                          name='chevron-expand-outline'
-                          size={24}
-                          color={'rgba(255 255 255 / 0.7)'}
-                        />
-                      </Pressable>
-                    </Menu.Trigger>
-                    {/*@ts-ignore*/}
-                    <Menu.Content>
-                      <Menu.Item
-                        key='vegan'
-                        onSelect={() => {
-                          onChange(1);
-                        }}
-                      >
-                        <Menu.ItemIndicator />
-                        <Menu.ItemTitle>Vegan</Menu.ItemTitle>
-                      </Menu.Item>
-                      <Menu.Item
-                        key='keto'
-                        onSelect={() => {
-                          onChange(1.4);
-                        }}
-                      >
-                        <Menu.ItemIndicator />
-                        <Menu.ItemTitle>Keto</Menu.ItemTitle>
-                      </Menu.Item>
-                      <Menu.Item
-                        key='vegetarian'
-                        onSelect={() => {
-                          onChange(1.7);
-                        }}
-                      >
-                        <Menu.ItemIndicator />
-                        <Menu.ItemTitle>Vegetarian</Menu.ItemTitle>
-                      </Menu.Item>
-                      <Menu.Item
-                        key='nodiet'
-                        onSelect={() => {
-                          onChange(2.0);
-                        }}
-                      >
-                        <Menu.ItemIndicator />
-                        <Menu.ItemTitle>None</Menu.ItemTitle>
-                      </Menu.Item>
-                    </Menu.Content>
-                  </Menu.Root>
-                )}
+                name="diet"
+                data={[
+                  { value: 1, key: 'vegan', label: 'Vegan' },
+                  { value: 1.4, key: 'keto', label: 'Keto' },
+                  { value: 1.7, key: 'vegetarian', label: 'Vegetarian' },
+                  { value: 2.0, key: 'nodiet', label: 'None' }
+                ]}
+                defaultLabel="None"
               />
             }
           />
         </List>
       </View>
       <View>
-        <Caption text='Restricted ingredients' style={`text-white`} />
+        <Caption text='Restricted ingredients' style={tw`text-white`} />
         <List childrenStyle={tw`bg-white/25`} appearance='light'>
           <List.Item
             text={`Search for an ingredient`}
@@ -321,7 +183,7 @@ export default function NutritionalPreferencesForm({
       >
         Save
       </LargeButton>
-    <KeyboardAccessory inputAccessoryViewID={'id'} />
+      <KeyboardAccessory inputAccessoryViewID={'id'} />
     </>
   );
 }

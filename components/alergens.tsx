@@ -1,14 +1,13 @@
 import tw from '@/lib/tailwind';
-import { Pressable, Text, View } from 'react-native';
+import { View } from 'react-native';
 import React from 'react';
 import { router } from 'expo-router';
-import * as Menu from 'zeego/dropdown-menu';
-import Ionicons from '@expo/vector-icons/Ionicons';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Controller, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import List from '@/components/list';
 import Caption from '@/components/caption';
+import YesNoController from './yes-no-controller';
 
 const schema = yup
   .object({
@@ -17,7 +16,7 @@ const schema = yup
     eggs: yup.boolean(),
     nuts: yup.boolean(),
     peanuts: yup.boolean(),
-    sesameseeds: yup.boolean(),
+    sesameSeeds: yup.boolean(),
     soybeans: yup.boolean(),
     celery: yup.boolean(),
     mustard: yup.boolean(),
@@ -37,7 +36,7 @@ export default function Alergens() {
       eggs: false,
       nuts: false,
       peanuts: false,
-      sesameseeds: false,
+      sesameSeeds: false,
       soybeans: false,
       celery: false,
       mustard: false,
@@ -58,665 +57,77 @@ export default function Alergens() {
 
   return (
     <View>
-      <Caption text='Allergens' style={`text-white`} />
+      <Caption text='Allergens' style={tw`text-white`} />
       <List childrenStyle={tw`bg-white/25`} appearance='light'>
         <List.Item
           text={`Gluten`}
           shouldPress={false}
-          rightComponent={
-            <Controller
-              control={control}
-              name='gluten'
-              render={({ field: { onChange, value } }) => (
-                <Menu.Root>
-                  <Menu.Trigger>
-                    <Pressable style={tw`flex-row gap-1`}>
-                      <Text style={tw`p-0 text-base text-white`}>
-                        {value ? 'Yes' : 'No'}
-                      </Text>
-                      <Ionicons
-                        name='chevron-expand-outline'
-                        size={24}
-                        color={'rgba(255 255 255 / 0.7)'}
-                      />
-                    </Pressable>
-                  </Menu.Trigger>
-                  {/*@ts-ignore*/}
-                  <Menu.Content>
-                    <Menu.Item
-                      key='yes'
-                      onSelect={() => {
-                        onChange(true);
-                      }}
-                    >
-                      <Menu.ItemIndicator />
-                      <Menu.ItemTitle>Yes</Menu.ItemTitle>
-                    </Menu.Item>
-                    <Menu.Item
-                      key='no'
-                      onSelect={() => {
-                        onChange(false);
-                      }}
-                    >
-                      <Menu.ItemIndicator />
-                      <Menu.ItemTitle>No</Menu.ItemTitle>
-                    </Menu.Item>
-                  </Menu.Content>
-                </Menu.Root>
-              )}
-            />
-          }
+          rightComponent={<YesNoController control={control} name="gluten" />}
         />
         <List.Item
           text={`Milk`}
           shouldPress={false}
-          rightComponent={
-            <Controller
-              control={control}
-              name='milk'
-              render={({ field: { onChange, value } }) => (
-                <Menu.Root>
-                  <Menu.Trigger>
-                    <Pressable style={tw`flex-row gap-1`}>
-                      <Text style={tw`p-0 text-base text-white`}>
-                        {value ? 'Yes' : 'No'}
-                      </Text>
-                      <Ionicons
-                        name='chevron-expand-outline'
-                        size={24}
-                        color={'rgba(255 255 255 / 0.7)'}
-                      />
-                    </Pressable>
-                  </Menu.Trigger>
-                  {/*@ts-ignore*/}
-                  <Menu.Content>
-                    <Menu.Item
-                      key='yes'
-                      onSelect={() => {
-                        onChange(true);
-                      }}
-                    >
-                      <Menu.ItemIndicator />
-                      <Menu.ItemTitle>Yes</Menu.ItemTitle>
-                    </Menu.Item>
-                    <Menu.Item
-                      key='no'
-                      onSelect={() => {
-                        onChange(false);
-                      }}
-                    >
-                      <Menu.ItemIndicator />
-                      <Menu.ItemTitle>No</Menu.ItemTitle>
-                    </Menu.Item>
-                  </Menu.Content>
-                </Menu.Root>
-              )}
-            />
-          }
+          rightComponent={<YesNoController control={control} name="milk" />}
         />
         <List.Item
           text={`Eggs`}
           shouldPress={false}
-          rightComponent={
-            <Controller
-              control={control}
-              name='eggs'
-              render={({ field: { onChange, value } }) => (
-                <Menu.Root>
-                  <Menu.Trigger>
-                    <Pressable style={tw`flex-row gap-1`}>
-                      <Text style={tw`p-0 text-base text-white`}>
-                        {value ? 'Yes' : 'No'}
-                      </Text>
-                      <Ionicons
-                        name='chevron-expand-outline'
-                        size={24}
-                        color={'rgba(255 255 255 / 0.7)'}
-                      />
-                    </Pressable>
-                  </Menu.Trigger>
-                  {/*@ts-ignore*/}
-                  <Menu.Content>
-                    <Menu.Item
-                      key='yes'
-                      onSelect={() => {
-                        onChange(true);
-                      }}
-                    >
-                      <Menu.ItemIndicator />
-                      <Menu.ItemTitle>Yes</Menu.ItemTitle>
-                    </Menu.Item>
-                    <Menu.Item
-                      key='no'
-                      onSelect={() => {
-                        onChange(false);
-                      }}
-                    >
-                      <Menu.ItemIndicator />
-                      <Menu.ItemTitle>No</Menu.ItemTitle>
-                    </Menu.Item>
-                  </Menu.Content>
-                </Menu.Root>
-              )}
-            />
-          }
+          rightComponent={<YesNoController control={control} name="eggs" />}
         />
         <List.Item
           text={`Nuts`}
           shouldPress={false}
-          rightComponent={
-            <Controller
-              control={control}
-              name='nuts'
-              render={({ field: { onChange, value } }) => (
-                <Menu.Root>
-                  <Menu.Trigger>
-                    <Pressable style={tw`flex-row gap-1`}>
-                      <Text style={tw`p-0 text-base text-white`}>
-                        {value ? 'Yes' : 'No'}
-                      </Text>
-                      <Ionicons
-                        name='chevron-expand-outline'
-                        size={24}
-                        color={'rgba(255 255 255 / 0.7)'}
-                      />
-                    </Pressable>
-                  </Menu.Trigger>
-                  {/*@ts-ignore*/}
-                  <Menu.Content>
-                    <Menu.Item
-                      key='yes'
-                      onSelect={() => {
-                        onChange(true);
-                      }}
-                    >
-                      <Menu.ItemIndicator />
-                      <Menu.ItemTitle>Yes</Menu.ItemTitle>
-                    </Menu.Item>
-                    <Menu.Item
-                      key='no'
-                      onSelect={() => {
-                        onChange(false);
-                      }}
-                    >
-                      <Menu.ItemIndicator />
-                      <Menu.ItemTitle>No</Menu.ItemTitle>
-                    </Menu.Item>
-                  </Menu.Content>
-                </Menu.Root>
-              )}
-            />
-          }
+          rightComponent={<YesNoController control={control} name="nuts" />}
         />
         <List.Item
           text={`Peanuts`}
           shouldPress={false}
-          rightComponent={
-            <Controller
-              control={control}
-              name='peanuts'
-              render={({ field: { onChange, value } }) => (
-                <Menu.Root>
-                  <Menu.Trigger>
-                    <Pressable style={tw`flex-row gap-1`}>
-                      <Text style={tw`p-0 text-base text-white`}>
-                        {value ? 'Yes' : 'No'}
-                      </Text>
-                      <Ionicons
-                        name='chevron-expand-outline'
-                        size={24}
-                        color={'rgba(255 255 255 / 0.7)'}
-                      />
-                    </Pressable>
-                  </Menu.Trigger>
-                  {/*@ts-ignore*/}
-                  <Menu.Content>
-                    <Menu.Item
-                      key='yes'
-                      onSelect={() => {
-                        onChange(true);
-                      }}
-                    >
-                      <Menu.ItemIndicator />
-                      <Menu.ItemTitle>Yes</Menu.ItemTitle>
-                    </Menu.Item>
-                    <Menu.Item
-                      key='no'
-                      onSelect={() => {
-                        onChange(false);
-                      }}
-                    >
-                      <Menu.ItemIndicator />
-                      <Menu.ItemTitle>No</Menu.ItemTitle>
-                    </Menu.Item>
-                  </Menu.Content>
-                </Menu.Root>
-              )}
-            />
-          }
+          rightComponent={<YesNoController control={control} name="peanuts" />}
         />
         <List.Item
           text={`Sesame Seeds`}
           shouldPress={false}
-          rightComponent={
-            <Controller
-              control={control}
-              name='sesameseeds'
-              render={({ field: { onChange, value } }) => (
-                <Menu.Root>
-                  <Menu.Trigger>
-                    <Pressable style={tw`flex-row gap-1`}>
-                      <Text style={tw`p-0 text-base text-white`}>
-                        {value ? 'Yes' : 'No'}
-                      </Text>
-                      <Ionicons
-                        name='chevron-expand-outline'
-                        size={24}
-                        color={'rgba(255 255 255 / 0.7)'}
-                      />
-                    </Pressable>
-                  </Menu.Trigger>
-                  {/*@ts-ignore*/}
-                  <Menu.Content>
-                    <Menu.Item
-                      key='yes'
-                      onSelect={() => {
-                        onChange(true);
-                      }}
-                    >
-                      <Menu.ItemIndicator />
-                      <Menu.ItemTitle>Yes</Menu.ItemTitle>
-                    </Menu.Item>
-                    <Menu.Item
-                      key='no'
-                      onSelect={() => {
-                        onChange(false);
-                      }}
-                    >
-                      <Menu.ItemIndicator />
-                      <Menu.ItemTitle>No</Menu.ItemTitle>
-                    </Menu.Item>
-                  </Menu.Content>
-                </Menu.Root>
-              )}
-            />
-          }
+          rightComponent={<YesNoController control={control} name="sesameSeeds" />}
         />
         <List.Item
           text={`Soybeans`}
           shouldPress={false}
-          rightComponent={
-            <Controller
-              control={control}
-              name='soybeans'
-              render={({ field: { onChange, value } }) => (
-                <Menu.Root>
-                  <Menu.Trigger>
-                    <Pressable style={tw`flex-row gap-1`}>
-                      <Text style={tw`p-0 text-base text-white`}>
-                        {value ? 'Yes' : 'No'}
-                      </Text>
-                      <Ionicons
-                        name='chevron-expand-outline'
-                        size={24}
-                        color={'rgba(255 255 255 / 0.7)'}
-                      />
-                    </Pressable>
-                  </Menu.Trigger>
-                  {/*@ts-ignore*/}
-                  <Menu.Content>
-                    <Menu.Item
-                      key='yes'
-                      onSelect={() => {
-                        onChange(true);
-                      }}
-                    >
-                      <Menu.ItemIndicator />
-                      <Menu.ItemTitle>Yes</Menu.ItemTitle>
-                    </Menu.Item>
-                    <Menu.Item
-                      key='no'
-                      onSelect={() => {
-                        onChange(false);
-                      }}
-                    >
-                      <Menu.ItemIndicator />
-                      <Menu.ItemTitle>No</Menu.ItemTitle>
-                    </Menu.Item>
-                  </Menu.Content>
-                </Menu.Root>
-              )}
-            />
-          }
+          rightComponent={<YesNoController control={control} name="soybeans" />}
         />
         <List.Item
           text={`Celery`}
           shouldPress={false}
-          rightComponent={
-            <Controller
-              control={control}
-              name='celery'
-              render={({ field: { onChange, value } }) => (
-                <Menu.Root>
-                  <Menu.Trigger>
-                    <Pressable style={tw`flex-row gap-1`}>
-                      <Text style={tw`p-0 text-base text-white`}>
-                        {value ? 'Yes' : 'No'}
-                      </Text>
-                      <Ionicons
-                        name='chevron-expand-outline'
-                        size={24}
-                        color={'rgba(255 255 255 / 0.7)'}
-                      />
-                    </Pressable>
-                  </Menu.Trigger>
-                  {/*@ts-ignore*/}
-                  <Menu.Content>
-                    <Menu.Item
-                      key='yes'
-                      onSelect={() => {
-                        onChange(true);
-                      }}
-                    >
-                      <Menu.ItemIndicator />
-                      <Menu.ItemTitle>Yes</Menu.ItemTitle>
-                    </Menu.Item>
-                    <Menu.Item
-                      key='no'
-                      onSelect={() => {
-                        onChange(false);
-                      }}
-                    >
-                      <Menu.ItemIndicator />
-                      <Menu.ItemTitle>No</Menu.ItemTitle>
-                    </Menu.Item>
-                  </Menu.Content>
-                </Menu.Root>
-              )}
-            />
-          }
+          rightComponent={<YesNoController control={control} name="celery" />}
         />
         <List.Item
           text={`Mustard`}
           shouldPress={false}
-          rightComponent={
-            <Controller
-              control={control}
-              name='mustard'
-              render={({ field: { onChange, value } }) => (
-                <Menu.Root>
-                  <Menu.Trigger>
-                    <Pressable style={tw`flex-row gap-1`}>
-                      <Text style={tw`p-0 text-base text-white`}>
-                        {value ? 'Yes' : 'No'}
-                      </Text>
-                      <Ionicons
-                        name='chevron-expand-outline'
-                        size={24}
-                        color={'rgba(255 255 255 / 0.7)'}
-                      />
-                    </Pressable>
-                  </Menu.Trigger>
-                  {/*@ts-ignore*/}
-                  <Menu.Content>
-                    <Menu.Item
-                      key='yes'
-                      onSelect={() => {
-                        onChange(true);
-                      }}
-                    >
-                      <Menu.ItemIndicator />
-                      <Menu.ItemTitle>Yes</Menu.ItemTitle>
-                    </Menu.Item>
-                    <Menu.Item
-                      key='no'
-                      onSelect={() => {
-                        onChange(false);
-                      }}
-                    >
-                      <Menu.ItemIndicator />
-                      <Menu.ItemTitle>No</Menu.ItemTitle>
-                    </Menu.Item>
-                  </Menu.Content>
-                </Menu.Root>
-              )}
-            />
-          }
+          rightComponent={<YesNoController control={control} name="mustard" />}
         />
         <List.Item
           text={`Lupin`}
           shouldPress={false}
-          rightComponent={
-            <Controller
-              control={control}
-              name='lupin'
-              render={({ field: { onChange, value } }) => (
-                <Menu.Root>
-                  <Menu.Trigger>
-                    <Pressable style={tw`flex-row gap-1`}>
-                      <Text style={tw`p-0 text-base text-white`}>
-                        {value ? 'Yes' : 'No'}
-                      </Text>
-                      <Ionicons
-                        name='chevron-expand-outline'
-                        size={24}
-                        color={'rgba(255 255 255 / 0.7)'}
-                      />
-                    </Pressable>
-                  </Menu.Trigger>
-                  {/*@ts-ignore*/}
-                  <Menu.Content>
-                    <Menu.Item
-                      key='yes'
-                      onSelect={() => {
-                        onChange(true);
-                      }}
-                    >
-                      <Menu.ItemIndicator />
-                      <Menu.ItemTitle>Yes</Menu.ItemTitle>
-                    </Menu.Item>
-                    <Menu.Item
-                      key='no'
-                      onSelect={() => {
-                        onChange(false);
-                      }}
-                    >
-                      <Menu.ItemIndicator />
-                      <Menu.ItemTitle>No</Menu.ItemTitle>
-                    </Menu.Item>
-                  </Menu.Content>
-                </Menu.Root>
-              )}
-            />
-          }
+          rightComponent={<YesNoController control={control} name="lupin" />}
         />
         <List.Item
           text={`Fish`}
           shouldPress={false}
-          rightComponent={
-            <Controller
-              control={control}
-              name='fish'
-              render={({ field: { onChange, value } }) => (
-                <Menu.Root>
-                  <Menu.Trigger>
-                    <Pressable style={tw`flex-row gap-1`}>
-                      <Text style={tw`p-0 text-base text-white`}>
-                        {value ? 'Yes' : 'No'}
-                      </Text>
-                      <Ionicons
-                        name='chevron-expand-outline'
-                        size={24}
-                        color={'rgba(255 255 255 / 0.7)'}
-                      />
-                    </Pressable>
-                  </Menu.Trigger>
-                  {/*@ts-ignore*/}
-                  <Menu.Content>
-                    <Menu.Item
-                      key='yes'
-                      onSelect={() => {
-                        onChange(true);
-                      }}
-                    >
-                      <Menu.ItemIndicator />
-                      <Menu.ItemTitle>Yes</Menu.ItemTitle>
-                    </Menu.Item>
-                    <Menu.Item
-                      key='no'
-                      onSelect={() => {
-                        onChange(false);
-                      }}
-                    >
-                      <Menu.ItemIndicator />
-                      <Menu.ItemTitle>No</Menu.ItemTitle>
-                    </Menu.Item>
-                  </Menu.Content>
-                </Menu.Root>
-              )}
-            />
-          }
+          rightComponent={<YesNoController control={control} name="fish" />}
         />
         <List.Item
           text={`Crustaceans`}
           shouldPress={false}
-          rightComponent={
-            <Controller
-              control={control}
-              name='crustaceans'
-              render={({ field: { onChange, value } }) => (
-                <Menu.Root>
-                  <Menu.Trigger>
-                    <Pressable style={tw`flex-row gap-1`}>
-                      <Text style={tw`p-0 text-base text-white`}>
-                        {value ? 'Yes' : 'No'}
-                      </Text>
-                      <Ionicons
-                        name='chevron-expand-outline'
-                        size={24}
-                        color={'rgba(255 255 255 / 0.7)'}
-                      />
-                    </Pressable>
-                  </Menu.Trigger>
-                  {/*@ts-ignore*/}
-                  <Menu.Content>
-                    <Menu.Item
-                      key='yes'
-                      onSelect={() => {
-                        onChange(true);
-                      }}
-                    >
-                      <Menu.ItemIndicator />
-                      <Menu.ItemTitle>Yes</Menu.ItemTitle>
-                    </Menu.Item>
-                    <Menu.Item
-                      key='no'
-                      onSelect={() => {
-                        onChange(false);
-                      }}
-                    >
-                      <Menu.ItemIndicator />
-                      <Menu.ItemTitle>No</Menu.ItemTitle>
-                    </Menu.Item>
-                  </Menu.Content>
-                </Menu.Root>
-              )}
-            />
-          }
+          rightComponent={<YesNoController control={control} name="crustaceans" />}
         />
         <List.Item
           text={`Molluscs`}
           shouldPress={false}
-          rightComponent={
-            <Controller
-              control={control}
-              name='molluscs'
-              render={({ field: { onChange, value } }) => (
-                <Menu.Root>
-                  <Menu.Trigger>
-                    <Pressable style={tw`flex-row gap-1`}>
-                      <Text style={tw`p-0 text-base text-white`}>
-                        {value ? 'Yes' : 'No'}
-                      </Text>
-                      <Ionicons
-                        name='chevron-expand-outline'
-                        size={24}
-                        color={'rgba(255 255 255 / 0.7)'}
-                      />
-                    </Pressable>
-                  </Menu.Trigger>
-                  {/*@ts-ignore*/}
-                  <Menu.Content>
-                    <Menu.Item
-                      key='yes'
-                      onSelect={() => {
-                        onChange(true);
-                      }}
-                    >
-                      <Menu.ItemIndicator />
-                      <Menu.ItemTitle>Yes</Menu.ItemTitle>
-                    </Menu.Item>
-                    <Menu.Item
-                      key='no'
-                      onSelect={() => {
-                        onChange(false);
-                      }}
-                    >
-                      <Menu.ItemIndicator />
-                      <Menu.ItemTitle>No</Menu.ItemTitle>
-                    </Menu.Item>
-                  </Menu.Content>
-                </Menu.Root>
-              )}
-            />
-          }
+          rightComponent={<YesNoController control={control} name="molluscs" />}
         />
         <List.Item
           text={`Sulphur dioxide and sulphites`}
           shouldPress={false}
-          rightComponent={
-            <Controller
-              control={control}
-              name='sulphurs'
-              render={({ field: { onChange, value } }) => (
-                <Menu.Root>
-                  <Menu.Trigger>
-                    <Pressable style={tw`flex-row gap-1`}>
-                      <Text style={tw`p-0 text-base text-white`}>
-                        {value ? 'Yes' : 'No'}
-                      </Text>
-                      <Ionicons
-                        name='chevron-expand-outline'
-                        size={24}
-                        color={'rgba(255 255 255 / 0.7)'}
-                      />
-                    </Pressable>
-                  </Menu.Trigger>
-                  {/*@ts-ignore*/}
-                  <Menu.Content>
-                    <Menu.Item
-                      key='yes'
-                      onSelect={() => {
-                        onChange(true);
-                      }}
-                    >
-                      <Menu.ItemIndicator />
-                      <Menu.ItemTitle>Yes</Menu.ItemTitle>
-                    </Menu.Item>
-                    <Menu.Item
-                      key='no'
-                      onSelect={() => {
-                        onChange(false);
-                      }}
-                    >
-                      <Menu.ItemIndicator />
-                      <Menu.ItemTitle>No</Menu.ItemTitle>
-                    </Menu.Item>
-                  </Menu.Content>
-                </Menu.Root>
-              )}
-            />
-          }
+          rightComponent={<YesNoController control={control} name="sulphurs" />}
         />
       </List>
     </View>
