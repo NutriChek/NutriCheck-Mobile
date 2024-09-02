@@ -10,6 +10,7 @@ import Toast, { ToastConfig } from 'react-native-toast-message';
 import { Text } from 'react-native';
 import { BlurView } from 'expo-blur';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { KeyboardProvider } from 'react-native-keyboard-controller';
 
 const toastConfig: ToastConfig = {
   customToast: ({ text1, text2 }: { text1?: string; text2?: string }) => {
@@ -45,13 +46,15 @@ export default function Root() {
   }
 
   return (
-    <GestureHandlerRootView>
-      <QueryClientProvider client={queryClient}>
-        <SessionProvider>
-          <Stack screenOptions={{ headerShown: false }} />
-          <Toast config={toastConfig} />
-        </SessionProvider>
-      </QueryClientProvider>
-    </GestureHandlerRootView>
+    <KeyboardProvider>
+      <GestureHandlerRootView>
+        <QueryClientProvider client={queryClient}>
+          <SessionProvider>
+            <Stack screenOptions={{ headerShown: false }} />
+            <Toast config={toastConfig} />
+          </SessionProvider>
+        </QueryClientProvider>
+      </GestureHandlerRootView>
+    </KeyboardProvider>
   );
 }

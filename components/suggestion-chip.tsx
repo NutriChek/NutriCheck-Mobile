@@ -5,7 +5,7 @@ import Animated, {
   withSpring,
   withTiming
 } from 'react-native-reanimated';
-import { Pressable, StyleSheet, Text } from 'react-native';
+import { Pressable, Text } from 'react-native';
 import tw from '@/lib/tailwind';
 import { androidRipple, rgbaToHex } from '@/lib/util';
 import { BlurView } from 'expo-blur';
@@ -83,10 +83,30 @@ export function SuggestionChip({
           style={({ pressed }) =>
             tw.style(
               `bg-white/45 ${pressableStyle ?? ''}`,
-              pressed && `ios:bg-white/30 ${pressablePressedStyle ?? ''}`,
+              pressed && `ios:bg-white/30 ${pressablePressedStyle ?? ''}`
             )
           }
         >
+          {/*<MeshGradient*/}
+          {/*  style={{*/}
+          {/*    // flex: 1,*/}
+          {/*    position: 'absolute',*/}
+          {/*    top: 0,*/}
+          {/*    left: 0,*/}
+          {/*    right: 0,*/}
+          {/*    bottom: 0,*/}
+          {/*    zIndex: -10*/}
+          {/*  }}*/}
+          {/*  points={[*/}
+          {/*    [0.0, 0.0],*/}
+          {/*    [1.0, 0.0],*/}
+          {/*    [0.0, 1.0],*/}
+          {/*    [1.0, 1.0]*/}
+          {/*  ]}*/}
+          {/*  colors={['#c49ed7', '#96aed0', '#dea4a1', '#c49ed7']}*/}
+          {/*  animatedColors={['#c49ed7', '#dea4a1', '#96aed0', '#c49ed7']}*/}
+          {/*  animationDuration={2}*/}
+          {/*/>*/}
           <BlurView
             intensity={50}
             style={tw`h-full flex-row items-center justify-center gap-1.5 p-4`}

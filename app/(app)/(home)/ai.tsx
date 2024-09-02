@@ -1,13 +1,23 @@
+import HomeWrapper from '@/components/home-wrapper';
+import { SuggestionChip } from '@/components/suggestion-chip';
 import tw from '@/lib/tailwind';
+import { androidRipple, rgbaToHex } from '@/lib/util';
+import { BlurView } from 'expo-blur';
+import { Image } from 'expo-image';
+import { useFocusEffect } from 'expo-router';
+import { SymbolView } from 'expo-symbols';
+import { MaterialCommunityIcons } from 'expo-vector-icons';
+import React, { useState } from 'react';
 import {
-  ImageBackground, Platform,
+  ImageBackground,
+  Platform,
   Pressable,
   Text,
   TextInput,
   useWindowDimensions,
   View
 } from 'react-native';
-import { BlurView } from 'expo-blur';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import Animated, {
   SharedValue,
   useAnimatedProps,
@@ -18,14 +28,9 @@ import Animated, {
   withSequence,
   withTiming
 } from 'react-native-reanimated';
-import React, { useState } from 'react';
-import HomeWrapper from '@/components/home-wrapper';
-import { Image } from 'expo-image';
-import { useFocusEffect } from 'expo-router';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { SuggestionChip } from '@/components/suggestion-chip';
-import { androidRipple } from '@/lib/util';
-import { Style } from 'twrnc';
+import { SFSymbols5_0 } from 'sf-symbols-typescript';
+import { ClassInput, Style } from 'twrnc';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default function AI() {
   const [suggestionsShown, setSuggestionsShown] = useState(false);
@@ -42,10 +47,10 @@ export default function AI() {
 
     textColor.value = withRepeat(
       withSequence(
-        withTiming('rgb(236,233,255)', { duration: 1500 }),
-        withTiming('rgb(255,230,230)', { duration: 1500 }),
-        withTiming('rgb(255,247,232)', { duration: 1500 }),
-        withTiming('rgb(202,217,255)', { duration: 1500 })
+        withTiming('rgb(236,233,255)', { duration: 1250 }),
+        withTiming('rgb(255,230,230)', { duration: 1250 }),
+        withTiming('rgb(255,247,232)', { duration: 1250 }),
+        withTiming('rgb(202,217,255)', { duration: 1250 })
       ),
       -1,
       true
@@ -53,10 +58,10 @@ export default function AI() {
 
     color.value = withRepeat(
       withSequence(
-        withTiming('rgb(161,153,224)', { duration: 1500 }),
-        withTiming('rgb(225,162,162)', { duration: 1500 }),
-        withTiming('rgb(220,197,159)', { duration: 1500 }),
-        withTiming('rgb(176,185,231)', { duration: 1500 })
+        withTiming('rgb(161,153,224)', { duration: 1250 }),
+        withTiming('rgb(225,162,162)', { duration: 1250 }),
+        withTiming('rgb(220,197,159)', { duration: 1250 }),
+        withTiming('rgb(176,185,231)', { duration: 1250 })
       ),
       -1,
       true
@@ -64,10 +69,10 @@ export default function AI() {
 
     transparentColor.value = withRepeat(
       withSequence(
-        withTiming('rgba(199,194,227,0.7)', { duration: 1500 }),
-        withTiming('rgba(224,195,195,0.7)', { duration: 1500 }),
-        withTiming('rgba(224,212,195,0.7)', { duration: 1500 }),
-        withTiming('rgba(188,196,224,0.7)', { duration: 1500 })
+        withTiming('rgba(178,171,217,0.7)', { duration: 1250 }),
+        withTiming('rgba(213,174,174,0.7)', { duration: 1250 }),
+        withTiming('rgba(208,191,167,0.7)', { duration: 1250 }),
+        withTiming('rgba(166,176,213,0.7)', { duration: 1250 })
       ),
       -1,
       true
@@ -75,10 +80,10 @@ export default function AI() {
 
     darkColor.value = withRepeat(
       withSequence(
-        withTiming('rgb(70,62,119)', { duration: 1500 }),
-        withTiming('rgb(126,66,66)', { duration: 1500 }),
-        withTiming('rgb(121,101,67)', { duration: 1500 }),
-        withTiming('rgb(68,78,129)', { duration: 1500 })
+        withTiming('rgb(70,62,119)', { duration: 1250 }),
+        withTiming('rgb(126,66,66)', { duration: 1250 }),
+        withTiming('rgb(121,101,67)', { duration: 1250 }),
+        withTiming('rgb(68,78,129)', { duration: 1250 })
       ),
       -1,
       true
@@ -107,33 +112,15 @@ export default function AI() {
 
   const animatedSemiCircleStyle = useAnimatedStyle(() => {
     return {
-      // width: withTiming(+suggestionsShown * 500 + 20, { duration: 700 }),
-      // height: withTiming(+suggestionsShown * 500 + 20, { duration: 700 }),
       transform: [
         {
           translateY: withTiming(+suggestionsShown * height, { duration: 800 })
         }
       ],
       opacity: withSequence(
-        withTiming(suggestionsShown ? 1 : 0, { duration: 400 }),
-        withTiming(0, { duration: 400 })
+        withTiming(suggestionsShown ? 0.6 : 0, { duration: 600 }),
+        withTiming(0, { duration: 200 })
       )
-      // backgroundColor: color.value
-    };
-  });
-  const animatedCircleStyle = useAnimatedStyle(() => {
-    return {
-      width: withTiming(+suggestionsShown * 500 + 20, { duration: 700 }),
-      height: withTiming(+suggestionsShown * 500 + 20, { duration: 700 }),
-      transform: [
-        { translateY: withTiming(+suggestionsShown * -250, { duration: 700 }) }
-      ],
-      opacity: withSequence(
-        withTiming(suggestionsShown ? 0.4 : 0, { duration: 400 }),
-        withTiming(0, { duration: 300 })
-      )
-      // opacity: withTiming(suggestionsShown ? 0 : 0.5, { duration: 1000 }),
-      // backgroundColor: color.value
     };
   });
 
@@ -144,7 +131,10 @@ export default function AI() {
   });
 
   return (
-    <HomeWrapper style={tw`ios:bg-black/70`} imageStyle={tw`android:opacity-70`}>
+    <HomeWrapper
+      style={tw`ios:bg-black/70`}
+      imageStyle={tw`android:opacity-70`}
+    >
       <Wrapper>
         <KeyboardAwareScrollView
           style={tw`px-4`}
@@ -175,19 +165,54 @@ export default function AI() {
             >
               Suggestions
             </Animated.Text>
-            <View style={{ ...tw`flex-row flex-wrap` }}>
-              {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((_, index) => (
+            <View style={tw`gap-2.5`}>
+              <View style={tw`flex-row gap-2.5`}>
                 <AISuggestion
-                  key={index}
-                  index={index}
+                  animationIndex={0}
                   animatedTransparentColorStyle={animatedTransparentColorStyle}
                   shown={suggestionsShown}
+                  text={'Scan to create a recipe'}
+                  symbolName={'text.viewfinder'}
+                  materialIconName={'camera'}
                 />
-              ))}
+                <AISuggestion
+                  animationIndex={0}
+                  animatedTransparentColorStyle={animatedTransparentColorStyle}
+                  shown={suggestionsShown}
+                  text={'Scan to create a recipe'}
+                  symbolName={'text.viewfinder'}
+                  materialIconName={'camera'}
+                />
+              </View>
+              <AIInlineSuggestion
+                animationIndex={1}
+                animatedTransparentColorStyle={animatedTransparentColorStyle}
+                shown={suggestionsShown}
+                text={'Scan to create a recipe'}
+                symbolName={'note.text.badge.plus'}
+                materialIconName={'camera'}
+              />
+              <AIInlineSuggestion
+                animationIndex={2}
+                animatedTransparentColorStyle={animatedTransparentColorStyle}
+                shown={suggestionsShown}
+                text={'Adapt recipe to your preferences'}
+                symbolName={'pencil.and.outline'}
+                materialIconName={'camera'}
+              />
+              <AIInlineSuggestion
+                animationIndex={3}
+                animatedTransparentColorStyle={animatedTransparentColorStyle}
+                shown={suggestionsShown}
+                text={'Modify a recipe'}
+                symbolName={'pencil.and.scribble'}
+                materialIconName={'camera'}
+              />
             </View>
           </View>
         </KeyboardAwareScrollView>
       </Wrapper>
+
       <Animated.View
         style={[
           animatedSemiCircleStyle,
@@ -240,10 +265,10 @@ function AISearchBar({
   useFocusEffect(() => {
     color.value = withRepeat(
       withSequence(
-        withTiming('rgb(124,114,204)', { duration: 1500 }),
-        withTiming('rgb(217,116,116)', { duration: 1500 }),
-        withTiming('rgb(217,179,115)', { duration: 1500 }),
-        withTiming('rgb(111,177,218)', { duration: 1500 })
+        withTiming('rgb(124,114,204)', { duration: 1250 }),
+        withTiming('rgb(217,116,116)', { duration: 1250 }),
+        withTiming('rgb(217,179,115)', { duration: 1250 }),
+        withTiming('rgb(111,177,218)', { duration: 1250 })
       ),
       -1,
       true
@@ -251,10 +276,10 @@ function AISearchBar({
 
     transparentColor.value = withRepeat(
       withSequence(
-        withTiming('rgba(199,194,227,0.7)', { duration: 1500 }),
-        withTiming('rgba(224,195,195,0.7)', { duration: 1500 }),
-        withTiming('rgba(224,212,195,0.7)', { duration: 1500 }),
-        withTiming('rgba(188,209,224,0.7)', { duration: 1500 })
+        withTiming('rgba(199,194,227,0.7)', { duration: 1250 }),
+        withTiming('rgba(224,195,195,0.7)', { duration: 1250 }),
+        withTiming('rgba(224,212,195,0.7)', { duration: 1250 }),
+        withTiming('rgba(188,209,224,0.7)', { duration: 1250 })
       ),
       -1,
       true
@@ -262,10 +287,10 @@ function AISearchBar({
 
     darkColor.value = withRepeat(
       withSequence(
-        withTiming('rgb(70,62,119)', { duration: 1500 }),
-        withTiming('rgb(126,66,66)', { duration: 1500 }),
-        withTiming('rgb(121,101,67)', { duration: 1500 }),
-        withTiming('rgb(68,104,129)', { duration: 1500 })
+        withTiming('rgb(70,62,119)', { duration: 1250 }),
+        withTiming('rgb(126,66,66)', { duration: 1250 }),
+        withTiming('rgb(121,101,67)', { duration: 1250 }),
+        withTiming('rgb(68,104,129)', { duration: 1250 })
       ),
       -1,
       true
@@ -302,7 +327,7 @@ function AISearchBar({
       <Animated.View
         style={[
           animatedColorStyle,
-          animatedSearchStyle,
+          Platform.OS === 'ios' && animatedSearchStyle,
           {
             ...tw`h-14 w-full rounded-full bg-transparent`,
             borderStyle: 'solid',
@@ -329,6 +354,28 @@ function AISearchBar({
             }
           ]}
         >
+          {/*<MeshGradient*/}
+          {/*  style={{*/}
+          {/*    flex: 1,*/}
+          {/*    height: '100%',*/}
+          {/*    width: '100%',*/}
+          {/*    // position: 'absolute',*/}
+          {/*    // top: 0,*/}
+          {/*    // left: 0,*/}
+          {/*    // right: 0,*/}
+          {/*    // bottom: 0,*/}
+          {/*    zIndex: -10*/}
+          {/*  }}*/}
+          {/*  points={[*/}
+          {/*    [0.0, 0.0],*/}
+          {/*    [1.0, 0.0],*/}
+          {/*    [0.0, 1.0],*/}
+          {/*    [1.0, 1.0]*/}
+          {/*  ]}*/}
+          {/*  colors={['#c49ed7', '#96aed0', '#dea4a1', '#c49ed7']}*/}
+          {/*  animatedColors={['#c49ed7', '#dea4a1', '#96aed0', '#c49ed7']}*/}
+          {/*  animationDuration={2}*/}
+          {/*/>*/}
           <BlurView intensity={16} style={{ ...tw`h-100 h-full w-full` }} />
           <View
             style={tw`absolute bottom-0 left-0 right-0 top-0 flex-row items-center gap-2 px-4`}
@@ -413,19 +460,33 @@ function AISearchBar({
   );
 }
 
-function AISuggestion({
-  index,
+function AIInlineSuggestion({
   animatedTransparentColorStyle,
-  shown
+  shown,
+  text,
+  symbolName,
+  materialIconName,
+  animationIndex,
+  onPress,
+  containerStyle,
+  contentContainerStyle,
+  textStyle
 }: {
-  index: number;
+  text: string;
+  animationIndex: number;
   animatedTransparentColorStyle: Style;
   shown: boolean;
+  symbolName: SFSymbols5_0;
+  materialIconName: string;
+  onPress?: () => void;
+  contentContainerStyle?: ClassInput;
+  textStyle?: ClassInput;
+  containerStyle?: ClassInput;
 }) {
   const animatedOpacityStyle = useAnimatedStyle(() => {
     return {
       opacity: withDelay(
-        +((index + 1) / 2).toFixed(0) * 50 + 150,
+        +animationIndex.toFixed(0) * 50 + 300,
         withTiming(+shown)
       )
     };
@@ -434,91 +495,160 @@ function AISuggestion({
   return (
     <Animated.View
       style={[
+        animatedTransparentColorStyle,
         animatedOpacityStyle,
-        {
-          // width: '47%'
-          width: '48.5%',
-          marginRight: index % 2 == 0 ? '3%' : 0,
-          marginBottom: '3%'
-          // flexBasis: '47%',
-          // flexShrink: 1
-          // width: '50%'
-          // height: 50,
-          // position: 'absolute',
-          // left: 16,
-          // bottom: 0,
-          // shadowOffset: { width: 0, height: 0 },
-          // shadowColor: 'black',
-          // shadowOpacity: 0.15,
-          // shadowRadius: 10
-        }
+        tw.style(`flex-1 overflow-hidden rounded-full`, containerStyle)
       ]}
-      key={index}
     >
-      <Animated.View
-        style={[animatedTransparentColorStyle, tw`overflow-hidden rounded-2xl`]}
-        key={index}
+      <Pressable
+        android_ripple={androidRipple}
+        onPress={onPress}
+        style={({ pressed }) => tw.style(`grow`, pressed && `ios:bg-white/30`)}
       >
-        <Pressable
-          android_ripple={androidRipple}
-          // onPress={onPress}
-          style={({ pressed }) =>
-            tw.style(`bg-white/45 relative`, pressed && `ios:bg-white/30`)
-          }
+        <BlurView
+          intensity={100}
+          style={tw.style(
+            `z-10 grow flex-row items-center justify-between gap-2 px-5 py-4`,
+            contentContainerStyle
+          )}
         >
-          {/*<MeshGradient*/}
-          {/*  style={{*/}
-          {/*    // flex: 1,*/}
-          {/*    position: 'absolute',*/}
-          {/*    top: 0,*/}
-          {/*    left: 0,*/}
-          {/*    right: 0,*/}
-          {/*    bottom: 0,*/}
-          {/*    zIndex: -10*/}
-          {/*  }}*/}
-          {/*  points={[*/}
-          {/*    [0.0, 0.0],*/}
-          {/*    [1.0, 0.0],*/}
-          {/*    [0.0, 1.0],*/}
-          {/*    [1.0, 1.0]*/}
-          {/*  ]}*/}
-          {/*  colors={['#af65d5', '#5b8bcc', '#cc5f59', '#d2a95c']}*/}
-          {/*  animatedColors={[*/}
-          {/*    '#d2a95c',*/}
-          {/*    '#cc5f59',*/}
-          {/*    '#5b8bcc',*/}
-          {/*    '#af65d5'*/}
-          {/*  ]}*/}
-          {/*  animationDuration={2}*/}
-          {/*/>*/}
-          <BlurView
-            intensity={100}
-            style={tw`z-10 flex-row items-center justify-center gap-1.5 bg-white/20 p-4`}
-          >
-            {/*<SymbolView*/}
-            {/*  name={symbolname}*/}
-            {/*  size={20}*/}
-            {/*  tintColor={rgbaToHex(tw.color('black/70') as string)}*/}
-            {/*  fallback={*/}
-            {/*    <MaterialIcons*/}
-            {/*      name={materialIconName as any}*/}
-            {/*      size={20}*/}
-            {/*      color={rgbaToHex(tw.color('black/70') as string)}*/}
-            {/*    />*/}
-            {/*  }*/}
-            {/*/>*/}
+          <View style={tw`flex-row items-center gap-2`}>
+            <SymbolView
+              name={symbolName}
+              size={32}
+              weight='bold'
+              resizeMode='scaleAspectFit'
+              tintColor={rgbaToHex(tw.color('black/70') as string)}
+              fallback={
+                <MaterialCommunityIcons
+                  name={materialIconName as any}
+                  size={20}
+                  color={rgbaToHex(tw.color('black/70') as string)}
+                />
+              }
+            />
             <Text
               style={{
-                ...tw`text-[16px] font-medium text-black/80`,
+                ...tw.style(
+                  `text-base font-medium leading-tight text-black/80`,
+                  textStyle
+                ),
                 includeFontPadding: false
               }}
             >
-              {/*{((index + 1) / 2).toFixed(0)}*/}
-              Suggest a low calorie dinner for today
+              {text}
             </Text>
-          </BlurView>
-        </Pressable>
-      </Animated.View>
+          </View>
+          <Ionicons
+            name='chevron-forward'
+            color={tw.color('black/50')}
+            size={24}
+          />
+        </BlurView>
+      </Pressable>
+    </Animated.View>
+  );
+}
+
+function AISuggestion({
+  animatedTransparentColorStyle,
+  shown,
+  text,
+  symbolName,
+  materialIconName,
+  animationIndex,
+  onPress,
+  containerStyle,
+  contentContainerStyle,
+  textStyle
+}: {
+  text: string;
+  animationIndex: number;
+  animatedTransparentColorStyle: Style;
+  shown: boolean;
+  symbolName: SFSymbols5_0;
+  materialIconName: string;
+  onPress?: () => void;
+  contentContainerStyle?: ClassInput;
+  textStyle?: ClassInput;
+  containerStyle?: ClassInput;
+}) {
+  const animatedOpacityStyle = useAnimatedStyle(() => {
+    return {
+      opacity: withDelay(
+        +animationIndex.toFixed(0) * 50 + 300,
+        withTiming(+shown)
+      )
+    };
+  });
+
+  return (
+    <Animated.View
+      style={[
+        animatedTransparentColorStyle,
+        animatedOpacityStyle,
+        tw.style(`flex-1 overflow-hidden rounded-3xl`, containerStyle)
+      ]}
+    >
+      <Pressable
+        android_ripple={androidRipple}
+        onPress={onPress}
+        style={({ pressed }) => tw.style(`grow`, pressed && `ios:bg-white/30`)}
+      >
+        {/*<MeshGradient*/}
+        {/*  style={{*/}
+        {/*    // flex: 1,*/}
+        {/*    position: 'absolute',*/}
+        {/*    top: 0,*/}
+        {/*    left: 0,*/}
+        {/*    right: 0,*/}
+        {/*    bottom: 0,*/}
+        {/*    zIndex: -10*/}
+        {/*  }}*/}
+        {/*  points={[*/}
+        {/*    [0.0, 0.0],*/}
+        {/*    [1.0, 0.0],*/}
+        {/*    [0.0, 1.0],*/}
+        {/*    [1.0, 1.0]*/}
+        {/*  ]}*/}
+        {/*  colors={['#c49ed7', '#96aed0', '#dea4a1', '#c49ed7']}*/}
+        {/*  animatedColors={['#c49ed7', '#dea4a1', '#96aed0', '#c49ed7']}*/}
+        {/*  animationDuration={2}*/}
+        {/*/>*/}
+        <BlurView
+          intensity={100}
+          style={tw.style(
+            `z-10 grow items-center justify-center gap-2 px-8 py-4`,
+            contentContainerStyle
+          )}
+        >
+          <SymbolView
+            name={symbolName}
+            size={32}
+            weight='bold'
+            resizeMode='scaleAspectFit'
+            tintColor={rgbaToHex(tw.color('black/70') as string)}
+            fallback={
+              <MaterialCommunityIcons
+                name={materialIconName as any}
+                size={20}
+                color={rgbaToHex(tw.color('black/70') as string)}
+              />
+            }
+          />
+          <Text
+            style={{
+              ...tw.style(
+                `text-center text-sm font-medium leading-tight text-black/80`,
+                textStyle
+              ),
+              includeFontPadding: false
+            }}
+          >
+            {text}
+          </Text>
+        </BlurView>
+      </Pressable>
     </Animated.View>
   );
 }
