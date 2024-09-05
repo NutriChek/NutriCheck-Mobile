@@ -1,8 +1,6 @@
 import { router } from 'expo-router';
 import {
   ImageBackground,
-  KeyboardAvoidingView,
-  ScrollView,
   StatusBar,
   useWindowDimensions,
   View
@@ -19,8 +17,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import LogoView from '@/components/logo-view';
 import Toast from 'react-native-toast-message';
 import { AxiosError } from 'axios';
-import KeyboardAccessory from '@/components/keyboard-accessory';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { KeyboardToolbar } from 'react-native-keyboard-controller';
 
 const image = require('../assets/images/background-blur.png');
 
@@ -195,7 +193,7 @@ export default function SignIn() {
           </View>
         </ImageBackground>
       </KeyboardAwareScrollView>
-      <KeyboardAccessory inputAccessoryViewID='sign-up' />
+      <KeyboardToolbar />
     </>
   );
 }

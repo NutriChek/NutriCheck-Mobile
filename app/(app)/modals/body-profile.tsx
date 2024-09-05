@@ -9,6 +9,7 @@ import { useGetBodyProfile } from '@/api/body-profile';
 import LoadingView from '@/components/loading-view';
 import ErrorView from '@/components/error-view';
 import BodyProfileForm from '@/components/body-profile-form';
+import { KeyboardToolbar } from 'react-native-keyboard-controller';
 
 export default function BodyProfile() {
   const bodyProfile = useGetBodyProfile();
@@ -49,7 +50,7 @@ export default function BodyProfile() {
           }}
         />
       </ScrollView>
-      <KeyboardAccessory inputAccessoryViewID={'id'} />
+      <KeyboardToolbar />
     </ModalWrapper>
   );
 }

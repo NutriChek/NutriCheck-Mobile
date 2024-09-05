@@ -26,7 +26,8 @@ export default function FormInput({
   keyboardType,
   inputAccessoryViewID = 'id',
   autoCapitalize = 'sentences',
-  textContentType = 'none'
+  textContentType = 'none',
+  autoFocus = false
 }: {
   placeholder: string;
   control: any;
@@ -41,6 +42,7 @@ export default function FormInput({
   inputAccessoryViewID?: string;
   autoCapitalize?: 'none' | 'sentences' | 'words' | 'characters';
   textContentType?: TextInputIOSProps['textContentType'];
+  autoFocus?: boolean;
 }) {
   const [showPassword, setShowPassword] = useState(true);
 
@@ -91,6 +93,7 @@ export default function FormInput({
               inputAccessoryViewID={inputAccessoryViewID}
               autoCapitalize={autoCapitalize}
               textContentType={textContentType}
+              autoFocus={autoFocus}
             />
             {password && (
               <Pressable

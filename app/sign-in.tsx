@@ -1,25 +1,24 @@
+import LargeButton from '@/components/form-button';
+import FormInput from '@/components/form-input';
+import LogoView from '@/components/logo-view';
+import NavigationCard from '@/components/navigation-card';
+import OauthButtons from '@/components/oauth-buttons';
+import { useSession } from '@/context/auth-context';
+import tw from '@/lib/tailwind';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { AxiosError } from 'axios';
+import { router } from 'expo-router';
+import { useForm } from 'react-hook-form';
 import {
   ImageBackground,
-  KeyboardAvoidingView,
-  ScrollView,
   StatusBar,
   useWindowDimensions,
   View
 } from 'react-native';
-import tw from '@/lib/tailwind';
-import FormInput from '@/components/form-input';
-import OauthButtons from '@/components/oauth-buttons';
-import NavigationCard from '@/components/navigation-card';
-import * as yup from 'yup';
-import { useSession } from '@/context/auth-context';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import LargeButton from '@/components/form-button';
-import { router } from 'expo-router';
-import LogoView from '@/components/logo-view';
-import Toast from 'react-native-toast-message';
-import { AxiosError } from 'axios';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { KeyboardToolbar } from 'react-native-keyboard-controller';
+import Toast from 'react-native-toast-message';
+import * as yup from 'yup';
 
 const image = require('../assets/images/background-blur.png');
 
@@ -116,6 +115,7 @@ export default function SignIn() {
           </View>
         </ImageBackground>
       </KeyboardAwareScrollView>
+      <KeyboardToolbar />
     </>
   );
 }

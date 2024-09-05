@@ -9,8 +9,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import LargeButton from '@/components/form-button';
 import FormInput from '@/components/form-input';
-import KeyboardAccessory from '@/components/keyboard-accessory';
 import { useGetAccount, useUpdateAccount } from '@/api/account';
+import { KeyboardToolbar } from 'react-native-keyboard-controller';
 
 const schema = yup
   .object({
@@ -30,12 +30,13 @@ const schema = yup
     email: yup
       .string()
       .required('Email is required')
-      .email('You must enter a valid email'),
+      .email('You must enter a valid email')
   })
   .required();
 
 export default function EditAccount() {
-  const { firstName, lastName, username, email } = useLocalSearchParams<string>();
+  const { firstName, lastName, username, email } =
+    useLocalSearchParams<string>();
 
   const updateAccount = useUpdateAccount();
   const account = useGetAccount();
@@ -45,7 +46,7 @@ export default function EditAccount() {
       username: username as string,
       email: email as string,
       firstName: firstName as string,
-      lastName: lastName as string,
+      lastName: lastName as string
     },
     resolver: yupResolver(schema),
     mode: 'onChange'
@@ -56,13 +57,14 @@ export default function EditAccount() {
   const lastnameChanged = watch('lastName');
   const firstnameChanged = watch('firstName');
 
-
   const isChanged = () => {
-    return username != usernameChanged
-      || firstName != firstnameChanged
-      || lastName != lastnameChanged
-      || email != emailChanged
-  }
+    return (
+      username != usernameChanged ||
+      firstName != firstnameChanged ||
+      lastName != lastnameChanged ||
+      email != emailChanged
+    );
+  };
 
   const onSubmit: any = (data: {
     username: string;
@@ -75,7 +77,7 @@ export default function EditAccount() {
         account.refetch();
         router.back();
       }
-    })
+    });
   };
 
   return (
@@ -142,7 +144,7 @@ export default function EditAccount() {
           </View>
         </View>
       </ScrollView>
-      <KeyboardAccessory inputAccessoryViewID={'id'} />
+      <KeyboardToolbar />
     </ModalWrapper>
   );
 }
