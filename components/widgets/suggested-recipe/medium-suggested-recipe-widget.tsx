@@ -16,10 +16,10 @@ export default function MediumSuggestedRecipeWidget() {
         />
       }
     >
-      <View style={tw`flex-row pl-4 pt-1 pb-2 items-center`}>
+      <View style={tw`flex-row items-center pb-2 pl-4 pt-1`}>
         <Image
-          source={require('../assets/images/sarmale.png')}
-          style={tw`h-24 w-24 rounded-2xl mr-4`}
+          source={require('@/assets/images/sarmale.png')}
+          style={tw`mr-4 h-24 w-24 rounded-2xl`}
         />
         <View style={tw`flex-1`}>
           <Text style={tw`text-base font-bold text-black/70`}>
@@ -28,11 +28,11 @@ export default function MediumSuggestedRecipeWidget() {
           <Text style={tw`text-sm font-bold text-black/60`}>
             by Jamila Cuisine
           </Text>
-          <Text style={tw`text-black/45 text-[12px] font-bold pt-2`}>
-            350kcal    |     20g protein
+          <Text style={tw`text-black/45 pt-2 text-[12px] font-bold`}>
+            350kcal | 20g protein
           </Text>
           <Text style={tw`text-black/45 text-[12px] font-bold`}>
-            7g fat        |     100g carbs
+            7g fat | 100g carbs
           </Text>
         </View>
       </View>

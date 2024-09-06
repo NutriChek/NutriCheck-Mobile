@@ -2,7 +2,7 @@ import tw from '@/lib/tailwind';
 import HeaderWidgetWrapper from '@/components/header-widget-wrapper';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { ImageBackground, Pressable, Text, View } from 'react-native';
-import { ProgressChart } from '../modules/react-native-chart-kit';
+import { ProgressChart } from '../../../modules/react-native-chart-kit';
 import { androidRipple, rgbaToHex } from '@/lib/util';
 import { SymbolView } from 'expo-symbols';
 import { MaterialIcons } from 'expo-vector-icons';
@@ -13,7 +13,7 @@ const dataProgress = {
   data: [0.25]
 };
 
-const image = require('../assets/images/color-blur.png');
+const image = require('../../../assets/images/color-blur.png');
 
 function Suggestion({
   text,

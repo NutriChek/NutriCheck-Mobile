@@ -45,7 +45,6 @@ export default function SignIn() {
   });
 
   const onSubmit: any = (data: { email: string; password: string }) => {
-    console.log(data);
     signIn({ email: data.email, password: data.password })
       .then(() => {
         router.replace('/');

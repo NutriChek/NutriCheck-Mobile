@@ -4,7 +4,7 @@ import { SymbolView } from 'expo-symbols';
 import { rgbaToHex } from '@/lib/util';
 import { MaterialIcons } from 'expo-vector-icons';
 
-const image = require('../assets/images/sarmale.png');
+const image = require('../../../assets/images/sarmale.png');
 
 export default function MediumFeaturedRecipeWidget() {
   return (

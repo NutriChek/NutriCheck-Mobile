@@ -2,7 +2,7 @@ import { ScrollView, Text, View } from 'react-native';
 import tw from '@/lib/tailwind';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-import HeaderWidgetWrapper from './header-widget-wrapper';
+import HeaderWidgetWrapper from '../../header-widget-wrapper';
 import CheckBox from 'expo-checkbox';
 import { useState } from 'react';
 

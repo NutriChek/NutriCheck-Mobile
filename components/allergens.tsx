@@ -28,7 +28,7 @@ const schema = yup
   })
   .required();
 
-export default function Alergens() {
+export default function Allergens() {
   const { control, handleSubmit } = useForm({
     defaultValues: {
       gluten: false,

@@ -3,14 +3,14 @@ import tw from '@/lib/tailwind';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { androidRipple } from '@/lib/util';
 
-const image = require('../assets/images/color-blur.png');
+const image = require('../../../assets/images/color-blur.png');
 
 export default function SmallAskAIWidget({
-  text,
+  text = 'What can I cook with these ingredients?',
   onPress
 }: {
-  text: string;
-  onPress: () => void;
+  text?: string;
+  onPress?: () => void;
 }) {
   return (
     <View style={tw`overflow-hidden rounded-[20px] flex-1`}>

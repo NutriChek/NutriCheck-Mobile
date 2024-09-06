@@ -3,7 +3,7 @@ import tw from '@/lib/tailwind';
 import HeaderWidgetWrapper from '@/components/header-widget-wrapper';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { AbstractChartConfig } from '@/modules/react-native-chart-kit/dist/AbstractChart';
-import { BarChart, ProgressChart } from '../modules/react-native-chart-kit';
+import { BarChart, ProgressChart } from '../../../modules/react-native-chart-kit';
 
 const dataProgress = {
   data: [0.75]

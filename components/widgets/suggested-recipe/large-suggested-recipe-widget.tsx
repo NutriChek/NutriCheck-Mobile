@@ -8,7 +8,7 @@ function ImageDetailsWrapper() {
   return (
     <View style={tw`flex-row pl-4 pt-1 pb-2 items-center`}>
       <Image
-        source={require('../assets/images/sarmale.png')}
+        source={require('../../../assets/images/sarmale.png')}
         style={tw`h-18 w-18 rounded-2xl mr-4`}
       />
       <View style={tw`flex-1`}>
