@@ -10,12 +10,12 @@ export default function Recipes() {
     <ScrollView style={tw`grow bg-black`}>
       <ImageBackground resizeMode='cover' source={image} style={tw`grow`}>
         <ScrollView style={tw`pt-25 pl-4`}>
-          <RecipesHorizontalScrollView></RecipesHorizontalScrollView>
-          <RecipesHorizontalScrollView></RecipesHorizontalScrollView>
-          <RecipesHorizontalScrollView></RecipesHorizontalScrollView>
-          <RecipesHorizontalScrollView></RecipesHorizontalScrollView>
-          <RecipesHorizontalScrollView></RecipesHorizontalScrollView>
-          <RecipesHorizontalScrollView></RecipesHorizontalScrollView>
+          <RecipesHorizontalScrollView title="Your liked recipes"></RecipesHorizontalScrollView>
+          <RecipesHorizontalScrollView title="Your liked recipes"></RecipesHorizontalScrollView>
+          <RecipesHorizontalScrollView title="Your liked recipes"></RecipesHorizontalScrollView>
+          <RecipesHorizontalScrollView title="Your liked recipes"></RecipesHorizontalScrollView>
+          <RecipesHorizontalScrollView title="Your liked recipes"></RecipesHorizontalScrollView>
+          <RecipesHorizontalScrollView title="Your liked recipes"></RecipesHorizontalScrollView>
         </ScrollView>
       </ImageBackground>
     </ScrollView>
