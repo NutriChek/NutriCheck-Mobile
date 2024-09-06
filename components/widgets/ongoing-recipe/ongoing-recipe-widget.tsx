@@ -11,14 +11,14 @@ function ImageDetailsWrapper() {
   return (
     <View style={tw`flex-row items-center px-2 pb-2 pt-1`}>
       <Image
-        source={require('../../../assets/images/sarmale.png')}
+        source={require('@/assets/images/sarmale.png')}
         style={tw`h-18 w-18 mr-4 rounded-2xl`}
       />
       <View style={tw`flex-1`}>
-        <Text style={tw`text-base font-bold text-black/70`}>
+        <Text style={tw`text-base font-bold leading-tight text-black/70`}>
           Sarmale de post
         </Text>
-        <Text style={tw`text-sm font-bold text-black/60`}>
+        <Text style={tw`text-sm font-bold leading-tight text-black/60`}>
           by Jamila Cuisine
         </Text>
         <Text style={tw`text-black/45 text-[12px] font-bold`}>

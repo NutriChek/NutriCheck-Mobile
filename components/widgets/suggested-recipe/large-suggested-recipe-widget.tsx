@@ -3,10 +3,11 @@ import HeaderWidgetWrapper from '@/components/header-widget-wrapper';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Text, View } from 'react-native';
 import { Image } from 'expo-image';
+import WidgetBase from '@/components/widget-base';
 
 function ImageDetailsWrapper() {
   return (
-    <View style={tw`flex-row pl-4 pt-1 pb-2 items-center`}>
+    <View style={tw`flex-row items-center`}>
       <Image
         source={require('../../../assets/images/sarmale.png')}
         style={tw`h-18 w-18 rounded-2xl mr-4`}
@@ -28,7 +29,7 @@ function ImageDetailsWrapper() {
 
 export default function LargeSuggestedRecipeWidget() {
   return (
-    <HeaderWidgetWrapper
+    <WidgetBase
       title='Suggested recipes'
       icon={
         <Ionicons
@@ -41,6 +42,6 @@ export default function LargeSuggestedRecipeWidget() {
       <ImageDetailsWrapper />
       <ImageDetailsWrapper />
       <ImageDetailsWrapper />
-    </HeaderWidgetWrapper>
+    </WidgetBase>
   );
 }

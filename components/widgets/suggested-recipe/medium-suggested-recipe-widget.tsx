@@ -3,11 +3,13 @@ import HeaderWidgetWrapper from '@/components/header-widget-wrapper';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Text, View } from 'react-native';
 import { Image } from 'expo-image';
+import React from 'react';
+import WidgetBase from '@/components/widget-base';
 
 export default function MediumSuggestedRecipeWidget() {
   return (
-    <HeaderWidgetWrapper
-      title='Suggested recipes'
+    <WidgetBase
+      title='Suggested recipe'
       icon={
         <Ionicons
           name='restaurant' //this is only a placeholder, the actual icon is different
@@ -16,7 +18,7 @@ export default function MediumSuggestedRecipeWidget() {
         />
       }
     >
-      <View style={tw`flex-row items-center pb-2 pl-4 pt-1`}>
+      <View style={tw`flex-row items-center`}>
         <Image
           source={require('@/assets/images/sarmale.png')}
           style={tw`mr-4 h-24 w-24 rounded-2xl`}
@@ -36,6 +38,6 @@ export default function MediumSuggestedRecipeWidget() {
           </Text>
         </View>
       </View>
-    </HeaderWidgetWrapper>
+    </WidgetBase>
   );
 }

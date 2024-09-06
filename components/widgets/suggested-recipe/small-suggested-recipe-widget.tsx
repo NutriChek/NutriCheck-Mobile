@@ -1,21 +1,25 @@
 import { ImageBackground, Text, View } from 'react-native';
 import tw from '@/lib/tailwind';
+import { MaterialIcons } from 'expo-vector-icons';
 import { SymbolView } from 'expo-symbols';
 import { rgbaToHex } from '@/lib/util';
-import { MaterialIcons } from 'expo-vector-icons';
 import WidgetBase from '@/components/widget-base';
 import { LinearGradient } from 'expo-linear-gradient';
 
 const image = require('../../../assets/images/sarmale.png');
 
-export default function LargeFeaturedRecipeWidget() {
+export default function SmallSuggestedRecipeWidget() {
   return (
     <WidgetBase style={tw`p-0`}>
-      <ImageBackground resizeMode='cover' source={image} style={tw`h-70`}>
+      <ImageBackground
+        resizeMode='cover'
+        source={image}
+        style={tw`aspect-square`}
+      >
         <View style={tw`flex-1 justify-end`}>
           <LinearGradient
             colors={['transparent', '#000000aa']}
-            style={tw`w-full items-start p-4 pt-6`}
+            style={tw`w-full items-start p-4`}
           >
             <View style={tw`flex-row items-center`}>
               <SymbolView
@@ -32,14 +36,14 @@ export default function LargeFeaturedRecipeWidget() {
                   />
                 }
               />
-              <Text style={tw`pl-2 text-lg font-bold text-white`}>
-                Featured recipe
+              <Text style={tw`pl-1 text-sm font-bold text-white`}>
+                Suggested recipe
               </Text>
             </View>
-            <Text style={tw`text-2xl font-bold text-white leading-tight`}>
+            <Text style={tw`text-base font-bold text-white`}>
               Sarmale de post
             </Text>
-            <Text style={tw`text-sm font-bold text-white leading-tight`}>
+            <Text style={tw`text-[12px] font-bold text-white`}>
               by Jamila Cuisine
             </Text>
           </LinearGradient>

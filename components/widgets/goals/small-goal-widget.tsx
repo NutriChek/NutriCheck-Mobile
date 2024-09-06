@@ -14,14 +14,14 @@ const dataProgress = {
 
 export default function SmallGoalWidget() {
   return (
-    <WidgetBase style={tw`aspect-square gap-2`}>
-      <View>
+    <WidgetBase style={tw`aspect-square justify-center`}>
+      <View style={tw`gap-3`}>
         <ProgressChart
           data={dataProgress}
-          width={120}
-          height={120}
-          strokeWidth={10}
-          radius={8}
+          width={100}
+          height={100}
+          strokeWidth={6}
+          radius={7}
           chartConfig={{
             backgroundGradientFromOpacity: 0,
             backgroundGradientToOpacity: 0,
@@ -34,17 +34,17 @@ export default function SmallGoalWidget() {
           hideLegend={true}
           style={{ marginTop: -20, marginLeft: -20, marginBottom: -20 }}
         />
-      </View>
-      <View style={tw`flex-1 justify-center`}>
-        <Text style={tw`pl-2 text-base font-bold text-black/60`}>
-          7546 <Text style={tw`text-sm`}>steps</Text>
-        </Text>
-        <Text style={tw`pl-2 text-base font-bold text-black/60`}>
-          1550 <Text style={tw`text-sm`}>kcal eaten</Text>
-        </Text>
-        <Text style={tw`pl-2 text-base font-bold text-black/60`}>
-          270 <Text style={tw`text-sm`}>kcal burned</Text>
-        </Text>
+        <View style={tw`justify-center`}>
+          <Text style={tw`pl-2 text-base font-bold text-black/60`}>
+            7546 <Text style={tw`text-sm`}>steps</Text>
+          </Text>
+          <Text style={tw`pl-2 text-base font-bold text-black/60`}>
+            1550 <Text style={tw`text-sm`}>kcal eaten</Text>
+          </Text>
+          <Text style={tw`pl-2 text-base font-bold text-black/60`}>
+            270 <Text style={tw`text-sm`}>kcal burned</Text>
+          </Text>
+        </View>
       </View>
     </WidgetBase>
   );

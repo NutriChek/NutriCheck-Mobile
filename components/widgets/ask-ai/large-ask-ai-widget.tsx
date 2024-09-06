@@ -4,6 +4,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import SuggestionCard from '../../suggestion-card';
 import { router } from 'expo-router';
 import HeaderWidgetWrapper from '@/components/header-widget-wrapper';
+import WidgetBase from '@/components/widget-base';
 
 const backgrounds = [
   require('@/assets/images/color-blur.png'),
@@ -11,7 +12,7 @@ const backgrounds = [
   require('@/assets/images/color-blur3.png')
 ];
 
-export default function AskAIWidget() {
+export default function LargeAskAiWidget() {
   const cards = [
     'What can I cook with these ingredients?',
     'What can I cook with these ingredients?',
@@ -19,7 +20,7 @@ export default function AskAIWidget() {
   ];
   return (
     <>
-      <HeaderWidgetWrapper
+      <WidgetBase
         title='Ask Cook AI'
         icon={
           <Ionicons name='sparkles' size={20} color={tw.color('black/55')} />
@@ -37,7 +38,7 @@ export default function AskAIWidget() {
             />
           ))}
         </View>
-      </HeaderWidgetWrapper>
+      </WidgetBase>
     </>
   );
 }

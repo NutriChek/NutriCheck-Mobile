@@ -2,32 +2,29 @@ import { Text, useWindowDimensions, View } from 'react-native';
 import tw from '@/lib/tailwind';
 import { ReactNode } from 'react';
 import { Style } from 'twrnc';
-import { SFSymbols5_0 } from 'sf-symbols-typescript';
-import { SymbolView } from 'expo-symbols';
-import { rgbaToHex } from '@/lib/util';
-import { MaterialCommunityIcons } from 'expo-vector-icons';
 import { BlurView } from 'expo-blur';
+import BaseButton from '@/components/base-button';
 
 export default function WidgetBase({
   children,
   title,
-  symbolName,
-  materialIconName,
+  icon,
   rightComponent,
   style,
   containerStyle,
   size = 'auto',
-  inset = 0
+  inset = 0,
+  onPress
 }: {
   children: ReactNode;
   title?: string;
-  symbolName?: SFSymbols5_0;
-  materialIconName?: string;
+  icon?: ReactNode;
   rightComponent?: ReactNode;
   style?: Style;
   containerStyle?: Style;
   size?: 'sm' | 'md' | 'lg' | 'auto';
   inset?: number;
+  onPress?: () => void;
 }) {
   const { width } = useWindowDimensions();
 
@@ -46,32 +43,24 @@ export default function WidgetBase({
     >
       <BlurView
         intensity={100}
-        style={tw.style(`grow gap-3 rounded-3xl bg-white/70 p-4`, style)}
+        style={tw.style(`grow rounded-3xl bg-white/70`)}
       >
-        {(title || rightComponent) && (
-          <View style={tw`flex-row items-center justify-between`}>
-            {title && symbolName && materialIconName && (
-              <View style={tw`flex-row gap-2`}>
-                <SymbolView
-                  name={symbolName}
-                  size={20}
-                  tintColor={rgbaToHex(tw.color('black/55') as string)}
-                  resizeMode='scaleAspectFit'
-                  fallback={
-                    <MaterialCommunityIcons
-                      name={materialIconName}
-                      size={20}
-                      color={tw.color('black/55')}
-                    />
-                  }
-                />
-                <Text style={tw`text-black/55 text-sm font-bold`}>{title}</Text>
-              </View>
-            )}
-            {rightComponent}
-          </View>
-        )}
-        {children}
+        <BaseButton style={tw.style(`gap-3 p-4`, style)} onPress={onPress}>
+          {(title || rightComponent) && (
+            <View style={tw`flex-row items-center justify-between`}>
+              {title && icon && (
+                <View style={tw`flex-row gap-2`}>
+                  {icon}
+                  <Text style={tw`text-black/55 text-sm font-bold`}>
+                    {title}
+                  </Text>
+                </View>
+              )}
+              {rightComponent}
+            </View>
+          )}
+          {children}
+        </BaseButton>
       </BlurView>
     </View>
   );
