@@ -1,10 +1,11 @@
-import { ImageBackground, Text, View } from 'react-native';
+import { ImageBackground, Platform, Text, View } from 'react-native';
 import tw from '@/lib/tailwind';
 import { SymbolView } from 'expo-symbols';
 import { rgbaToHex } from '@/lib/util';
 import { MaterialIcons } from 'expo-vector-icons';
 import WidgetBase from '@/components/widgets/widget-base';
 import { LinearGradient } from 'expo-linear-gradient';
+import { VariableBlurView } from '@/modules/blur-view';
 
 const image = require('@/assets/images/sarmale.png');
 
@@ -12,7 +13,16 @@ export default function MediumFeaturedRecipeWidget() {
   return (
     <WidgetBase style={tw`p-0`}>
       <ImageBackground resizeMode='cover' source={image} style={tw`h-40`}>
-        <View style={tw`flex-1 justify-end`}>
+        <View style={tw`flex-1 justify-end relative`}>
+          {Platform.OS === 'ios' && (
+            <VariableBlurView
+              style={{
+                ...tw`absolute bottom-0 left-0 right-0 h-24 w-full`,
+                transform: [{ rotate: '180deg' }]
+              }}
+              maxBlurRadius={5}
+            />
+          )}
           <LinearGradient
             colors={['transparent', '#000000aa']}
             style={tw`w-full items-start p-4 pt-6`}

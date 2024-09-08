@@ -11,17 +11,18 @@ interface RecipeCardProps {
   image: ImageSource;
 }
 
-export default function RecipeCard({ title, cookingTime, kcal, likes, image } : RecipeCardProps) {
+export default function RecipeCard({
+  title,
+  cookingTime,
+  kcal,
+  likes,
+  image
+}: RecipeCardProps) {
   return (
-    <View style={tw`w-70 flex-row items-center rounded-3xl bg-white/70 pr-2`}>
-      <Image
-        source={image}
-        style={tw`w-23 mr-4 h-full rounded-l-xl`}
-      />
+    <View style={tw`w-70 flex-row items-center rounded-2xl overflow-hidden bg-white/70 pr-2`}>
+      <Image source={image} style={tw`w-23 mr-4 h-full`} />
       <View style={tw`flex-1`}>
-        <Text style={tw`pt-3 text-base font-bold text-black/70`}>
-          {title}
-        </Text>
+        <Text style={tw`pt-3 text-base font-bold text-black/70`}>{title}</Text>
         <Text style={tw`text-sm font-semibold text-black/60`}>
           {cookingTime} Cooking time
         </Text>

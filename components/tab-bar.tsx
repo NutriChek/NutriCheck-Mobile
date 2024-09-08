@@ -142,8 +142,8 @@ export default function TabBar(props: BottomTabBarProps) {
                     key={route.key}
                     props={props}
                     route={route}
-                    symbolName={tabs[index].symbolName}
-                    materialIconName={tabs[index].materialIconName}
+                    symbolName={tabs[index]?.symbolName}
+                    materialIconName={tabs[index]?.materialIconName}
                     active={index === props.state.index}
                   />
                 );

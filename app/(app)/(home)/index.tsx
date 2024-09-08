@@ -233,7 +233,7 @@ function WidgetsFlatList({
   }, [startIndex]);
 
   return (
-    <View style={tw`items-center gap-2`}>
+    <View style={tw`items-center gap-3`}>
       <FlatList
         ref={flatListRef}
         data={components}

@@ -2,10 +2,11 @@ import RecipeCard from '@/components/recipe-card';
 import tw from '@/lib/tailwind';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { ImageSource } from 'expo-image';
-import { Href, Link } from 'expo-router';
-import { useRef, useState } from 'react';
-import { Text, View } from 'react-native';
+import { Href, router } from 'expo-router';
+import { useRef } from 'react';
+import { TouchableOpacity, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
+import Caption from '@/components/caption';
 
 interface RecipeData {
   likes: number;
@@ -16,42 +17,41 @@ interface RecipeData {
 }
 
 interface RecipesHorizontalScrollViewProps {
-    title: string;
-    data: RecipeData[];
-    href: Href<string>;
- }
+  title: string;
+  data: RecipeData[];
+  href: Href<string>;
+}
 
-export default function RecipesHorizontalScrollView({ title, data, href } : RecipesHorizontalScrollViewProps) {
-  const [currentScrollPosition, setCurrentScrollPosition] = useState(0);
+export default function RecipesHorizontalScrollView({
+  title,
+  data,
+  href
+}: RecipesHorizontalScrollViewProps) {
   const scrollViewRef = useRef<ScrollView>(null);
 
   return (
-    <View style={tw`my-3`}>
-      <View style={tw`ml-4 flex-row items-center justify-between`}>
-        <Text style={tw`font-brand text-xl text-white`}>
-          {title}
-        </Text>
-        <Link href={href} style={tw`p-4`}>
+    <View>
+      <View style={tw`flex-row items-center justify-between px-4`}>
+        <Caption text={title} style={tw`text-white`} />
+        <TouchableOpacity onPress={() => router.push(href)}>
           <Ionicons name='chevron-forward' size={20} color='white' />
-        </Link>
+        </TouchableOpacity>
       </View>
       <ScrollView
         horizontal
         contentContainerStyle={tw`ml-4 pr-8 gap-4`}
         showsHorizontalScrollIndicator={false}
         ref={scrollViewRef}
-        onScroll={(e) =>
-          setCurrentScrollPosition(e.nativeEvent.contentOffset.x)
-        }
       >
-        {data.map((item) => (
-            <RecipeCard
-                title={item.title}
-                cookingTime={item.cookingTime}
-                kcal={item.kcal}
-                likes={item.likes}
-                image={item.image}
-            />
+        {data.map((item, index) => (
+          <RecipeCard
+            key={index}
+            title={item.title}
+            cookingTime={item.cookingTime}
+            kcal={item.kcal}
+            likes={item.likes}
+            image={item.image}
+          />
         ))}
       </ScrollView>
     </View>
