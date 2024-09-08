@@ -6,7 +6,7 @@ import { BlurView } from 'expo-blur';
 import { Image } from 'expo-image';
 import { useFocusEffect } from 'expo-router';
 import { SymbolView } from 'expo-symbols';
-import { MaterialCommunityIcons } from 'expo-vector-icons';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import React, { useState } from 'react';
 import {
   ImageBackground,
@@ -173,24 +173,24 @@ export default function AI() {
                   shown={suggestionsShown}
                   text={'Scan to create a recipe'}
                   symbolName={'text.viewfinder'}
-                  materialIconName={'camera'}
+                  materialIconName={'camera-enhance'}
                 />
                 <AISuggestion
                   animationIndex={0}
                   animatedTransparentColorStyle={animatedTransparentColorStyle}
                   shown={suggestionsShown}
-                  text={'Scan to create a recipe'}
-                  symbolName={'text.viewfinder'}
-                  materialIconName={'camera'}
+                  text={'Scan to log a meal'}
+                  symbolName={'plus.viewfinder'}
+                  materialIconName={'add-a-photo'}
                 />
               </View>
               <AIInlineSuggestion
                 animationIndex={1}
                 animatedTransparentColorStyle={animatedTransparentColorStyle}
                 shown={suggestionsShown}
-                text={'Scan to create a recipe'}
+                text={'Generate a new recipe'}
                 symbolName={'note.text.badge.plus'}
-                materialIconName={'camera'}
+                materialIconName={'playlist-add'}
               />
               <AIInlineSuggestion
                 animationIndex={2}
@@ -198,7 +198,7 @@ export default function AI() {
                 shown={suggestionsShown}
                 text={'Adapt recipe to your preferences'}
                 symbolName={'pencil.and.outline'}
-                materialIconName={'camera'}
+                materialIconName={'account-circle'}
               />
               <AIInlineSuggestion
                 animationIndex={3}
@@ -206,7 +206,7 @@ export default function AI() {
                 shown={suggestionsShown}
                 text={'Modify a recipe'}
                 symbolName={'pencil.and.scribble'}
-                materialIconName={'camera'}
+                materialIconName={'edit'}
               />
             </View>
           </View>
@@ -520,9 +520,9 @@ function AIInlineSuggestion({
               resizeMode='scaleAspectFit'
               tintColor={rgbaToHex(tw.color('black/70') as string)}
               fallback={
-                <MaterialCommunityIcons
+                <MaterialIcons
                   name={materialIconName as any}
-                  size={20}
+                  size={32}
                   color={rgbaToHex(tw.color('black/70') as string)}
                 />
               }
@@ -629,9 +629,9 @@ function AISuggestion({
             resizeMode='scaleAspectFit'
             tintColor={rgbaToHex(tw.color('black/70') as string)}
             fallback={
-              <MaterialCommunityIcons
+              <MaterialIcons
                 name={materialIconName as any}
-                size={20}
+                size={32}
                 color={rgbaToHex(tw.color('black/70') as string)}
               />
             }

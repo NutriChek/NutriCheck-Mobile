@@ -15,7 +15,8 @@ export default function LargeButton({
   textStyle,
   symbolName,
   materialIconName,
-  active = true
+  active = true,
+  rightToTextIcon
 }: {
   children: ReactNode;
   onPress: () => void;
@@ -25,15 +26,22 @@ export default function LargeButton({
   materialIconName?: string;
   textStyle?: ClassInput;
   active?: boolean;
+  rightToTextIcon?: ReactNode;
 }) {
   return (
     <View style={tw.style(`overflow-hidden rounded-full`, style)}>
       <BaseButton
-        style={tw.style(`rounded-full bg-black/60`, contentContainerStyle, !active && `opacity-70`)}
+        style={tw.style(
+          `rounded-full bg-black/60`,
+          contentContainerStyle,
+          !active && `opacity-70`
+        )}
         onPress={onPress}
         active={active}
       >
-        <View style={tw`h-16 w-full flex-row items-center justify-center gap-2`}>
+        <View
+          style={tw`h-16 w-full flex-row items-center justify-center gap-2`}
+        >
           {symbolName && (
             <SymbolView
               name={symbolName}
@@ -49,11 +57,17 @@ export default function LargeButton({
               }
             />
           )}
-          <Text
-            style={tw.style(`text-white/85 text-base font-semibold`, textStyle)}
-          >
-            {children}
-          </Text>
+          <View style={tw`flex-row items-center`}>
+            <Text
+              style={tw.style(
+                `text-white/85 text-base font-semibold`,
+                textStyle
+              )}
+            >
+              {children}
+            </Text>
+            {rightToTextIcon}
+          </View>
         </View>
       </BaseButton>
     </View>

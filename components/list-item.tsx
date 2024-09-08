@@ -2,6 +2,7 @@ import { Pressable, Text, View } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import React from 'react';
 import tw from '@/lib/tailwind';
+import { ClassInput } from 'twrnc';
 
 export default function ListItem({
   text,
@@ -13,9 +14,10 @@ export default function ListItem({
   lastItem,
   shouldPress = true,
   style,
-  appearance
+  appearance,
+  contentContainerStyle
 }: {
-  text: string;
+  text?: string;
   onPress?: () => void;
   leftComponent?: React.ReactNode;
   rightComponent?: React.ReactNode;
@@ -23,8 +25,9 @@ export default function ListItem({
   firstItem?: boolean;
   lastItem?: boolean;
   shouldPress?: boolean;
-  style?: string;
+  style?: ClassInput;
   appearance?: 'light' | 'dark';
+  contentContainerStyle?: ClassInput;
 }) {
   return (
     <Pressable
@@ -38,7 +41,7 @@ export default function ListItem({
       }
       style={({ pressed }) =>
         tw.style(
-          'bg-neutral-50 active:bg-neutral-200 dark:bg-neutral-700 dark:active:bg-neutral-600 flex-row items-center justify-between pl-4',
+          'flex-row items-center justify-between bg-white pl-4',
           appearance === 'light' && 'bg-white',
           appearance === 'dark' && 'bg-black',
           lastItem && 'rounded-b-2xl',
@@ -54,6 +57,7 @@ export default function ListItem({
           lastItem ??
             'border-b-[0.7px] border-b-black/10 dark:border-b-white/10',
           appearance === 'light' && 'border-b-white/20',
+          contentContainerStyle
         )}
       >
         {leftComponent ? (

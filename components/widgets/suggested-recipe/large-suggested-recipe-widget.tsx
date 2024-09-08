@@ -3,7 +3,7 @@ import HeaderWidgetWrapper from '@/components/header-widget-wrapper';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Text, View } from 'react-native';
 import { Image } from 'expo-image';
-import WidgetBase from '@/components/widget-base';
+import WidgetBase from '@/components/widgets/widget-base';
 
 function ImageDetailsWrapper() {
   return (

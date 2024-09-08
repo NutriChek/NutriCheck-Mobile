@@ -7,7 +7,7 @@ import {
   View
 } from 'react-native';
 import tw from '@/lib/tailwind';
-import WidgetBase from '@/components/widget-base';
+import WidgetBase from '@/components/widgets/widget-base';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import { SymbolView } from 'expo-symbols';
 import { androidRipple, rgbaToHex } from '@/lib/util';

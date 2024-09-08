@@ -20,8 +20,11 @@ export type WidgetsState = Array<{
 export const useWidgets = create(
   persist<{
     widgets: WidgetsState;
+    setWidgets: (widgets: WidgetsState) => void;
     addWidget: (widget: WidgetIdentifier, size: WidgetSize) => void;
+    changeWidgetSize: (index: number, size: WidgetSize) => void;
     removeWidget: (index: number) => void;
+    removeAll: () => void;
   }>(
     (set) => ({
       widgets: [],
@@ -29,12 +32,21 @@ export const useWidgets = create(
         set((state) => ({
           widgets: [...state.widgets, { component: widget, size }]
         })),
+      setWidgets: (widgets) => set({ widgets }),
+      changeWidgetSize: (index, size) =>
+        set((state) => {
+          const widgets = state.widgets.map((widget, i) =>
+            i === index ? { ...widget, size } : widget
+          );
+          return { widgets };
+        }),
       removeWidget: (index) =>
         set((state) => {
           const widgets = [...state.widgets];
           widgets.splice(index, 1);
           return { widgets };
-        })
+        }),
+      removeAll: () => set({ widgets: [] })
     }),
     {
       name: 'widgets',

@@ -4,6 +4,7 @@ import { ReactNode } from 'react';
 import { Style } from 'twrnc';
 import { BlurView } from 'expo-blur';
 import BaseButton from '@/components/base-button';
+import { useWidgetContext } from '@/components/widgets/widget-context';
 
 export default function WidgetBase({
   children,
@@ -14,7 +15,8 @@ export default function WidgetBase({
   containerStyle,
   size = 'auto',
   inset = 0,
-  onPress
+  onPress,
+  pressEnabled = true
 }: {
   children: ReactNode;
   title?: string;
@@ -25,8 +27,10 @@ export default function WidgetBase({
   size?: 'sm' | 'md' | 'lg' | 'auto';
   inset?: number;
   onPress?: () => void;
+  pressEnabled?: boolean;
 }) {
   const { width } = useWindowDimensions();
+  const props = useWidgetContext();
 
   return (
     <View
@@ -45,7 +49,11 @@ export default function WidgetBase({
         intensity={100}
         style={tw.style(`grow rounded-3xl bg-white/70`)}
       >
-        <BaseButton style={tw.style(`gap-3 p-4`, style)} onPress={onPress}>
+        <BaseButton
+          style={tw.style(`gap-3 p-4`, style)}
+          onPress={onPress}
+          active={pressEnabled && props?.some((prop) => prop.pressEnabled)}
+        >
           {(title || rightComponent) && (
             <View style={tw`flex-row items-center justify-between`}>
               {title && icon && (

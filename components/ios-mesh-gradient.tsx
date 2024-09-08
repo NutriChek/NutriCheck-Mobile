@@ -20,7 +20,7 @@ export default function IOSMeshGradient() {
       ]}
       colors={['#af65d5', '#5b8bcc', '#cc5f59', '#d2a95c']}
       animatedColors={['#cc5f59', '#af65d5', '#d2a95c', '#5b8bcc']}
-      animationDuration={15}
+      animationDuration={5}
     />
   );
 }

@@ -3,7 +3,7 @@ import tw from '@/lib/tailwind';
 import { SymbolView } from 'expo-symbols';
 import { rgbaToHex } from '@/lib/util';
 import { MaterialIcons } from 'expo-vector-icons';
-import WidgetBase from '@/components/widget-base';
+import WidgetBase from '@/components/widgets/widget-base';
 import { LinearGradient } from 'expo-linear-gradient';
 
 const image = require('@/assets/images/sarmale.png');

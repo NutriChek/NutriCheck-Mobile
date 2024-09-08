@@ -4,7 +4,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import SuggestionCard from '../../suggestion-card';
 import { router } from 'expo-router';
 import HeaderWidgetWrapper from '@/components/header-widget-wrapper';
-import WidgetBase from '@/components/widget-base';
+import WidgetBase from '@/components/widgets/widget-base';
 
 const backgrounds = [
   require('@/assets/images/color-blur.png'),

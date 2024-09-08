@@ -4,7 +4,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { Text, View } from 'react-native';
 import { Image } from 'expo-image';
 import React from 'react';
-import WidgetBase from '@/components/widget-base';
+import WidgetBase from '@/components/widgets/widget-base';
 
 export default function MediumSuggestedRecipeWidget() {
   return (

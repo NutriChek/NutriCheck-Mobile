@@ -1,5 +1,6 @@
 import React from 'react';
 import { WidgetSize } from '@/lib/types';
+import { WidgetProvider } from '@/components/widgets/widget-context';
 
 const withWidget = (
   SmallWidget: React.FC<any> | null,
@@ -8,9 +9,11 @@ const withWidget = (
 ) => {
   return function WidgetWrapper({
     size,
+    widgetBaseProps,
     ...props
   }: {
     size: WidgetSize;
+    widgetBaseProps?: Array<Record<string, any>>;
     [key: string]: any;
   }) {
     let WidgetComponent;
@@ -25,7 +28,11 @@ const withWidget = (
       return null;
     }
 
-    return <WidgetComponent {...props} />;
+    return (
+      <WidgetProvider value={widgetBaseProps ?? [{ pressEnabled: true }]}>
+        <WidgetComponent {...props} />
+      </WidgetProvider>
+    );
   };
 };
 

@@ -2,7 +2,7 @@ import { Text, View } from 'react-native';
 import tw from '@/lib/tailwind';
 import { ReactNode } from 'react';
 import { Style } from 'twrnc';
-import WidgetBase from '@/components/widget-base';
+import WidgetBase from '@/components/widgets/widget-base';
 
 export default function HeaderWidgetWrapper({
   children,
