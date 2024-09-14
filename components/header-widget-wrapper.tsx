@@ -19,9 +19,7 @@ export default function HeaderWidgetWrapper({
     <WidgetBase>
       <View style={tw`flex-row items-center`}>
         {icon}
-        <Text style={tw`pl-2 text-sm font-bold text-black/56`}>
-          {title}
-        </Text>
+        <Text style={tw`text-black/56 pl-2 text-sm font-bold`}>{title}</Text>
       </View>
       <View style={{ ...tw``, ...style }}>{children}</View>
     </WidgetBase>

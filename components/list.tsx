@@ -52,7 +52,7 @@ export default function List({
     return null;
   });
 
-  return <View style={tw.style(`rounded-2xl`,style)}>{modifiedChildren}</View>;
+  return <View style={tw.style(`rounded-2xl`, style)}>{modifiedChildren}</View>;
 }
 
 List.Item = ListItem;

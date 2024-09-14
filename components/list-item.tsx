@@ -15,19 +15,21 @@ export default function ListItem({
   shouldPress = true,
   style,
   appearance,
-  contentContainerStyle
+  contentContainerStyle,
+  iconComponent
 }: {
   text?: string;
   onPress?: () => void;
   leftComponent?: React.ReactNode;
   rightComponent?: React.ReactNode;
-  textStyle?: string;
+  textStyle?: ClassInput;
   firstItem?: boolean;
   lastItem?: boolean;
   shouldPress?: boolean;
   style?: ClassInput;
   appearance?: 'light' | 'dark';
   contentContainerStyle?: ClassInput;
+  iconComponent?: React.ReactNode;
 }) {
   return (
     <Pressable
@@ -41,16 +43,18 @@ export default function ListItem({
       }
       style={({ pressed }) =>
         tw.style(
-          'flex-row items-center justify-between bg-white pl-4',
+          'flex-row items-center justify-between bg-white pl-4 gap-2',
           appearance === 'light' && 'bg-white',
           appearance === 'dark' && 'bg-black',
           lastItem && 'rounded-b-2xl',
           firstItem && 'rounded-t-2xl',
           shouldPress && pressed && 'ios:opacity-80',
+          !!iconComponent && 'pl-3',
           style
         )
       }
     >
+      {iconComponent}
       <View
         style={tw.style(
           'flex-1 flex-row items-center justify-between gap-4 py-3 pr-4',

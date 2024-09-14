@@ -10,7 +10,7 @@ function ImageDetailsWrapper() {
     <View style={tw`flex-row items-center`}>
       <Image
         source={require('../../../assets/images/sarmale.png')}
-        style={tw`h-18 w-18 rounded-2xl mr-4`}
+        style={tw`h-18 w-18 mr-4 rounded-2xl`}
       />
       <View style={tw`flex-1`}>
         <Text style={tw`text-base font-bold text-black/70`}>

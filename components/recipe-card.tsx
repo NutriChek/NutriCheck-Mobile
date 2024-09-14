@@ -19,7 +19,9 @@ export default function RecipeCard({
   image
 }: RecipeCardProps) {
   return (
-    <View style={tw`w-70 flex-row items-center rounded-2xl overflow-hidden bg-white/70 pr-2`}>
+    <View
+      style={tw`w-70 flex-row items-center overflow-hidden rounded-2xl bg-white/70 pr-2`}
+    >
       <Image source={image} style={tw`w-23 mr-4 h-full`} />
       <View style={tw`flex-1`}>
         <Text style={tw`pt-3 text-base font-bold text-black/70`}>{title}</Text>

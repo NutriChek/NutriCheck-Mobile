@@ -1,7 +1,10 @@
 import { Text, useWindowDimensions, View } from 'react-native';
 import { useRef, useState } from 'react';
 import Carousel, { ICarouselInstance } from 'react-native-reanimated-carousel';
-import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
+import Animated, {
+  useAnimatedStyle,
+  withTiming
+} from 'react-native-reanimated';
 import tw from '@/lib/tailwind';
 import WidgetBase from '@/components/widgets/widget-base';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';

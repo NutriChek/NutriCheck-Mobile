@@ -116,9 +116,7 @@ export default function TabBar(props: BottomTabBarProps) {
           style={tw`android:pb-4 w-full items-center pb-8`}
         >
           <View style={tw`overflow-hidden rounded-full`}>
-            <BlurView
-              style={tw`flex-row rounded-full bg-white/70 p-2 py-2`}
-            >
+            <BlurView style={tw`flex-row rounded-full bg-white/70 p-2 py-2`}>
               <Animated.View
                 style={[
                   {

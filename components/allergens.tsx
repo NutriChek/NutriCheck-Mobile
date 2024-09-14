@@ -62,72 +62,76 @@ export default function Allergens() {
         <List.Item
           text={`Gluten`}
           shouldPress={false}
-          rightComponent={<YesNoController control={control} name="gluten" />}
+          rightComponent={<YesNoController control={control} name='gluten' />}
         />
         <List.Item
           text={`Milk`}
           shouldPress={false}
-          rightComponent={<YesNoController control={control} name="milk" />}
+          rightComponent={<YesNoController control={control} name='milk' />}
         />
         <List.Item
           text={`Eggs`}
           shouldPress={false}
-          rightComponent={<YesNoController control={control} name="eggs" />}
+          rightComponent={<YesNoController control={control} name='eggs' />}
         />
         <List.Item
           text={`Nuts`}
           shouldPress={false}
-          rightComponent={<YesNoController control={control} name="nuts" />}
+          rightComponent={<YesNoController control={control} name='nuts' />}
         />
         <List.Item
           text={`Peanuts`}
           shouldPress={false}
-          rightComponent={<YesNoController control={control} name="peanuts" />}
+          rightComponent={<YesNoController control={control} name='peanuts' />}
         />
         <List.Item
           text={`Sesame Seeds`}
           shouldPress={false}
-          rightComponent={<YesNoController control={control} name="sesameSeeds" />}
+          rightComponent={
+            <YesNoController control={control} name='sesameSeeds' />
+          }
         />
         <List.Item
           text={`Soybeans`}
           shouldPress={false}
-          rightComponent={<YesNoController control={control} name="soybeans" />}
+          rightComponent={<YesNoController control={control} name='soybeans' />}
         />
         <List.Item
           text={`Celery`}
           shouldPress={false}
-          rightComponent={<YesNoController control={control} name="celery" />}
+          rightComponent={<YesNoController control={control} name='celery' />}
         />
         <List.Item
           text={`Mustard`}
           shouldPress={false}
-          rightComponent={<YesNoController control={control} name="mustard" />}
+          rightComponent={<YesNoController control={control} name='mustard' />}
         />
         <List.Item
           text={`Lupin`}
           shouldPress={false}
-          rightComponent={<YesNoController control={control} name="lupin" />}
+          rightComponent={<YesNoController control={control} name='lupin' />}
         />
         <List.Item
           text={`Fish`}
           shouldPress={false}
-          rightComponent={<YesNoController control={control} name="fish" />}
+          rightComponent={<YesNoController control={control} name='fish' />}
         />
         <List.Item
           text={`Crustaceans`}
           shouldPress={false}
-          rightComponent={<YesNoController control={control} name="crustaceans" />}
+          rightComponent={
+            <YesNoController control={control} name='crustaceans' />
+          }
         />
         <List.Item
           text={`Molluscs`}
           shouldPress={false}
-          rightComponent={<YesNoController control={control} name="molluscs" />}
+          rightComponent={<YesNoController control={control} name='molluscs' />}
         />
         <List.Item
           text={`Sulphur dioxide and sulphites`}
           shouldPress={false}
-          rightComponent={<YesNoController control={control} name="sulphurs" />}
+          rightComponent={<YesNoController control={control} name='sulphurs' />}
         />
       </List>
     </View>

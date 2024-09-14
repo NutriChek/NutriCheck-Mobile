@@ -61,22 +61,24 @@ export default function Nutriments() {
         <List.Item
           text={`Salt in low quantity`}
           shouldPress={false}
-          rightComponent={<YesNoController control={control} name="lowSalt" />}
+          rightComponent={<YesNoController control={control} name='lowSalt' />}
         />
         <List.Item
           text={`Sugars in low quantity`}
           shouldPress={false}
-          rightComponent={<YesNoController control={control} name="lowSugar" />}
+          rightComponent={<YesNoController control={control} name='lowSugar' />}
         />
         <List.Item
           text={`Fat in low quantity`}
           shouldPress={false}
-          rightComponent={<YesNoController control={control} name="lowFat" />}
+          rightComponent={<YesNoController control={control} name='lowFat' />}
         />
         <List.Item
           text={`Saturated fat in low quantity`}
           shouldPress={false}
-          rightComponent={<YesNoController control={control} name="lowSaturatedFat" />}
+          rightComponent={
+            <YesNoController control={control} name='lowSaturatedFat' />
+          }
         />
       </List>
     </View>

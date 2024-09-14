@@ -1,16 +1,15 @@
 import { Text, View } from 'react-native';
 import tw from '@/lib/tailwind';
 import Ionicons from '@expo/vector-icons/Ionicons';
-
-import HeaderWidgetWrapper from '@/components/header-widget-wrapper';
 import React from 'react';
 import ShoppingListCheckbox from '@/components/shopping-list-checkbox';
+import WidgetBase from '@/components/widgets/widget-base';
 
 export default function LargeShoppingWidget({ items }: { items: string[] }) {
   items = [];
 
   return (
-    <HeaderWidgetWrapper
+    <WidgetBase
       title='Shopping List'
       icon={<Ionicons name='list' size={20} color={tw.color('black/55')} />}
     >
@@ -25,6 +24,6 @@ export default function LargeShoppingWidget({ items }: { items: string[] }) {
           <ShoppingListCheckbox item={item} key={index} />
         ))}
       </View>
-    </HeaderWidgetWrapper>
+    </WidgetBase>
   );
 }

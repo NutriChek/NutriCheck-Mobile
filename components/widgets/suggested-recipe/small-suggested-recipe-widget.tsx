@@ -17,7 +17,7 @@ export default function SmallSuggestedRecipeWidget() {
         source={image}
         style={tw`aspect-square`}
       >
-        <View style={tw`flex-1 relative justify-end`}>
+        <View style={tw`relative flex-1 justify-end`}>
           {Platform.OS === 'ios' && (
             <VariableBlurView
               style={{

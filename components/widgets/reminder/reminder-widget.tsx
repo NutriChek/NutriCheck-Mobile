@@ -5,6 +5,7 @@ import { Text, View } from 'react-native';
 import { ProgressChart } from '../../../modules/react-native-chart-kit';
 import React from 'react';
 import SuggestionCard from '@/components/suggestion-card';
+import WidgetBase from '@/components/widgets/widget-base';
 
 const dataProgress = {
   data: [0.25]
@@ -14,7 +15,7 @@ const image = require('@/assets/images/color-blur.png');
 
 export default function ReminderWidget() {
   return (
-    <HeaderWidgetWrapper
+    <WidgetBase
       title='Low calories'
       icon={
         <Ionicons name='alert-circle' size={20} color={tw.color('black/50')} />
@@ -48,6 +49,6 @@ export default function ReminderWidget() {
           />
         </View>
       </View>
-    </HeaderWidgetWrapper>
+    </WidgetBase>
   );
 }

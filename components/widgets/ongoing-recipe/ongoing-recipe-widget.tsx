@@ -6,6 +6,7 @@ import { ProgressChart } from '../../../modules/react-native-chart-kit';
 import { SymbolView } from 'expo-symbols';
 import { rgbaToHex } from '@/lib/util';
 import { MaterialCommunityIcons } from 'expo-vector-icons';
+import WidgetBase from '@/components/widgets/widget-base';
 
 function ImageDetailsWrapper() {
   return (
@@ -37,7 +38,7 @@ const dataProgress = {
 
 export default function OngoingRecipeWidget() {
   return (
-    <HeaderWidgetWrapper
+    <WidgetBase
       title='Ongoing recipe'
       icon={<Image source={image} style={tw`h-5 w-5 opacity-50`} />}
     >
@@ -91,6 +92,6 @@ export default function OngoingRecipeWidget() {
           Mixing up the dough
         </Text>
       </View>
-    </HeaderWidgetWrapper>
+    </WidgetBase>
   );
 }

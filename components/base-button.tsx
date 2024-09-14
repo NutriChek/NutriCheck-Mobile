@@ -13,14 +13,16 @@ export default function BaseButton({
   children: ReactNode;
   style?: ClassInput;
   onPress?: () => void;
-  active?: boolean
+  active?: boolean;
 }) {
   const props = active ? { android_ripple: androidRipple } : null;
 
   return (
     <Pressable
       {...props}
-      style={({ pressed }) => tw.style(style, pressed && active && 'ios:opacity-70')}
+      style={({ pressed }) =>
+        tw.style(style, pressed && active && 'ios:opacity-70')
+      }
       onPress={active ? onPress : null}
     >
       {children}

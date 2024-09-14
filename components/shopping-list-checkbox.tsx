@@ -7,9 +7,12 @@ export default function ShoppingListCheckbox({ item }: { item: string }) {
   const [isChecked, setChecked] = useState(false);
 
   return (
-    <Pressable onPress={() => {
-      setChecked(!isChecked);
-    }} style={tw`flex-row items-center pb-2`}>
+    <Pressable
+      onPress={() => {
+        setChecked(!isChecked);
+      }}
+      style={tw`flex-row items-center pb-2`}
+    >
       <CheckBox
         value={isChecked}
         onValueChange={setChecked}

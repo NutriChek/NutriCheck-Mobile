@@ -11,7 +11,17 @@ interface SelectControllerItem {
   label: string;
 }
 
-export default function SelectController({ control, name, data, defaultLabel = "Choose" }: { control: any, name: string, data: SelectControllerItem[], defaultLabel?: string }) {
+export default function SelectController({
+  control,
+  name,
+  data,
+  defaultLabel = 'Choose'
+}: {
+  control: any;
+  name: string;
+  data: SelectControllerItem[];
+  defaultLabel?: string;
+}) {
   return (
     <Controller
       control={control}
@@ -21,7 +31,7 @@ export default function SelectController({ control, name, data, defaultLabel = "
           <Menu.Trigger>
             <Pressable style={tw`flex-row gap-1`}>
               <Text style={tw`p-0 text-base text-white`}>
-                {data.find(i => i.value == value)?.label ?? defaultLabel}
+                {data.find((i) => i.value == value)?.label ?? defaultLabel}
               </Text>
               <Ionicons
                 name='chevron-expand-outline'

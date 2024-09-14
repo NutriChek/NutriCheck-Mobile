@@ -41,7 +41,8 @@
             "deploymentTarget": "14.0"
           }
         }
-      ]
+      ],
+      "react-native-health"
     ]
   }
 }

@@ -13,7 +13,7 @@ export default function LargeFeaturedRecipeWidget() {
   return (
     <WidgetBase style={tw`p-0`}>
       <ImageBackground resizeMode='cover' source={image} style={tw`h-70`}>
-        <View style={tw`flex-1 justify-end relative`}>
+        <View style={tw`relative flex-1 justify-end`}>
           {Platform.OS === 'ios' && (
             <VariableBlurView
               style={{
@@ -46,10 +46,10 @@ export default function LargeFeaturedRecipeWidget() {
                 Featured recipe
               </Text>
             </View>
-            <Text style={tw`text-2xl font-bold text-white leading-tight`}>
+            <Text style={tw`text-2xl font-bold leading-tight text-white`}>
               Sarmale de post
             </Text>
-            <Text style={tw`text-sm font-bold text-white leading-tight`}>
+            <Text style={tw`text-sm font-bold leading-tight text-white`}>
               by Jamila Cuisine
             </Text>
           </LinearGradient>

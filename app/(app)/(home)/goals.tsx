@@ -100,9 +100,22 @@ export default function Goals() {
             </Pressable>
           </View>
           <WidgetBase
-            symbolName='chart.line.uptrend.xyaxis'
-            materialIconName='chart-line'
             title='Your dietary goal'
+            icon={
+              <SymbolView
+                name='chart.line.uptrend.xyaxis'
+                size={20}
+                resizeMode='scaleAspectFit'
+                tintColor={rgbaToHex(tw.color('black/50') as string)}
+                fallback={
+                  <MaterialCommunityIcons
+                    name='chart-line'
+                    size={20}
+                    color={tw.color('black/50')}
+                  />
+                }
+              />
+            }
           >
             <View style={tw`flex-row`}>
               <View
@@ -149,9 +162,22 @@ export default function Goals() {
           </WidgetBase>
 
           <WidgetBase
-            symbolName='flame.fill'
-            materialIconName='fire'
             title='Your calorie goal'
+            icon={
+              <SymbolView
+                name='flame.fill'
+                size={20}
+                resizeMode='scaleAspectFit'
+                tintColor={rgbaToHex(tw.color('black/50') as string)}
+                fallback={
+                  <MaterialCommunityIcons
+                    name='fire'
+                    size={20}
+                    color={tw.color('black/50')}
+                  />
+                }
+              />
+            }
           >
             <View style={tw`flex-row px-2`}>
               <View style={tw`w-1/2 items-center justify-center`}>
@@ -276,9 +302,22 @@ export default function Goals() {
 
           <Caption text='Activity' style='pb-0 pt-0 text-white' />
           <WidgetBase
-            symbolName='figure.walk'
-            materialIconName='walk'
             title='Steps'
+            icon={
+              <SymbolView
+                name='figure.walk'
+                size={20}
+                resizeMode='scaleAspectFit'
+                tintColor={rgbaToHex(tw.color('black/50') as string)}
+                fallback={
+                  <MaterialCommunityIcons
+                    name='walk'
+                    size={20}
+                    color={tw.color('black/50')}
+                  />
+                }
+              />
+            }
             rightComponent={
               <View style={tw`flex-row items-center gap-1`}>
                 <Text style={tw`text-sm font-bold leading-tight text-black/50`}>
@@ -336,9 +375,22 @@ export default function Goals() {
             </View>
           </WidgetBase>
           <WidgetBase
-            symbolName='figure.walk'
-            materialIconName='walk'
             title='Steps'
+            icon={
+              <SymbolView
+                name='figure.walk'
+                size={20}
+                resizeMode='scaleAspectFit'
+                tintColor={rgbaToHex(tw.color('black/50') as string)}
+                fallback={
+                  <MaterialCommunityIcons
+                    name='walk'
+                    size={20}
+                    color={tw.color('black/50')}
+                  />
+                }
+              />
+            }
             rightComponent={
               <View style={tw`flex-row items-center gap-1`}>
                 <Text style={tw`text-sm font-bold leading-tight text-black/50`}>

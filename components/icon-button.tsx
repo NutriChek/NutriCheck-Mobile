@@ -20,7 +20,7 @@ export default function IconButton({
     <View style={tw`overflow-hidden rounded-full`}>
       <Pressable
         onPress={onPress}
-        android_ripple={{...androidRipple, radius: 50}}
+        android_ripple={{ ...androidRipple, radius: 50 }}
         style={({ pressed }) =>
           tw.style(pressed && 'ios:opacity-80', 'p-2', style)
         }

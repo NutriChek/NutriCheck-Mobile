@@ -171,7 +171,6 @@ function TikTokPreviewCard({
   imageSource?: ImageSource;
 }) {
   const { width } = useWindowDimensions();
-  const [numberOfLines, setNumberOfLines] = useState(2);
 
   return (
     <Animated.View
@@ -200,18 +199,20 @@ function TikTokPreviewCard({
           >
             <View style={tw`gap-1`}>
               <View style={tw`flex-row justify-between`}>
-                <View style={tw`flex-row items-center gap-2`}>
+                <View style={tw`grow flex-row items-center gap-2`}>
                   <Image
                     source={require('@/assets/images/profile.jpeg')}
                     style={tw`h-8 w-8 rounded-full`}
                   />
-                  <View>
+                  <View style={tw`flex-1`}>
                     <Text
+                      numberOfLines={1}
                       style={tw`text-base font-semibold leading-[1.1] text-white/95`}
                     >
                       Jamila Cuisine
                     </Text>
                     <Text
+                      numberOfLines={1}
                       style={tw`text-white/85 text-sm font-semibold leading-[1.1]`}
                     >
                       Romanian dishes pack
@@ -232,20 +233,13 @@ function TikTokPreviewCard({
               <Text style={tw`text-base font-bold text-white`}>
                 Sarmale de post
               </Text>
-              <Pressable
-                style={({ pressed }) => tw.style(pressed && 'opacity-70')}
-                onPress={() => {
-                  setNumberOfLines((prev) => (prev === 2 ? 10 : 2));
-                }}
+              <Text
+                style={tw`text-white/85 text-sm font-semibold leading-[1.1]`}
+                numberOfLines={2}
               >
-                <Text
-                  style={tw`text-white/85 text-sm font-semibold leading-[1.1]`}
-                  numberOfLines={numberOfLines}
-                >
-                  Lorem ipsum dolor sit amet consecter cursus. Vulputate dolor
-                  sit amet consecter cursus. Vulputate dolor sit amet consecter
-                </Text>
-              </Pressable>
+                Lorem ipsum dolor sit amet consecter cursus. Vulputate dolor sit
+                amet consecter cursus. Vulputate dolor sit amet consecter
+              </Text>
             </View>
           </LinearGradient>
         </View>
